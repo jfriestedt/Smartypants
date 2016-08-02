@@ -2,6 +2,11 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 
+// Window testing
+window.SessionApiUtil = require('./util/session_api_util');
+window.success = () => {console.log("success");};
+window.error = () => {console.log("error");};
+
 const App = React.createClass({
   render () {
     return (

@@ -1,21 +1,31 @@
 const SessionApiUtil = {
   signUp (user, success, error) {
     $.ajax({
-      url: "/api/user",
-      method: "POST",
-      dataType: 'json',
+      url: '/api/users',
+      method: 'POST',
       data: { user },
       success,
       error
     });
   },
 
-  login () {
-
+  login (user, success, error) {
+    $.ajax({
+      url: '/api/session',
+      method: 'POST',
+      data: { user },
+      success,
+      error
+    });
   },
 
-  logout () {
-
+  logout (success, error) {
+    $.ajax({
+      url: '/api/session',
+      method: 'DELETE',
+      success,
+      error
+    });
   }
 };
 
