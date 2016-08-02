@@ -47,7 +47,8 @@ Smartypants is a single-page web application clone of Genius.com, a site which a
 
 ### Phase 1: Backend setup and Front End User Authentication (2 days, W1 R 6pm)
 
-  (NB: I am assuming the first two days of work will land me on Thursday of wk 1 since we are spending our first day of wk 1 doing BenchBnB Part II. Please correct me if I'm wrong!)
+  (NB: Next up: write SessionStore#onDispatch!
+    https://github.com/appacademy/curriculum/blob/master/react/projects/bench_bnb/bench_bnb_ii.md)
 
 **Objective:** Functioning rails project with front-end Authentication
 
