@@ -1,0 +1,151 @@
+# Smartypants
+
+[Heroku link][heroku]
+
+[heroku]: https://smartypants-app.herokuapp.com/
+
+## Minimum Viable Product
+
+<!-- FresherNote is a web application inspired by Evernote that will be build using Ruby on Rails and React.js.  By the end of Week 9, this app will, at a minimum, satisfy the following criteria: -->
+
+Smartypants is a single-page web application clone of Genius.com, a site which allows users to view and collaboratively annotate lyrics to popular songs. By the end of Week 9, this app will, at a minimum, satisfy the following criteria:
+
+- [ ] Hosting on Heroku
+- [ ] New account creation, login, and guest/demo login
+- [ ] A production README, replacing this README
+- [ ] Tracks
+  - [ ] Smooth, bug-free navigation
+  - [ ] Adequate seed data to demonstrate the site's features
+  - [ ] Adequate CSS styling
+- [ ] Annotations
+  - [ ] Smooth, bug-free navigation
+  - [ ] Adequate seed data to demonstrate the site's features
+  - [ ] Adequate CSS styling
+- [ ] Comments
+  - [ ] Smooth, bug-free navigation
+  - [ ] Adequate seed data to demonstrate the site's features
+  - [ ] Adequate CSS styling
+- [ ] Upvotes
+  - [ ] Smooth, bug-free navigation
+  - [ ] Adequate seed data to demonstrate the site's features
+  - [ ] Adequate CSS styling
+
+## Design Docs
+* [View Wireframes][views]
+* [React Components][components]
+* [Flux Cycles][flux-cycles]
+* [API endpoints][api-endpoints]
+* [DB schema][schema]
+
+[views]: docs/views.md
+[components]: docs/components.md
+[flux-cycles]: docs/flux-cycles.md
+[api-endpoints]: docs/api-endpoints.md
+[schema]: docs/schema.md
+
+## Implementation Timeline
+
+### Phase 1: Backend setup and Front End User Authentication (2 days, W1 R 6pm)
+
+  (NB: I am assuming the first two days of work will land me on Thursday of wk 1 since we are spending our first day of wk 1 doing BenchBnB Part II. Please correct me if I'm wrong!)
+
+**Objective:** Functioning rails project with front-end Authentication
+
+- [ ] create new project
+- [ ] create `User` model
+- [ ] authentication backend setup
+- [ ] create `StaticPages` controller and root view
+- [ ] set up webpack & flux architecture with skeleton files
+- [ ] setup `APIUtil` to interact with the API
+- [ ] set up flux cycle for frontend authorization
+- [ ] user signup/signin "splash page" components
+- [ ] nav bar component
+- [ ] implement React Router
+- [ ] style signin/signup components
+- [ ] seed users
+
+### Phase 2: Tracks Model, API, and components (2 days, W2 Sa 6pm)
+
+**Objective:** Tracks can be created, read, edited and destroyed through
+the API.
+
+- [ ] create `Track` model
+- [ ] seed the database with a small amount of test data
+- [ ] CRUD API for tracks (`TracksController`)
+- [ ] jBuilder views for tracks
+- [ ] test out API interaction in the console.
+- implement each track component, building out the flux loop as needed.
+  - [ ] `TracksIndex`
+  - [ ] `TrackIndexItem`
+  - [ ] `TrackForm`
+  - [ ] `TrackLyrics`
+  - [ ] `TrackBanner`
+  - [ ] add navigation between tracks index & track show views
+- [ ] style track components
+- [ ] seed tracks
+
+### Phase 3: Annotations (3 days, W2 W 6pm)
+
+**Objective:** Tracks can be annotated by users. Sections of track lyrics can be highlighted and made into referents which refer to annotations. After creation, annotations will appear and disappear beside their referents when referents are selected and unselected.
+
+- [ ] create `Annotation` model and join table
+- [ ] build out API, Flux loop, and components for Annotation CRUD
+- implement each annotation component, building out the flux loop as needed.
+  - [ ] `AnnotationReferent`
+  - [ ] `AnnotationContainer`
+  - [ ] `AnnotationForm`
+  - [ ] `AnnotationContent`
+  - [ ] `AnnotationHeader`
+  - [ ] `AnnotationBody`
+  - [ ] `AnnotationButtonGroup`
+  - [ ] `AnnotationBeginButton`
+  - [ ] `AnnotationEditButton`
+  - [ ] `AnnotationDeleteButton`
+- [ ] style annotation components
+- [ ] seed annotations
+
+Phase 3 will be the most difficult and time-consuming phase of the project. It builds the key functionality of the site, and therefore, its full completion will take precedence over building of later features in the event of a time issue.
+
+### Phase 4: Comments (1 day, W2 R 6pm)
+
+**Objective:** Users can create, edit, and delete comments for tracks and annotations.
+
+- [ ] create `TrackComment` & `AnnotationComment` models and join tables
+- build out API, Flux loop, and components for:
+  - [ ] displaying comments on tracks
+  - [ ] adding comments to tracks
+  - [ ] editing comments on tracks
+  - [ ] deleting comments from tracks
+  - [ ] displaying comments on annotations
+  - [ ] adding comments to annotations
+  - [ ] editing comments on annotations
+  - [ ] deleting comments from annotations
+- [ ] style comment elements
+- [ ] seed comments
+
+### Phase 5: Upvotes & Downvotes (1 day, W2 F 6pm)
+
+**objective:** Users can upvote and downvote annotations. Annotations will display their cumulative up/down score.
+
+- [ ] create `AnnotationScore` & model and `UserScore` join table
+- build out API, Flux loop, and components for:
+  - [ ] displaying upvote & downvote buttons under annotations
+  - [ ] adding one point (maximum) per voter/annotation via upvote
+  - [ ] subtracting one point (maximum) per voter/annotation via downvote
+      (NB: creating an upvote on an annotation after creating a downvote will remove the downvote and add the upvote, and vice versa.)
+- [ ] style upvote & downvote elements
+- [ ] seed upvotes & downvotes
+
+### Bonus Features (TBD)
+- [ ] Add genre tags to tracks
+- [ ] Add site-wide track & lyrics search
+- [ ] Add extended track info to Track model & Track#show secondary column
+- [ ] Add albums, associate tracks with albums
+- [ ] Add User profiles
+- [ ] Add user 'smartyness' score, based on contributed annotations, comments, and up/downvotes
+
+[phase-one]: docs/phases/phase1.md
+[phase-two]: docs/phases/phase2.md
+[phase-three]: docs/phases/phase3.md
+[phase-four]: docs/phases/phase4.md
+[phase-five]: docs/phases/phase5.md
