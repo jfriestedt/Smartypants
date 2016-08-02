@@ -16,6 +16,8 @@
 # Ignore Byebug command history file.
 .byebug_history
 
+#My Ignores
 /node_modules/
 /app/assets/javascripts/bundle.js
 /app/assets/javascripts/bundle.js.map
+.DS_Store
