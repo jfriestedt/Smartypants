@@ -51,10 +51,10 @@ Smartypants is a single-page web application clone of Genius.com, a site which a
 
 **Objective:** Functioning rails project with front-end Authentication
 
-- [ ] create new project
-- [ ] create `User` model
-- [ ] authentication backend setup
-- [ ] create `StaticPages` controller and root view
+- [x] create new project
+- [x] create `User` model
+- [x] authentication backend setup
+- [x] create `StaticPages` controller and root view
 - [ ] set up webpack & flux architecture with skeleton files
 - [ ] setup `APIUtil` to interact with the API
 - [ ] set up flux cycle for frontend authorization
@@ -62,7 +62,7 @@ Smartypants is a single-page web application clone of Genius.com, a site which a
 - [ ] nav bar component
 - [ ] implement React Router
 - [ ] style signin/signup components
-- [ ] seed users
+- [x] seed users
 
 ### Phase 2: Tracks Model, API, and components (2 days, W2 Sa 6pm)
 
