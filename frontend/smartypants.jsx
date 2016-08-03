@@ -28,7 +28,6 @@ const App = React.createClass({
 
     return (
       <div className="App">
-        App
         <NavBar />
         {this.props.children}
       </div>
@@ -48,6 +47,6 @@ const appRouter = (
 
 document.addEventListener('DOMContentLoaded', function () {
   const root = document.getElementById('root');
-  SessionActions.receiveCurrentUser(window.currentUser);
+  SessionActions.receiveCurrentUser(window.currentUser = {});
   ReactDOM.render(appRouter, root);
 });

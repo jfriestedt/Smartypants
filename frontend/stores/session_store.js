@@ -19,7 +19,7 @@ SessionStore.currentUser = () => {
 };
 
 SessionStore.isUserLoggedIn = () => {
-  return (!!_currentUser.id);
+  Boolean(_currentUser.id);
 };
 
 SessionStore.__onDispatch = (payload) => {
