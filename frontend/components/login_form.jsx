@@ -44,30 +44,27 @@ const LoginForm = React.createClass({
 
   render () {
     return (
-      <div>
-        <div className="session-form-overlay"></div>
-        <div className="session-form-container">
-          <h1 className="session-heading">Sign In</h1>
-          <form className="login-form" onSubmit={this._onSubmit}>
+      <div className="session-form-container">
+        <h1 className="session-heading">Sign In</h1>
+        <form className="login-form" onSubmit={this._onSubmit}>
 
-            <label className="session-field-label">Username:</label>
-            <input  className="session-input"
-                    type="text"
-                    value={this.state.username}
-                    onChange={this._changeUsername}
-            />
+          <label className="session-field-label">Username:</label>
+          <input  className="session-input"
+                  type="text"
+                  value={this.state.username}
+                  onChange={this._changeUsername}
+          />
 
-            <label className="session-field-label">Password:</label>
-            <input  className="session-input"
-                    type="password"
-                    value={this.state.pasword}
-                    onChange={this._changePassword}
-            />
+          <label className="session-field-label">Password:</label>
+          <input  className="session-input"
+                  type="password"
+                  value={this.state.pasword}
+                  onChange={this._changePassword}
+          />
 
-          <input className="session-button" type="submit" value="Sign In" />
+        <input className="session-button" type="submit" value="Sign In" />
 
-          </form>
-        </div>
+        </form>
       </div>
     );
   }

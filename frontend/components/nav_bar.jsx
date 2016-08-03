@@ -2,6 +2,7 @@ const React = require('react');
 const Link = require('react-router').Link;
 const SessionStore = require('../stores/session_store');
 const SessionActions = require('../actions/session_actions');
+const Modal = require('react-modal');
 
 const NavBar = React.createClass({
   getInitialState () {
@@ -34,8 +35,9 @@ const NavBar = React.createClass({
     } else {
       return (
         <hgroup className="nav-group">
-          <Link to="/login" className="nav-button">Sign In</Link>
-          <Link to="/signup" className="nav-button">Sign Up</Link>
+          // ADD MODAL COMPONENTS HERE
+          <Link to="/login" className="nav-button">SIGN IN</Link>
+          <Link to="/signup" className="nav-button">SIGN UP</Link>
         </hgroup>
       );
     }
@@ -46,7 +48,7 @@ const NavBar = React.createClass({
   render () {
     return (
       <nav className="nav-bar">
-        <Link to="/" className="nav-button">Add a Song</Link>
+        <Link to="/" className="nav-button">ADD SONG</Link>
         <div className="logo-container">
           <Link to="/" className="nav-logo logo" />
         </div>

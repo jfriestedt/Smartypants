@@ -19,14 +19,16 @@ SessionStore.currentUser = () => {
 };
 
 SessionStore.isUserLoggedIn = () => {
-  Boolean(_currentUser.id);
+  return Boolean(_currentUser.id);
 };
 
 SessionStore.__onDispatch = (payload) => {
   switch (payload.actionType) {
     case SessionConstants.LOGIN:
-      _login(payload.currentUser);
-      SessionStore.__emitChange();
+      if (!!payload.currentUser.id) {
+        _login(payload.currentUser);
+        SessionStore.__emitChange();
+      }
       break;
     case SessionConstants.LOGOUT:
       _logout();

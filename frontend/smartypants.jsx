@@ -18,6 +18,9 @@ const SignupForm = require('./components/signup_form');
 // Misc
 const SessionActions = require('./actions/session_actions');
 
+// React Modal
+const Modal = require("react-modal");
+
 // Window testing
 window.user = { username: "wonipan", password: "George546!" };
 window.SessionActions = require('./actions/session_actions');
@@ -47,6 +50,6 @@ const appRouter = (
 
 document.addEventListener('DOMContentLoaded', function () {
   const root = document.getElementById('root');
-  SessionActions.receiveCurrentUser(window.currentUser = {});
+  SessionActions.receiveCurrentUser(window.currentUser);
   ReactDOM.render(appRouter, root);
 });
