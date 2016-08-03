@@ -44,7 +44,7 @@ const SigninForm = React.createClass({
 
   render () {
     return (
-      <div className="login-form-container">
+      <div className="session-form-container">
         <h1 className="session-heading">Sign Up</h1>
         <form className="login-form" onSubmit={this._onSubmit}>
 

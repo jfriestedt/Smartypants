@@ -37,6 +37,11 @@ span, article, footer, time, small {
 /* Site-wide */
 body {
   font-family: sans-serif;
+  background: #ffff64;
+}
+
+h1, h2, h3, h4, h5, a {
+  font-family: 'Baumans', sans-serif;
 }
 
 /*Nav Bar*/
@@ -53,13 +58,6 @@ body {
   margin: 10px;
 }
 
-.login-form-container, .signup-form-container {
-  background: gray;
-  width: 500px;
-  margin: auto;
-  padding: 50px;
-}
-
 .logo-container {
   display: flex;
   height: 41px;
@@ -74,4 +72,14 @@ body {
   width: 300px;
   background-size: contain;
   background-repeat: no-repeat;
+}
+
+/* Session-Form */
+
+.session-form-container {
+  background: gray;
+  width: 500px;
+  margin: auto;
+  padding: 50px;
+  display: block;
 }
