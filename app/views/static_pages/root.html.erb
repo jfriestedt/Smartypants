@@ -3,6 +3,10 @@
     window.currentUser = <%= render("api/users/user.json.jbuilder",
       user: current_user).html_safe %>
   <% end %>
+
+  // window.SmartyPantsAssets = {
+  //   logo: "<%= asset_path("logo.png") %>"
+  // }
 </script>
 
 <div id="root">

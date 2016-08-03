@@ -45,7 +45,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-height: 50px;
+  height: 41px;
   background: #ffff64;
 }
 
@@ -58,4 +58,20 @@ body {
   width: 500px;
   margin: auto;
   padding: 50px;
+}
+
+.logo-container {
+  display: flex;
+  height: 41px;
+  width: 313px;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.nav-logo {
+  background-image: asset-url("logo-shadow.png");
+  height: 19px;
+  width: 300px;
+  background-size: contain;
+  background-repeat: no-repeat;
 }

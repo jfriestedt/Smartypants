@@ -47,7 +47,9 @@ const NavBar = React.createClass({
     return (
       <nav className="nav-bar">
         <Link to="/" className="nav-button">Add a Song</Link>
-        <Link to="/" className="nav-logo"><h1>SMARTYPANTS</h1></Link>
+        <div className="logo-container">
+          <Link to="/" className="nav-logo logo" />
+        </div>
         { this.greeting() }
       </nav>
     );
