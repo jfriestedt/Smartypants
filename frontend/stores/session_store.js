@@ -1,6 +1,6 @@
 const Store = require('flux/utils').Store;
 const AppDispatcher = require('../dispatcher/dispatcher.js');
-const SessionConstants = ('../constants/session_constants');
+const SessionConstants = require('../constants/session_constants');
 
 const SessionStore = new Store(AppDispatcher);
 
@@ -8,14 +8,10 @@ let _currentUser = {};
 
 const _login = (user) => {
   _currentUser = user;
-
-  SessionStore.__emitChange();
 };
 
 const _logout = () => {
   _currentUser = {};
-
-  SessionStore.__emitChange();
 };
 
 SessionStore.currentUser = () => {
@@ -23,7 +19,7 @@ SessionStore.currentUser = () => {
 };
 
 SessionStore.isUserLoggedIn = () => {
-  return (_currentUser.id ? true : false);
+  return (!!_currentUser.id);
 };
 
 SessionStore.__onDispatch = (payload) => {

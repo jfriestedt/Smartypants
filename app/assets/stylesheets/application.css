@@ -13,3 +13,49 @@
  *= require_tree .
  *= require_self
  */
+
+/* Reset */
+
+html, body, header, nav, h1, a,
+ul, li, strong, main, button, i,
+section, img, div, h2, p, form,
+fieldset, label, textarea,
+span, article, footer, time, small {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  box-sizing: inherit;
+  background: transparent;
+}
+
+/* Site-wide */
+body {
+  font-family: sans-serif;
+}
+
+/*Nav Bar*/
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 50px;
+  background: #ffff64;
+}
+
+.nav-button {
+  margin: 10px;
+}
+
+.login-form-container, .signup-form-container {
+  background: gray;
+  width: 500px;
+  margin: auto;
+  padding: 50px;
+}}

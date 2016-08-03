@@ -5,24 +5,34 @@ const SessionApiUtil = {
       method: 'POST',
       data: { user },
       success,
-      error
+      error(xhr) {
+        const errors = xhr.responseJSON;
+        error("signup", errors);
+      }
     });
   },
 
-  login (user, success) {
+  login (user, success, error) {
     $.ajax({
       url: '/api/session',
       method: 'POST',
       data: { user },
       success,
+      error(xhr) {
+        const errors = xhr.responseJSON;
+        error("login", errors);
+      }
     });
   },
 
-  logout (success) {
+  logout (success, error) {
     $.ajax({
       url: '/api/session',
       method: 'DELETE',
       success,
+      error: function () {
+        console.log("Logout error in SessionApiUtil#logout");
+      }
     });
   }
 };
