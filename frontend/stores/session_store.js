@@ -25,7 +25,7 @@ SessionStore.isUserLoggedIn = () => {
 SessionStore.__onDispatch = (payload) => {
   switch (payload.actionType) {
     case SessionConstants.LOGIN:
-      if (!!payload.currentUser.id) {
+      if (!!payload.currentUser) {
         _login(payload.currentUser);
         SessionStore.__emitChange();
       }
