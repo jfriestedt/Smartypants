@@ -1,5 +1,5 @@
 const SessionApiUtil = {
-  signUp (user, success, error) {
+  signup (user, success, error) {
     $.ajax({
       url: '/api/users',
       method: 'POST',
@@ -9,22 +9,20 @@ const SessionApiUtil = {
     });
   },
 
-  login (user, success, error) {
+  login (user, success) {
     $.ajax({
       url: '/api/session',
       method: 'POST',
       data: { user },
       success,
-      error
     });
   },
 
-  logout (success, error) {
+  logout (success) {
     $.ajax({
       url: '/api/session',
       method: 'DELETE',
       success,
-      error
     });
   }
 };
