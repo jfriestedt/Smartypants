@@ -6,11 +6,9 @@
 
 ## Minimum Viable Product
 
-<!-- FresherNote is a web application inspired by Evernote that will be build using Ruby on Rails and React.js.  By the end of Week 9, this app will, at a minimum, satisfy the following criteria: -->
-
 Smartypants is a single-page web application clone of Genius.com, a site which allows users to view and collaboratively annotate lyrics to popular songs. By the end of Week 9, this app will, at a minimum, satisfy the following criteria:
 
-- [ ] Hosting on Heroku
+- [x] Hosting on Heroku
 - [ ] New account creation, login, and guest/demo login
 - [ ] A production README, replacing this README
 - [ ] Tracks
@@ -45,7 +43,7 @@ Smartypants is a single-page web application clone of Genius.com, a site which a
 
 ## Implementation Timeline
 
-### Phase 1: Backend setup and Front End User Authentication (2 days, W1 R 6pm)
+### Phase 1: Backend setup and Front End User Authentication (2 days, W1 W 6pm)
 
   (NB: Next up: write SessionStore#onDispatch!
     https://github.com/appacademy/curriculum/blob/master/react/projects/bench_bnb/bench_bnb_ii.md)
@@ -65,7 +63,7 @@ Smartypants is a single-page web application clone of Genius.com, a site which a
 - [ ] style signin/signup components
 - [x] seed users
 
-### Phase 2: Tracks Model, API, and components (2 days, W2 Sa 6pm)
+### Phase 2: Tracks Model, API, and components (2 days, W2 F 6pm)
 
 **Objective:** Tracks can be created, read, edited and destroyed through
 the API.
