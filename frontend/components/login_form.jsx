@@ -12,7 +12,6 @@ const LoginForm = React.createClass({
   },
 
   componentDidMount () {
-    // TODO: what should be the addListener callback?
     this.sessionListener = SessionStore.addListener(this.redirectIfLoggedIn);
   },
 
@@ -21,7 +20,6 @@ const LoginForm = React.createClass({
   },
 
   redirectIfLoggedIn() {
-    debugger
     if (SessionStore.isUserLoggedIn()) {
       this.context.router.push("/");
     }

@@ -15,6 +15,9 @@ const NavBar = require('./components/nav_bar');
 const LoginForm = require('./components/login_form');
 const SignupForm = require('./components/signup_form');
 
+// Misc
+const SessionActions = require('./actions/session_actions');
+
 // Window testing
 window.user = { username: "wonipan", password: "George546!" };
 window.SessionActions = require('./actions/session_actions');
@@ -45,5 +48,6 @@ const appRouter = (
 
 document.addEventListener('DOMContentLoaded', function () {
   const root = document.getElementById('root');
+  SessionActions.receiveCurrentUser(window.currentUser);
   ReactDOM.render(appRouter, root);
 });

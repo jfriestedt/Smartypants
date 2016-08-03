@@ -18,7 +18,6 @@ const NavBar = React.createClass({
   },
 
   greeting() {
-    debugger
     if (SessionStore.isUserLoggedIn()) {
       return (
         <hgroup className="nav-group">
