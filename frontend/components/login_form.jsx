@@ -45,7 +45,7 @@ const LoginForm = React.createClass({
   render () {
     return (
       <div className="session-form-container">
-        <h1 className="session-heading">Sign In</h1>
+        <h1 className="session-heading">SIGN IN</h1>
         <form className="login-form" onSubmit={this._onSubmit}>
 
           <label className="session-field-label">Username:</label>

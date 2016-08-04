@@ -49,6 +49,7 @@ const appRouter = (
 );
 
 document.addEventListener('DOMContentLoaded', function () {
+  Modal.setAppElement(document.body);
   const root = document.getElementById('root');
   SessionActions.receiveCurrentUser(window.currentUser);
   ReactDOM.render(appRouter, root);

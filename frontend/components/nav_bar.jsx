@@ -3,11 +3,17 @@ const Link = require('react-router').Link;
 const SessionStore = require('../stores/session_store');
 const SessionActions = require('../actions/session_actions');
 const Modal = require('react-modal');
+const ModalStyle = require('./modal_style');
+
+const LoginForm = require('./login_form');
+const SignupForm = require('./signup_form');
 
 const NavBar = React.createClass({
   getInitialState () {
-    let isUserloggedIn = SessionStore.isUserLoggedIn ? true : false;
-    return {loggedIn: isUserloggedIn, currentUser: SessionStore.currentUser()};
+    return({
+      modalOpen: false,
+      logIn: false
+    });
   },
 
   componentDidMount () {
@@ -18,7 +24,23 @@ const NavBar = React.createClass({
     SessionActions.logout();
   },
 
-  greeting() {
+  _handleClick (bool) {
+    this.setState({
+       modalOpen: true,
+       logIn: bool
+     });
+  },
+
+  _onModalClose () {
+    this.setState({ modalOpen: false});
+    ModalStyle.content.opacity = 0;
+  },
+
+  _onModalOpen () {
+    ModalStyle.content.opacity = 1;
+  },
+
+  greeting () {
     if (SessionStore.isUserLoggedIn()) {
       return (
         <hgroup className="nav-group">
@@ -33,11 +55,34 @@ const NavBar = React.createClass({
         </hgroup>
       );
     } else {
+
+      const form = (this.state.logIn) ? <LoginForm /> : <SignupForm />;
+
       return (
         <hgroup className="nav-group">
-          // ADD MODAL COMPONENTS HERE
-          <Link to="/login" className="nav-button">SIGN IN</Link>
-          <Link to="/signup" className="nav-button">SIGN UP</Link>
+          <Modal
+            isOpen={this.state.modalOpen}
+            onRequestClose={this._onModalClose}
+            onAfterOpen={this._onModalOpen}
+            style={ModalStyle}
+          >
+            {form}
+            <button className="close-button" onClick={this._onModalClose}>
+              x
+            </button>
+
+          </Modal>
+
+          <button id="sign-up-button"
+                  className="nav-button"
+                  onClick={this._handleClick.bind(this, false)}>
+            SIGN UP
+          </button>
+          <button id="sign-in-button"
+                  className="nav-button"
+                  onClick={this._handleClick.bind(this, true)}>
+            SIGN IN
+          </button>
         </hgroup>
       );
     }
@@ -48,6 +93,7 @@ const NavBar = React.createClass({
   render () {
     return (
       <nav className="nav-bar">
+
         <Link to="/" className="nav-button">ADD SONG</Link>
         <div className="logo-container">
           <Link to="/" className="nav-logo logo" />
