@@ -44,7 +44,8 @@ body {
 }
 
 h1, h2, h3, h4, h5, a, button {
-  font-family: 'Baumans', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
 }
 
 button {
@@ -64,6 +65,8 @@ button {
 
 .nav-button {
   margin: 10px;
+  font-weight: 600;
+  font-size: 12px;
 }
 
 .nav-group {
@@ -140,6 +143,7 @@ button {
     background: #262626;
     font-family: 'Open Sans';
     font-size: 14px;
+    font-weight: 400;
     border: 1px solid #444;
     color: #ccc;
     margin-right: 10px;

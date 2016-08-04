@@ -9,7 +9,7 @@
 Smartypants is a single-page web application clone of Genius.com, a site which allows users to view and collaboratively annotate lyrics to popular songs. By the end of Week 9, this app will, at a minimum, satisfy the following criteria:
 
 - [x] Hosting on Heroku
-- [ ] New account creation, login, and guest/demo login
+- [x] New account creation, login, and guest/demo login
 - [ ] A production README, replacing this README
 - [ ] Tracks
   - [ ] Smooth, bug-free navigation

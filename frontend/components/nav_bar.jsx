@@ -22,6 +22,7 @@ const NavBar = React.createClass({
 
   _handleLogOut(){
     SessionActions.logout();
+    this.setState({modalOpen: false});
   },
 
   _handleClick (bool) {
