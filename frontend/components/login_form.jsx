@@ -48,14 +48,14 @@ const LoginForm = React.createClass({
         <h1 className="session-heading">SIGN IN</h1>
         <form className="login-form" onSubmit={this._onSubmit}>
 
-          <label className="session-field-label">Username:</label>
+          <label className="session-field-label">Username</label>
           <input  className="session-input"
                   type="text"
                   value={this.state.username}
                   onChange={this._changeUsername}
           />
 
-          <label className="session-field-label">Password:</label>
+          <label className="session-field-label">Password</label>
           <input  className="session-input"
                   type="password"
                   value={this.state.pasword}

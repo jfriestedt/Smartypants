@@ -19,8 +19,9 @@
 html, body, header, nav, h1, a,
 ul, li, strong, main, button, i,
 section, img, div, h2, p, form,
-fieldset, label, textarea,
-span, article, footer, time, small {
+fieldset, label, textarea, hgroup,
+span, article, footer, time, small,
+input {
   margin: 0;
   padding: 0;
   border: 0;
@@ -32,11 +33,13 @@ span, article, footer, time, small {
   vertical-align: inherit;
   box-sizing: inherit;
   background: transparent;
+  display: inherit;
 }
 
 /* Site-wide */
 body {
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
   background: #ffff64;
 }
 
@@ -62,6 +65,11 @@ button {
   margin: 10px;
 }
 
+.nav-group {
+  display: flex;
+  align-items: center;
+}
+
 .logo-container {
   display: flex;
   height: 41px;
@@ -83,29 +91,85 @@ button {
 .session-form-container {
 
   background: #292929;
-  width: 200px;
-  margin: auto;
-  padding: 50px;
-  display: inline-block;
+  width: 442px;
+  height: 359px;
+  padding: 20px;
+  padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 2px;
 
   h1 {
-    font-family: sans-serif;
-    font-size: 3em;
+    font-family: 'Yanone Kaffeesatz';
+    font-weight: 700;
+    font-size: 5em;
     color: #ffff64;
   }
 
   label {
-    color: #fff;
-    margin: 10px;
+    color: #EDE8E9;
+    margin-bottom: 2px;
+    font-size: 15px;
   }
 
   input {
     display: block;
+    margin-bottom: 13px;
+    border: 1px solid #555;
+    border-radius: 2px;
+    padding: 5px;
+    min-width: 120px;
+    max-width: 100%;
+    font-size: 15px;
+    color: #ccc;
+    background: #363636
+  }
+
+  input:focus {
+    color: #fff;
+    box-shadow: none;
+    border-color: #999;
+  }
+
+  input[type=submit] {
+    width: min-content;
+    cursor: pointer;
+    box-sizing: border-box;
+    background: #262626;
+    font-size: 14px;
+    border: 1px solid #444;
+    color: #ccc;
+    margin-right: 10px;
+    display: inline-block;
+    position: relative;
+    border-radius: 2px;
+    padding: 5px 9px;
+    margin: 3px 4px 5px 0;
+    align-items: flex-start;
+    -webkit-apperance: push-button;
+    -webkit-user-select: none;
+    white-space: pre;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    background: #333;
+    padding: 10px;
     margin: 10px;
+    border-radius: 2px;
+    width: 370px;
   }
 }
 
 /* Modal */
 .close-button {
-  color: #999
+  font-family: sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: #999;
+  position: relative;
+  right: 20px;
+  top: 7px;
 }

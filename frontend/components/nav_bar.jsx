@@ -32,11 +32,13 @@ const NavBar = React.createClass({
   },
 
   _onModalClose () {
-    this.setState({ modalOpen: false});
+    this.setState({ modalOpen: false });
+    ModalStyle.overlay.opacity = 0.5;
     ModalStyle.content.opacity = 0;
   },
 
   _onModalOpen () {
+    ModalStyle.overlay.opacity = 1;
     ModalStyle.content.opacity = 1;
   },
 
