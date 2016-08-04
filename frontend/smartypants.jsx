@@ -45,8 +45,6 @@ const appRouter = (
   <Router history={hashHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={TrackIndex} />
-      <Route path="/login" component={LoginForm} />
-      <Route path="/signup" component={SignupForm} />
     </Route>
   </Router>
 );

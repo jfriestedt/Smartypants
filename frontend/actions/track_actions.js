@@ -9,7 +9,6 @@ const TrackActions = {
   },
 
   receiveAllTracks (tracks) {
-    debugger;
     AppDispatcher.dispatch({
       actionType: TrackConstants.TRACKS_RECEIVED,
       tracks: tracks
