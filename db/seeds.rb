@@ -9,3 +9,5 @@
 User.create(username: "rbembleton", password: "whateveryouwantittobe")
 User.create(username: "evelyn", password: "pizzalady")
 User.create(username: "drake", password: "feelnoways")
+
+User.create(username: "guest", password: "password")

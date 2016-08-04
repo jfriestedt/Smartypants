@@ -133,11 +133,12 @@ button {
     border-color: #999;
   }
 
-  input[type=submit] {
+  .session-button {
     width: min-content;
     cursor: pointer;
     box-sizing: border-box;
     background: #262626;
+    font-family: 'Open Sans';
     font-size: 14px;
     border: 1px solid #444;
     color: #ccc;

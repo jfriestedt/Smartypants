@@ -42,6 +42,12 @@ const LoginForm = React.createClass({
     SessionActions.login(this.state);
   },
 
+  _guestLogin (e) {
+    e.preventDefault();
+    let guestUser = {username: "guest", password: "password"};
+    SessionActions.login(guestUser);
+  },
+
   render () {
     return (
       <div className="session-form-container">
@@ -62,7 +68,12 @@ const LoginForm = React.createClass({
                   onChange={this._changePassword}
           />
 
-        <input className="session-button" type="submit" value="Login" />
+          <div className="session-button-group">
+            <input className="session-button" type="submit" value="Login" />
+            <button className="session-button" onClick={this._guestLogin}>
+              Guest Login
+            </button>
+          </div>
 
         </form>
       </div>
