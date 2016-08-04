@@ -62,7 +62,7 @@ const SigninForm = React.createClass({
                   onChange={this._changePassword}
           />
 
-        <input className="session-button" type="submit" value="Sign Up" />
+        <input className="session-button" type="submit" value="Create Account" />
 
         </form>
       </div>

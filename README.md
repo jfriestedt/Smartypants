@@ -60,7 +60,7 @@ Smartypants is a single-page web application clone of Genius.com, a site which a
 - [x] user signup/signin "splash page" components
 - [x] nav bar component
 - [x] implement React Router
-- [ ] style signin/signup components
+- [x] style signin/signup components
 - [x] seed users
 
 ### Phase 2: Tracks Model, API, and components (2 days, W2 F 6pm)
