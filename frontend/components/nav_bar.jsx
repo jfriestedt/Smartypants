@@ -47,12 +47,12 @@ const NavBar = React.createClass({
     if (SessionStore.isUserLoggedIn()) {
       return (
         <hgroup className="nav-group">
-          <h2 className="nav-name">
+          <h2 className="nav-name nav-button">
             Welcome, {SessionStore.currentUser().username}!
           </h2>
           <input  className="nav-button"
                   type="submit"
-                  value="Sign Out"
+                  value="SIGN OUT"
                   onClick={ this._handleLogOut }
           />
         </hgroup>
@@ -96,12 +96,15 @@ const NavBar = React.createClass({
   render () {
     return (
       <nav className="nav-bar">
-
-        <Link to="/" className="nav-button">ADD SONG</Link>
+        <div className="nav-left-container">
+          <Link to="/" className="nav-button">ADD SONG</Link>
+        </div>
         <div className="logo-container">
           <Link to="/" className="nav-logo logo" />
         </div>
-        { this.greeting() }
+        <hgroup className="nav-right-container">
+          { this.greeting() }
+        </hgroup>
       </nav>
     );
   }

@@ -75,6 +75,7 @@ button {
   font-weight: 600;
   font-size: 12px;
   line-break: strict;
+  cursor: pointer;
 }
 
 .nav-group {
@@ -85,7 +86,7 @@ button {
 .logo-container {
   display: flex;
   height: 41px;
-  width: 313px;
+  width: min-content;
   justify-content: space-between;
   align-items: center;
   align-self: center;
@@ -97,6 +98,16 @@ button {
   width: 300px;
   background-size: contain;
   background-repeat: no-repeat;
+}
+
+.nav-left-container {
+  min-width: 192px;
+}
+
+.nav-right-container {
+  display: flex;
+  justify-content: flex-end;
+  min-width: 192px;
 }
 
 /* Session-Form */
@@ -189,17 +200,23 @@ button {
 }
 
 /* Track Index */
+.main {
+  display: flex;
+  justify-content: center;
+  border-top: 3px solid #ff1464;
+  background: #ffffff;
+  width: 100%
+}
+
 .track-index {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  max-width: 1000px;
 
-  margin-top: 30px;
+
   padding-top: 0.5rem;
-
-  border-top: 3px solid #ff1464;
-  background: #ffffff;
 
   h2 {
     font-size: 1.7em;
