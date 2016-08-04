@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
+  get 'tracks/index'
+
+  get 'tracks/show'
+
+  get 'tracks/create'
+
   root to: 'static_pages#root'
 
   namespace :api, defaults: {format: :json} do
     resources :users, only: [:create]
     resource :session, only: [:create, :destroy, :show]
+    resources :tracks, only: [:create, :index, :show]
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

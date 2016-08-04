@@ -1,15 +1,18 @@
 # Schema Information
 
 ## tracks
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-title       | string    | not null
-album       | string    | not null
-artist      | string    | not null
-image_url   | string    |
-lyrics      | text      | not null
-author_id   | integer   | not null, foreign key (references users), indexed
+column name       | data type | details
+------------------|-----------|-----------------------
+id                | integer   | not null, primary key
+title             | string    | not null
+album             | integer   | 
+artist            | string    | not null
+image_file_name   | string    |
+image_content_type| string    |
+image_file_size   | integer   |
+image_updated_at  | datetime  |
+lyrics            | text      | not null
+submitter_id      | integer   | not null, foreign key (references users), indexed
 
 ## annotations
 column name | data type | details
