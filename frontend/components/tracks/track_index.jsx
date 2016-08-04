@@ -19,7 +19,7 @@ const TrackIndex = React.createClass ({
 
   render () {
     return (
-      <main id="track-index">
+      <main className="track-index">
         {this.state.tracks.map( (track) => {
           return <TrackIndexItem key={track.id} track={track} />;
         })}

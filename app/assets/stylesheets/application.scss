@@ -18,7 +18,7 @@
 
 html, body, header, nav, h1, a,
 ul, li, strong, main, button, i,
-section, img, div, h2, p, form,
+section, img, div, h1, h2, h3, h4, h5, h6, p, form,
 fieldset, label, textarea, hgroup,
 span, article, footer, time, small,
 input {
@@ -52,6 +52,12 @@ button {
   cursor: pointer;
 }
 
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 /*Nav Bar*/
 
 .nav-bar {
@@ -61,12 +67,14 @@ button {
   height: 41px;
   background: #ffff64;
   font-size: 14px;
+  width: 100%
 }
 
 .nav-button {
   margin: 10px;
   font-weight: 600;
   font-size: 12px;
+  line-break: strict;
 }
 
 .nav-group {
@@ -179,3 +187,79 @@ button {
   right: 24px;
   top: 6px;
 }
+
+/* Track Index */
+.track-index {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  margin-top: 30px;
+  padding-top: 0.5rem;
+
+  border-top: 3px solid #ff1464;
+  background: #ffffff;
+
+  h2 {
+    font-size: 1.7em;
+    font-weight: 600;
+    margin-bottom: 7px;
+  }
+
+  h3 {
+    font-size: 1.0em;
+  }
+
+  h4 {
+    font-size: 0.8em;
+    color: #ffff64;
+  }
+}
+
+.track-index-item {
+  display: flex;
+  z-index: 2;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #000;
+  color: #fff;
+  height: 600px;
+  width: 30%;
+  min-width: 250px;
+  max-width: 325px;
+  box-sizing: border-box;
+  margin: .5rem;
+  margin-top: 1.5rem;
+  cursor: pointer;
+}
+
+.track-index-item-info {
+  display: flex;
+  flex-direction: column;
+  padding: 6%;
+}
+
+.track-index-item-title-and-artist-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12%;
+}
+
+.track-index-item-img-container {
+  z-index: 1;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(180deg, transparent 60%, black 100%), asset-url('Dive.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.track-index-item-submitter-container {
+
+}
+
+
+
+
+//
