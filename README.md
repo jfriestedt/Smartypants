@@ -68,20 +68,20 @@ Smartypants is a single-page web application clone of Genius.com, a site which a
 **Objective:** Tracks can be created, read, edited and destroyed through
 the API.
 
-- [ ] create `Track` model
-- [ ] seed the database with a small amount of test data
-- [ ] CRUD API for tracks (`TracksController`)
-- [ ] jBuilder views for tracks
-- [ ] test out API interaction in the console.
+- [x] create `Track` model
+- [x] seed the database with a small amount of test data
+- [x] CRUD API for tracks (`TracksController`)
+- [x] jBuilder views for tracks
+- [x] test out API interaction in the console.
 - implement each track component, building out the flux loop as needed.
-  - [ ] `TracksIndex`
+  - [x] `TracksIndex`
   - [ ] `TrackIndexItem`
   - [ ] `TrackForm`
   - [ ] `TrackLyrics`
   - [ ] `TrackBanner`
   - [ ] add navigation between tracks index & track show views
 - [ ] style track components
-- [ ] seed tracks
+- [x] seed tracks
 
 ### Phase 3: Annotations (3 days, W2 W 6pm)
 
