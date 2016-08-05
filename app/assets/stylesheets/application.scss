@@ -285,9 +285,9 @@ button {
   background-position: center;
 
   .track-banner-overlay {
-    background: linear-gradient(180deg, transparent 50%, black 100%);
+    background: linear-gradient(180deg, transparent, black);
     width: 100%;
-    height: 100%;
+    height: 280px;
     position: absolute;
   }
 
@@ -342,6 +342,7 @@ button {
     .track-show-primary-column {
       width: 58%;
       padding: 0 1rem;
+      padding-top: 1em;
       box-sizing: border-box;
       font-size: 20px;
 
