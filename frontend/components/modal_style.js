@@ -7,7 +7,8 @@ module.exports = {
     bottom                    : 0,
     backgroundColor           : 'rgba(0, 0, 0, 0.5)',
     opacity                   : '0',
-    transition                : 'opacity 0.5s'
+    transition                : 'opacity 0.5s',
+    zIndex                    : '2'
   },
   content: {
     display                   : 'flex',
@@ -28,6 +29,7 @@ module.exports = {
     padding                   : '0px',
     opacity                   : '0',
     transition                : 'opacity 0.5s',
-    overflow                  : 'visible'
+    overflow                  : 'visible',
+    zIndex                    : '3'
   }
 };
