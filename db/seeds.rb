@@ -181,7 +181,7 @@ TXT
 Track.create!(
   title: "Electric Lady",
   artist: "Janelle Monáe",
-  lyrics: pray_you_catch_me_lyrics
+  lyrics: electric_lady_lyrics
 )
 
 so_many_details_lyrics = <<-TXT

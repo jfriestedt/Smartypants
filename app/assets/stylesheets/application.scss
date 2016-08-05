@@ -272,42 +272,84 @@ button {
 
 /* Track Show */
 
-hgroup.track-show-title-artist-inset {
-    display: flex;
-    flex-direction: column;
-    color: white;
-    z-index: 1;
-    position: relative;
-    bottom: 2em;
-    left: 5em;
-}
-
-.track-show-primary-column {
-    width: 60%;
-    /* margin: 20px; */
-    padding: 50px;
-    background: aliceblue;
-    box-sizing: border-box;
-    font-size: 20px;
-}
-
 .track-banner {
   display: flex;
+  justify-content: center;
+
   width: 100%;
-  height: 200px;
+  height: 280px;
   align-items: flex-end;
+  background-image: asset-url('Dive.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  .track-banner-overlay {
+    background: linear-gradient(180deg, transparent 50%, black 100%);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+
+  .track-banner-content {
+    min-width: 1000px;
+    height: 100%;
+    align-items: flex-end;
+    box-sizing: border-box;
+    padding: 2.25rem 0 1.5rem 0;
+
+    .track-show-title-artist-inset {
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        color: white;
+        padding: 0 1rem;
+
+      h1 {
+        color: #ffff64;
+        word-break: break-word;
+        font-size: 3em;
+        font-weight: 600;
+        line-height: 1.125;
+      }
+
+      h2 {
+        font-size: 1.5em;
+        line-height: 1.875;
+        font-weight: 700;
+        display: inline-block;
+        color: inherit;
+        margin-bottom: .25rem;
+      }
+    }
+  }
 }
 
-.track-banner-overlay {
-  background: linear-gradient(180deg, transparent 20%, black 90%);
-  width: 100%;
-  height: 200px;
-  position: absolute;
-}
+
 
 .track-show {
     display: flex;
     flex-direction: column;
+    background: #fafafa;
+    width: 100%;
+    align-items: center;
+
+  .track-columns-container {
+    width: 1000px;
+    background: #fff;
+    display: flex;
+
+    .track-show-primary-column {
+      width: 58%;
+      padding: 0 1rem;
+      box-sizing: border-box;
+      font-size: 20px;
+
+      .track-lyrics {
+        white-space: pre-wrap;
+      }
+    }
+  }
 }
 
 
