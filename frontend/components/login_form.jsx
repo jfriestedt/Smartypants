@@ -68,9 +68,9 @@ const LoginForm = React.createClass({
                   onChange={this._changePassword}
           />
 
-          <div className="session-button-group">
-            <input className="session-button" type="submit" value="Login" />
-            <button className="session-button" onClick={this._guestLogin}>
+          <div className="form-button-group">
+            <input className="form-button" type="submit" value="Login" />
+            <button className="form-button" onClick={this._guestLogin}>
               Guest Login
             </button>
           </div>

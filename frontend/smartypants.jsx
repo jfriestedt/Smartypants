@@ -15,6 +15,7 @@ const LoginForm = require('./components/login_form');
 const SignupForm = require('./components/signup_form');
 const TrackIndex = require('./components/tracks/track_index');
 const TrackShow = require('./components/tracks/track_show');
+const TrackForm = require('./components/tracks/track_form');
 
 // Misc
 const SessionActions = require('./actions/session_actions');
@@ -46,7 +47,8 @@ const appRouter = (
   <Router history={hashHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={TrackIndex} />
-      <Route path="tracks/:trackId" component={TrackShow} />
+      <Route path="/tracks/:trackId" component={TrackShow} />
+      <Route path="/new" component={TrackForm} />
     </Route>
   </Router>
 );

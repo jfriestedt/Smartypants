@@ -25,7 +25,7 @@ const NavBar = React.createClass({
     this.setState({modalOpen: false});
   },
 
-  _handleClick (bool) {
+  _handleModalClick (bool) {
     this.setState({
        modalOpen: true,
        logIn: bool
@@ -78,12 +78,12 @@ const NavBar = React.createClass({
 
           <button id="sign-up-button"
                   className="nav-button"
-                  onClick={this._handleClick.bind(this, false)}>
+                  onClick={this._handleModalClick.bind(this, false)}>
             SIGN UP
           </button>
           <button id="sign-in-button"
                   className="nav-button"
-                  onClick={this._handleClick.bind(this, true)}>
+                  onClick={this._handleModalClick.bind(this, true)}>
             SIGN IN
           </button>
         </hgroup>
@@ -97,7 +97,7 @@ const NavBar = React.createClass({
     return (
       <nav className="nav-bar">
         <div className="nav-left-container">
-          <Link to="/" className="nav-button">ADD SONG</Link>
+          <Link to="/new" className="nav-button">ADD SONG</Link>
         </div>
         <div className="logo-container">
           <Link to="/" className="nav-logo logo" />

@@ -58,6 +58,28 @@ button {
   align-items: center;
 }
 
+.form-button {
+  width: min-content;
+  cursor: pointer;
+  box-sizing: border-box;
+  background: #262626;
+  font-family: 'Open Sans';
+  font-size: 14px;
+  font-weight: 400;
+  border: 1px solid #444;
+  color: #ccc;
+  margin-right: 10px;
+  display: inline-block;
+  position: relative;
+  border-radius: 2px;
+  padding: 5px 9px;
+  margin: 3px 4px 5px 0;
+  align-items: flex-start;
+  -webkit-apperance: push-button;
+  -webkit-user-select: none;
+  white-space: pre;
+}
+
 /*Nav Bar*/
 
 .nav-bar {
@@ -153,28 +175,6 @@ button {
     color: #fff;
     box-shadow: none;
     border-color: #999;
-  }
-
-  .session-button {
-    width: min-content;
-    cursor: pointer;
-    box-sizing: border-box;
-    background: #262626;
-    font-family: 'Open Sans';
-    font-size: 14px;
-    font-weight: 400;
-    border: 1px solid #444;
-    color: #ccc;
-    margin-right: 10px;
-    display: inline-block;
-    position: relative;
-    border-radius: 2px;
-    padding: 5px 9px;
-    margin: 3px 4px 5px 0;
-    align-items: flex-start;
-    -webkit-apperance: push-button;
-    -webkit-user-select: none;
-    white-space: pre;
   }
 
   form {
@@ -351,6 +351,67 @@ button {
       }
     }
   }
+}
+
+/* Track Form */
+
+.new-track-section {
+  display: flex;
+  justify-content: center;
+  background: black;
+  width: 100%;
+  height: 100vh;
+}
+
+.new-track-container {
+  display: flex;
+
+  width: 100%;
+  max-width: 1000px;
+  height: 100%;
+  margin-top: 20px;
+}
+
+.track-form {
+
+  display: flex;
+  flex-direction: column;
+  padding-left: 16px;
+  padding-right: 16px;
+
+  h1 {
+    color: white;
+    font-size: 40px;
+    font-weight: 600;
+  }
+
+  h2 {
+    color: white;
+    font-size: 18px;
+  }
+
+  input[type=text], textarea {
+    margin-bottom: 1.5rem;
+    box-sizing: border-box;
+    width: 100%;
+    border: 1px solid #BBB;
+    border-radius: 2px;
+    padding: 5px;
+    min-width: 120px;
+    max-width: 100%;
+
+    font-size: 15px;
+    color: initial;
+    -webkit-background-clip: padding-box;
+    -webkit-appearance: textfield;
+    background-color: white;
+    cursor: auto;
+  }
+
+  textarea {
+    line-height: 1.2em;
+  }
+
 }
 
 

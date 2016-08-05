@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  get 'tracks/index'
-
-  get 'tracks/show'
-
-  get 'tracks/create'
-
   root to: 'static_pages#root'
 
   namespace :api, defaults: {format: :json} do

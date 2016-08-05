@@ -76,7 +76,7 @@ the API.
   - [ ] `TrackForm`
   - [ ] `TrackShow`
     - [ ] `TrackLyrics`
-    - [ ] `TrackBanner`
+    - [x] `TrackBanner`
   - [x] add navigation between tracks index & track show views
 - [ ] style track components
 - [x] seed tracks

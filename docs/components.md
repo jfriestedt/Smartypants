@@ -10,33 +10,31 @@ _**exactly**_ match the nesting of your routes.)
   * NavBar
     * LoginForm
     * SignupForm
-    * **TrackForm**
+  * **TrackForm**
   * **TracksIndex**
     * TrackIndexItem
-      * TrackIndexItemImage
-      * TrackIndexItemInfo
-  * **TrackPage**
+  * **TrackShow**
     * PrimaryColumn
       * TrackLyrics
       * AnnotationReferent
       * **TrackCommentForm**
-      * **TrackCommentIndex**
+      * TrackCommentIndex
     * SecondaryColumn
       * AnnotationContainer
         * AnnotationBeginButton
         * **AnnotationForm**
-        * **AnnotationContent**
+        * AnnotationContent
           * AnnotationHeader
           * AnnotationBody
           * AnnotationButtonGroup
-            * **AnnotationEditButton**
+            * AnnotationEditButton
             * **AnnotationDeleteButton**
         * **AnnotationCommentForm**
-        * **AnnotationCommentIndex**
+        * AnnotationCommentIndex
           * AnnotationCommentIndexItem
         * **AnnotationVoteForm**
-          * AnnotationUpvoteButton
-          * AnnotationDownvoteButton
+          * **AnnotationUpvoteButton**
+          * **AnnotationDownvoteButton**
           * AnnotationScoreDisplay
 
 ## Routes
