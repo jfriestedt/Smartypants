@@ -11,9 +11,16 @@ class Api::TracksController < ApplicationController
     @track = Track.new(track_params)
 
     if @track.save
-      render "api/tracks/show"
+      # render "api/tracks/show" + @track.id
+      render :show
     else
-      render json: @user.errors.full_messages, status: 422
+      render json: @track.errors.full_messages, status: 422
     end
   end
+end
+
+private
+
+def track_params
+  params.require(:track).permit(:title, :artist, :lyrics)
 end

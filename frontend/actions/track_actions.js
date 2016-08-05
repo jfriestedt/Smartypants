@@ -12,6 +12,10 @@ const TrackActions = {
     TrackApiUtil.fetchSingleTrack(trackId, TrackActions.receiveSingleTrack);
   },
 
+  createTrack (track) {
+    TrackApiUtil.createTrack(track, TrackActions.receiveSingleTrack);
+  },
+
   receiveAllTracks (tracks) {
     AppDispatcher.dispatch({
       actionType: TrackConstants.TRACKS_RECEIVED,
@@ -24,7 +28,8 @@ const TrackActions = {
       actionType: TrackConstants.TRACK_RECEIVED,
       track: track
     });
-  }
+  },
+
 
 };
 

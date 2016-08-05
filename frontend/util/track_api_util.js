@@ -17,6 +17,17 @@ const TrackApiUtil = {
         receiveSingleTrack(receivedTrack);
       }
     });
+  },
+
+  createTrack(track, receiveSingleTrack){
+    $.ajax({
+      url: '/api/tracks/',
+      method: "POST",
+      data: {track: track},
+      success (receivedTrack) {
+        receiveSingleTrack(receivedTrack);
+      }
+    });
   }
 };
 

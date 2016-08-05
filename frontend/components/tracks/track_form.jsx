@@ -14,7 +14,6 @@ const TrackForm = React.createClass({
   handleSubmit(event) {
     event.preventDefault();
     const track = Object.assign({}, this.state);
-    // TODO: write createTrack
     TrackActions.createTrack(track);
     this.navigateToIndex();
   },
@@ -36,20 +35,24 @@ const TrackForm = React.createClass({
     return (
       <section className="new-track-section">
         <main className="new-track-container">
-          <div className="track-form">
+          <header className="new-track-header">
             <h1>Add Song</h1>
-            <h2>Primary Info</h2>
+            <h2>Primary info</h2>
+          </header>
+          <div className="track-form">
 
             <label className="track-field-label">BY *</label>
             <input  type="text"
               className="track-field-input"
               value={this.state.artist}
+              placeholder="The primary artist, author, creator, etc."
               onChange={this.update("artist")}/>
 
             <label className="track-field-label">TITLE *</label>
             <input  type="text"
               className="track-field-input"
               value={this.state.title}
+              placeholder="Title"
               onChange={this.update("title")}/>
 
             <label className="track-field-label">LYRICS *</label>
@@ -59,9 +62,11 @@ const TrackForm = React.createClass({
               value={this.state.lyrics}
               onChange={this.update("lyrics")}/>
 
-            <input  type="submit"
+            <input
+              type="submit"
               className="form-button"
-              value="Submit"/>
+              value="Submit"
+              onClick={this.handleSubmit}/>
           </div>
         </main>
       </section>

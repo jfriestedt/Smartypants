@@ -365,11 +365,32 @@ button {
 
 .new-track-container {
   display: flex;
+  flex-direction: column;
 
   width: 100%;
   max-width: 1000px;
   height: 100%;
   margin-top: 20px;
+}
+
+.new-track-header {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid hsla(0,0%,60%,0.35);
+  margin-bottom: 1rem;
+
+  h1 {
+    color: white;
+    font-size: 35px;
+    font-family: 'Open Sans Condensed';
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+  }
 }
 
 .track-form {
@@ -378,17 +399,7 @@ button {
   flex-direction: column;
   padding-left: 16px;
   padding-right: 16px;
-
-  h1 {
-    color: white;
-    font-size: 40px;
-    font-weight: 600;
-  }
-
-  h2 {
-    color: white;
-    font-size: 18px;
-  }
+  max-width: 339px;
 
   input[type=text], textarea {
     margin-bottom: 1.5rem;
@@ -401,6 +412,7 @@ button {
     max-width: 100%;
 
     font-size: 15px;
+    font-weight: 400;
     color: initial;
     -webkit-background-clip: padding-box;
     -webkit-appearance: textfield;
@@ -410,6 +422,13 @@ button {
 
   textarea {
     line-height: 1.2em;
+  }
+
+  .track-field-label {
+    margin: 0;
+    padding: 6px 0 5px 0;
+    font: 12px sans-serif;
+    color: #626262;
   }
 
 }

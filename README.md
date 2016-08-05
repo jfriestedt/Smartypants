@@ -12,8 +12,8 @@ Smartypants is a single-page web application clone of Genius.com, a site which a
 - [x] New account creation, login, and guest/demo login
 - [ ] A production README, replacing this README
 - [ ] Tracks
-  - [ ] Smooth, bug-free navigation
-  - [ ] Adequate seed data to demonstrate the site's features
+  - [x] Smooth, bug-free navigation
+  - [x] Adequate seed data to demonstrate the site's features
   - [ ] Adequate CSS styling
 - [ ] Annotations
   - [ ] Smooth, bug-free navigation
@@ -73,9 +73,8 @@ the API.
 - implement each track component, building out the flux loop as needed.
   - [x] `TracksIndex`
   - [x] `TrackIndexItem`
-  - [ ] `TrackForm`
-  - [ ] `TrackShow`
-    - [ ] `TrackLyrics`
+  - [x] `TrackForm`
+  - [x] `TrackShow`
     - [x] `TrackBanner`
   - [x] add navigation between tracks index & track show views
 - [ ] style track components
