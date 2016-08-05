@@ -8,6 +8,15 @@ const TrackApiUtil = {
         receiveAllTracks(receivedTracks);
       }
     });
+  },
+
+  fetchSingleTrack (trackId, receiveSingleTrack) {
+    $.ajax({
+      url: '/api/tracks/' + trackId,
+      success (receivedTrack) {
+        receiveSingleTrack(receivedTrack);
+      }
+    });
   }
 };
 

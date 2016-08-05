@@ -18,6 +18,10 @@ TrackStore.all = () => {
   return tracksArr;
 };
 
+TrackStore.find = (trackId) => {
+  return _tracks[trackId];
+};
+
 const resetAllTracks = (tracks) => {
   _tracks = {};
 
@@ -26,10 +30,18 @@ const resetAllTracks = (tracks) => {
   });
 };
 
+const resetSingleTrack = (track) => {
+  _tracks[track.id] = track;
+};
+
 TrackStore.__onDispatch = (payload) => {
   switch (payload.actionType) {
     case TrackConstants.TRACKS_RECEIVED:
       resetAllTracks(payload.tracks);
+      TrackStore.__emitChange();
+      break;
+    case TrackConstants.TRACK_RECEIVED:
+      resetSingleTrack(payload.track);
       TrackStore.__emitChange();
       break;
   }

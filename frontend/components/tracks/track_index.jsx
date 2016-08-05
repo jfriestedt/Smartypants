@@ -10,7 +10,11 @@ const TrackIndex = React.createClass ({
 
   componentDidMount () {
     TrackActions.fetchAllTracks();
-    TrackStore.addListener(this._handleChange);
+    this.trackListener = TrackStore.addListener(this._handleChange);
+  },
+
+  componentWillUnmount () {
+    this.trackListener.remove();
   },
 
   _handleChange () {

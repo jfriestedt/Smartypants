@@ -10,10 +10,11 @@ const IndexRoute = ReactRouter.IndexRoute;
 const hashHistory = ReactRouter.hashHistory;
 
 // Components
-const TrackIndex = require('./components/tracks/track_index');
 const NavBar = require('./components/nav_bar');
 const LoginForm = require('./components/login_form');
 const SignupForm = require('./components/signup_form');
+const TrackIndex = require('./components/tracks/track_index');
+const TrackShow = require('./components/tracks/track_show');
 
 // Misc
 const SessionActions = require('./actions/session_actions');
@@ -25,9 +26,9 @@ const Modal = require("react-modal");
 // window.user = { username: "wonipan", password: "George546!" };
 // window.SessionActions = require('./actions/session_actions');
 // window.SessionStore = require('./stores/session_store');
-// window.TrackStore = require('./stores/track_store');
+window.TrackStore = require('./stores/track_store');
 // window.TrackApiUtil = require('./util/track_api_util');
-// window.TrackActions = require('./actions/track_actions');
+window.TrackActions = require('./actions/track_actions');
 
 const App = React.createClass({
   render () {
@@ -45,6 +46,7 @@ const appRouter = (
   <Router history={hashHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={TrackIndex} />
+      <Route path="tracks/:trackId" component={TrackShow} />
     </Route>
   </Router>
 );

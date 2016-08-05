@@ -270,9 +270,52 @@ button {
   background-repeat: no-repeat;
 }
 
-.track-index-item-submitter-container {
+/* Track Show */
 
+hgroup.track-show-title-artist-inset {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    z-index: 1;
+    position: relative;
+    bottom: 2em;
+    left: 5em;
 }
+
+.track-show-primary-column {
+    width: 60%;
+    /* margin: 20px; */
+    padding: 50px;
+    background: aliceblue;
+    box-sizing: border-box;
+    font-size: 20px;
+}
+
+.track-banner {
+  display: flex;
+  width: 100%;
+  height: 200px;
+  align-items: flex-end;
+}
+
+.track-banner-overlay {
+  background: linear-gradient(180deg, transparent 20%, black 90%);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.track-show {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+
+
+
 
 
 

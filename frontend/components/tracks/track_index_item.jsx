@@ -2,6 +2,14 @@ const React = require('react');
 const hashHistory = require('react-router').hashHistory;
 
 const TrackIndexItem = React.createClass ({
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
+
+  showTrack () {
+    this.context.router.push('/tracks/' + this.props.track.id);
+  },
+
   // TODO: Add image rendering logic to image container
   render () {
     let submitter;
@@ -13,10 +21,9 @@ const TrackIndexItem = React.createClass ({
     }
 
     return (
-      <div className="track-index-item">
+      <div className="track-index-item" onClick={this.showTrack}>
 
-        <div className="track-index-item-img-container">
-        </div>
+        <div className="track-index-item-img-container"></div>
 
         <div className="track-index-item-info">
           <div className="track-index-item-title-and-artist-container">

@@ -8,10 +8,21 @@ const TrackActions = {
     TrackApiUtil.fetchAllTracks(TrackActions.receiveAllTracks);
   },
 
+  fetchSingleTrack (trackId) {
+    TrackApiUtil.fetchSingleTrack(trackId, TrackActions.receiveSingleTrack);
+  },
+
   receiveAllTracks (tracks) {
     AppDispatcher.dispatch({
       actionType: TrackConstants.TRACKS_RECEIVED,
       tracks: tracks
+    });
+  },
+
+  receiveSingleTrack (track) {
+    AppDispatcher.dispatch({
+      actionType: TrackConstants.TRACK_RECEIVED,
+      track: track
     });
   }
 
