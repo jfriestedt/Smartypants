@@ -45,9 +45,6 @@ Smartypants is a single-page web application clone of Genius.com, a site which a
 
 ### Phase 1: Backend setup and Front End User Authentication (2 days, W1 W 6pm)
 
-  (NB: Next up: write SessionStore#onDispatch!
-    https://github.com/appacademy/curriculum/blob/master/react/projects/bench_bnb/bench_bnb_ii.md)
-
 **Objective:** Functioning rails project with front-end Authentication
 
 - [x] create new project
@@ -75,11 +72,12 @@ the API.
 - [x] test out API interaction in the console.
 - implement each track component, building out the flux loop as needed.
   - [x] `TracksIndex`
-  - [ ] `TrackIndexItem`
+  - [x] `TrackIndexItem`
   - [ ] `TrackForm`
-  - [ ] `TrackLyrics`
-  - [ ] `TrackBanner`
-  - [ ] add navigation between tracks index & track show views
+  - [ ] `TrackShow`
+    - [ ] `TrackLyrics`
+    - [ ] `TrackBanner`
+  - [x] add navigation between tracks index & track show views
 - [ ] style track components
 - [x] seed tracks
 
