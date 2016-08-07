@@ -73,7 +73,8 @@ TXT
 Track.create!(
   title: "Thinkin Bout You",
   artist: "Frank Ocean",
-  lyrics: thinkin_bout_you_lyrics
+  lyrics: thinkin_bout_you_lyrics,
+  image: File.open('app/assets/images/Channel-orange.jpg')
 )
 
 pray_you_catch_me_lyrics = <<-TXT
@@ -118,7 +119,8 @@ TXT
 Track.create!(
   title: "Pray You Catch Me",
   artist: "Beyoncé",
-  lyrics: pray_you_catch_me_lyrics
+  lyrics: pray_you_catch_me_lyrics,
+  image: File.open('app/assets/images/Lemonade.jpg')
 )
 
 electric_lady_lyrics = <<-TXT
@@ -181,7 +183,8 @@ TXT
 Track.create!(
   title: "Electric Lady",
   artist: "Janelle Monáe",
-  lyrics: electric_lady_lyrics
+  lyrics: electric_lady_lyrics,
+  image: File.open('app/assets/images/Electric-Lady.png')
 )
 
 so_many_details_lyrics = <<-TXT
@@ -235,7 +238,8 @@ TXT
 Track.create!(
   title: "So Many Details",
   artist: "Toro Y Moi",
-  lyrics: so_many_details_lyrics
+  lyrics: so_many_details_lyrics,
+  image: File.open('app/assets/images/Anything-In-Return.jpeg')
 )
 
 deadbeat_summer_lyrics = <<-TXT
@@ -276,7 +280,8 @@ TXT
 Track.create!(
   title: "Deadbeat Summer",
   artist: "Neon Indian",
-  lyrics: deadbeat_summer_lyrics
+  lyrics: deadbeat_summer_lyrics,
+  image: File.open('app/assets/images/Psychic-Chasms.jpg')
 )
 
 paranoid_lyrics = <<-TXT
@@ -365,5 +370,6 @@ TXT
 Track.create!(
   title: "Paranoid",
   artist: "Kanye West",
-  lyrics: paranoid_lyrics
+  lyrics: paranoid_lyrics,
+  image: File.open('app/assets/images/808s-And-Heartbreak.jpg')
 )

@@ -78,6 +78,8 @@ the API.
     - [x] `TrackBanner`
   - [x] add navigation between tracks index & track show views
 - [ ] style track components
+- [ ] implement file upload & track images
+- [ ]
 - [x] seed tracks
 
 ### Phase 3: Annotations (3 days, W2 W 6pm)
