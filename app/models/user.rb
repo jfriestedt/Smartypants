@@ -21,6 +21,13 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
   before_validation :ensure_session_token_uniqueness
 
+  has_many(
+    :tracks,
+    class_name: "Track",
+    foreign_key: :submitter_id,
+    primary_key: :id
+  )
+
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
 

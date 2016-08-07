@@ -17,5 +17,15 @@
 #
 
 class Track < ActiveRecord::Base
-  validates :title, :artist, :lyrics, presence: true;
+  validates :title, :artist, :lyrics, presence: true
+
+  has_attached_file :image, default_url: "Tycho.jpg"
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+
+  belongs_to(
+    :submitter,
+    class_name: "User",
+    foreign_key: :submitter_id,
+    primary_key: :id
+  )
 end
