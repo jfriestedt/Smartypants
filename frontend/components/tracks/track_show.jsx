@@ -68,6 +68,7 @@ const TrackShow = React.createClass ({
     let trackLyrics = <pre className="track-lyrics">
                         Loading...
                       </pre>;
+    let trackImg    = <img></img>;
 
     if (this.state.track) {
       trackInfo = <hgroup className="track-show-title-artist-inset">
@@ -77,11 +78,15 @@ const TrackShow = React.createClass ({
       trackLyrics = <span className="track-lyrics">
                       {this.state.track.lyrics}
                     </span>;
+      trackImg = <img src={this.state.track.image_url}></img>;
     }
 
     return (
       <div className="track-show">
         <div className="track-banner">
+          <div className="track-banner-img-container">
+            {trackImg}
+          </div>
           <span className="track-banner-overlay"></span>
           <div className="track-banner-content">
             {trackInfo}

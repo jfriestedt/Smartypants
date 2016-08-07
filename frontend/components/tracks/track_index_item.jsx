@@ -23,7 +23,11 @@ const TrackIndexItem = React.createClass ({
     return (
       <div className="track-index-item" onClick={this.showTrack}>
 
-        <div className="track-index-item-img-container"></div>
+        <div className="track-index-item-overlay"></div>
+
+        <div className="track-index-item-img-container">
+          <img src={this.props.track.image_url}></img>
+        </div>
 
         <div className="track-index-item-info">
           <div className="track-index-item-title-and-artist-container">
