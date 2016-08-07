@@ -23,5 +23,5 @@ end
 private
 
 def track_params
-  params.require(:track).permit(:title, :artist, :lyrics)
+  params.require(:track).permit(:title, :artist, :lyrics, :album)
 end

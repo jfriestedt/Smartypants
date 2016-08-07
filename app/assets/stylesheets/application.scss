@@ -386,7 +386,6 @@ button {
   justify-content: center;
   background: black;
   width: 100%;
-  height: 100vh;
 }
 
 .new-track-container {
@@ -400,8 +399,7 @@ button {
 }
 
 .new-track-header {
-  display: flex;
-  flex-direction: column;
+  display: block;
   border-bottom: 1px solid hsla(0,0%,60%,0.35);
   margin-bottom: 1rem;
 
@@ -413,19 +411,31 @@ button {
   }
 
   h2 {
+    display: inline-block;
     color: white;
     font-size: 18px;
     font-weight: 600;
   }
+
+  small {
+    display: inline-block;
+    float: right;
+    color: white;
+    font-size: 85%;
+    color: #ccc;
+  }
+}
+
+.track-form-column {
+  width: 50%;
 }
 
 .track-form {
 
-  display: flex;
-  flex-direction: column;
+  display: block;
   padding-left: 16px;
   padding-right: 16px;
-  max-width: 339px;
+  width: 100%;
 
   input[type=text], textarea {
     margin-bottom: 1.5rem;

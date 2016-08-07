@@ -7,6 +7,7 @@ const TrackForm = React.createClass({
     return {
       title: "",
       artist: "",
+      album: "",
       lyrics: "",
     };
   },
@@ -38,36 +39,48 @@ const TrackForm = React.createClass({
           <header className="new-track-header">
             <h1>Add Song</h1>
             <h2>Primary info</h2>
+            <small>* required</small>
           </header>
-          <div className="track-form">
 
-            <label className="track-field-label">BY *</label>
-            <input  type="text"
-              className="track-field-input"
-              value={this.state.artist}
-              placeholder="The primary artist, author, creator, etc."
-              onChange={this.update("artist")}/>
+          <div className="track-form-column">
+            <div className="track-form">
+              <label className="track-field-label">BY *</label>
+              <input  type="text"
+                className="track-field-input"
+                value={this.state.artist}
+                placeholder="The primary artist, author, creator, etc."
+                onChange={this.update("artist")}/>
 
-            <label className="track-field-label">TITLE *</label>
-            <input  type="text"
-              className="track-field-input"
-              value={this.state.title}
-              placeholder="Title"
-              onChange={this.update("title")}/>
+              <label className="track-field-label">TITLE *</label>
+              <input  type="text"
+                className="track-field-input"
+                value={this.state.title}
+                placeholder="Title"
+                onChange={this.update("title")}/>
 
-            <label className="track-field-label">LYRICS *</label>
-            <textarea className="track-field-input lyrics-input"
-              rows="20"
-              cols="40"
-              value={this.state.lyrics}
-              onChange={this.update("lyrics")}/>
+              <label className="track-field-label">ALBUM</label>
+                <input  type="text"
+                  className="track-field-input"
+                  value={this.state.album}
+                  placeholder="Album"
+                  onChange={this.update("album")}/>
 
-            <input
-              type="submit"
-              className="form-button"
-              value="Submit"
-              onClick={this.handleSubmit}/>
+              <label className="track-field-label">LYRICS *</label>
+              <textarea className="track-field-input lyrics-input"
+                rows="20"
+                cols="40"
+                value={this.state.lyrics}
+                onChange={this.update("lyrics")}/>
+
+              <input
+                type="submit"
+                className="form-button"
+                value="Submit"
+                onClick={this.handleSubmit}/>
+            </div>
           </div>
+
+          <div className="track-form-column"></div>
         </main>
       </section>
     );
