@@ -9,6 +9,7 @@ class Api::TracksController < ApplicationController
 
   def create
     @track = Track.new(track_params)
+    @track.submitter = current_user
 
     if @track.save
       # render "api/tracks/show" + @track.id

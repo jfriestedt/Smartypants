@@ -10,7 +10,6 @@ const TrackIndexItem = React.createClass ({
     this.context.router.push('/tracks/' + this.props.track.id);
   },
 
-  // TODO: Add image rendering logic to image container
   render () {
     let submitter;
 
