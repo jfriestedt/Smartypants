@@ -16,8 +16,6 @@ TrackStore.find = (trackId) => {
       return _tracks[i];
     }
   }
-
-  // iterate thru _tracks and return when match
 };
 
 const resetAllTracks = (tracks) => {
