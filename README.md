@@ -14,7 +14,7 @@ Smartypants is a single-page web application clone of Genius.com, a site which a
 - [ ] Tracks
   - [x] Smooth, bug-free navigation
   - [x] Adequate seed data to demonstrate the site's features
-  - [ ] Adequate CSS styling
+  - [x] Adequate CSS styling
 - [ ] Annotations
   - [ ] Smooth, bug-free navigation
   - [ ] Adequate seed data to demonstrate the site's features
@@ -77,9 +77,8 @@ the API.
   - [x] `TrackShow`
     - [x] `TrackBanner`
   - [x] add navigation between tracks index & track show views
-- [ ] style track components
-- [ ] implement file upload & track images
-- [ ]
+- [x] style track components
+- [x] implement file upload & track images
 - [x] seed tracks
 
 ### Phase 3: Annotations (3 days, W2 W 6pm)
