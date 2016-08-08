@@ -159,7 +159,7 @@ button {
     font-size: 15px;
   }
 
-  input {
+  input[type="text"], input[type="password"] {
     display: block;
     margin-bottom: 13px;
     border: 1px solid #555;
