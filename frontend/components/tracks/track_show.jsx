@@ -2,6 +2,7 @@ const React = require('react');
 const TrackStore = require('../../stores/track_store');
 const TrackActions = require('../../actions/track_actions');
 const TrackLyrics = require('./track_lyrics');
+const AnnotationContainer = require('../annotations/annotation_container');
 
 const TrackShow = React.createClass ({
   getInitialState () {
@@ -51,12 +52,27 @@ const TrackShow = React.createClass ({
     const selection = this.state.track.lyrics.slice(startIndex, endIndex);
 
     const annotation = {
+      annotationContainerRevealed: true,
       annotationButtonRevealed: true,
+      annotationFormRevealed: false,
+      annotationShowRevealed: false,
       startIndex: startIndex,
       endIndex: endIndex,
       selection: selection,
       yPosition: e.pageY
     };
+
+    this.setState({
+      annotation: annotation
+    });
+  },
+
+  annotationContainer () {
+    if (!this.state.annotation.annotationContainerRevealed) {
+      return;
+    } else {
+      return <AnnotationContainer />;
+    }
   },
 
   render () {
@@ -100,7 +116,8 @@ const TrackShow = React.createClass ({
           <div className="track-show-primary-column">
             {trackLyrics}
           </div>
-          <div className="secondary-column">
+          <div className="track-show-secondary-column">
+            {this.annotationContainer()}
           </div>
         </div>
       </div>

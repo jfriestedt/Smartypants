@@ -51,14 +51,9 @@ const TrackLyrics = React.createClass ({
   //   });
   // },
 
-
-
   render () {
     return (
-      <span
-        className="track-lyrics"
-        onMouseUp={this.props.sendAnnotation}
-      >
+      <span className="track-lyrics" onMouseUp={this.props.sendAnnotation}>
         {this.props.track.lyrics}
       </span>
     );

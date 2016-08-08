@@ -384,8 +384,6 @@ button {
   }
 }
 
-
-
 .track-show {
     display: flex;
     flex-direction: column;
@@ -407,6 +405,17 @@ button {
 
       .track-lyrics {
         white-space: pre-wrap;
+      }
+    }
+
+    .track-show-secondary-column {
+      width: 48%;
+      padding: 0 1rem;
+      padding-top: 1em;
+      box-sizing: border-box;
+
+      .annotation-container {
+        width: 100%;
       }
     }
   }
