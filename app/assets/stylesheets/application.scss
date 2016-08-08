@@ -324,6 +324,12 @@ button {
     box-sizing: border-box;
     padding: 2.25rem 0 1.5rem 0;
 
+    h3 {
+      line-height: 1.375;
+      font-size: 1em;
+      color: #9a9a9a;
+    }
+
     .track-show-title-artist-inset {
         z-index: 1;
         display: flex;
