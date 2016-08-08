@@ -1,6 +1,4 @@
 const AnnotationApiUtil = {
-  //
-
   fetchAnnotationTrack (annotationId, receiveSingleAnnotation) {
     $.ajax({
       url: '/api/annotations/' + annotationId,
