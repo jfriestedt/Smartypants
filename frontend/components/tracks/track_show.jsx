@@ -1,7 +1,7 @@
 const React = require('react');
 const TrackStore = require('../../stores/track_store');
 const TrackActions = require('../../actions/track_actions');
-const TrackLyrics = require('../tracks/track_lyrics');
+const TrackLyrics = require('./track_lyrics');
 
 const TrackShow = React.createClass ({
   getInitialState () {
@@ -9,7 +9,10 @@ const TrackShow = React.createClass ({
   },
 
   getStateFromStore () {
-    return { track: TrackStore.find(parseInt(this.props.params.trackId)) };
+    return {
+       track: TrackStore.find(parseInt(this.props.params.trackId)),
+       annotation: {},
+      };
   },
 
   componentDidMount () {
@@ -27,6 +30,33 @@ const TrackShow = React.createClass ({
 
   _onChange () {
     this.setState(this.getStateFromStore());
+  },
+
+  displayAnnotation (stuff) {
+    this.setState({
+      annotation: {
+        stuff: stuff
+      }
+    });
+  },
+
+  sendAnnotation (e) {
+    let startIndex = document.getSelection().anchorOffset;
+    let endIndex = document.getSelection().focusOffset;
+
+    if (startIndex > endIndex) {
+      startIndex = [endIndex, endIndex = startIndex][0];
+    }
+
+    const selection = this.state.track.lyrics.slice(startIndex, endIndex);
+
+    const annotation = {
+      annotationButtonRevealed: true,
+      startIndex: startIndex,
+      endIndex: endIndex,
+      selection: selection,
+      yPosition: e.pageY
+    };
   },
 
   render () {
@@ -47,7 +77,10 @@ const TrackShow = React.createClass ({
                     <h2>{this.state.track.artist}</h2>
                     {trackAlbum}
                   </hgroup>;
-      trackLyrics = <TrackLyrics track={this.state.track} />;
+      trackLyrics = <TrackLyrics
+                      track={this.state.track}
+                      sendAnnotation={this.sendAnnotation}
+                    />;
       trackImg = <img src={this.state.track.image_url}></img>;
     }
 
