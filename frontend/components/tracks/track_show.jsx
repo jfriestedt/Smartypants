@@ -1,6 +1,7 @@
 const React = require('react');
 const TrackStore = require('../../stores/track_store');
 const TrackActions = require('../../actions/track_actions');
+const TrackLyrics = require('../tracks/track_lyrics');
 
 const TrackShow = React.createClass ({
   getInitialState () {
@@ -37,7 +38,6 @@ const TrackShow = React.createClass ({
                         Loading...
                       </span>;
     let trackImg    = <img></img>;
-
     if (this.state.track) {
       if (this.state.track.album) {
         trackAlbum = <h3>Album: {this.state.track.album}</h3>;
@@ -47,11 +47,8 @@ const TrackShow = React.createClass ({
                     <h2>{this.state.track.artist}</h2>
                     {trackAlbum}
                   </hgroup>;
-      trackLyrics = <span className="track-lyrics">
-                      {this.state.track.lyrics}
-                    </span>;
+      trackLyrics = <TrackLyrics track={this.state.track} />;
       trackImg = <img src={this.state.track.image_url}></img>;
-
     }
 
     return (
