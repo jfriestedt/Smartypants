@@ -4,34 +4,33 @@ const TrackConstants = require('../constants/track_constants');
 
 const TrackStore = new Store(AppDispatcher);
 
-let _tracks = {};
+let _tracks = [];
 
 TrackStore.all = () => {
-  let tracksArr = [];
-
-  for (var i in _tracks) {
-    if (_tracks.hasOwnProperty(i)) {
-      tracksArr.push(_tracks[i]);
-    }
-  }
-
-  return tracksArr;
+  return _tracks.slice();
 };
 
 TrackStore.find = (trackId) => {
-  return _tracks[trackId];
+  for (var i = 0; i < _tracks.length; i++) {
+    if (_tracks[i].id === trackId) {
+      return _tracks[i];
+    }
+  }
+
+  // iterate thru _tracks and return when match
 };
 
 const resetAllTracks = (tracks) => {
-  _tracks = {};
-
-  tracks.forEach(function (track) {
-    _tracks[track.id] = track;
-  });
+  _tracks = tracks;
 };
 
 const resetSingleTrack = (track) => {
-  _tracks[track.id] = track;
+  for (var i = 0; i < _tracks.length; i++) {
+    if (_tracks[i] === track) {
+      _tracks.splice(i, 1);
+      _tracks.push(track);
+    }
+  }
 };
 
 TrackStore.__onDispatch = (payload) => {
