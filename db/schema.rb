@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160808160335) do
+ActiveRecord::Schema.define(version: 20160808162606) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20160808160335) do
     t.integer  "track_id",             null: false
     t.text     "body",                 null: false
     t.integer  "referent_start_index", null: false
-    t.integer  "refernt_end_index",    null: false
+    t.integer  "referent_end_index",   null: false
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
