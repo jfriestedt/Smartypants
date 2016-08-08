@@ -73,6 +73,7 @@ TXT
 Track.create!(
   title: "Thinkin Bout You",
   artist: "Frank Ocean",
+  album: "Channel Orange",
   lyrics: thinkin_bout_you_lyrics,
   image: File.open('app/assets/images/Channel-orange.jpg')
 )
@@ -119,6 +120,7 @@ TXT
 Track.create!(
   title: "Pray You Catch Me",
   artist: "Beyoncé",
+  album: "Lemonade",
   lyrics: pray_you_catch_me_lyrics,
   image: File.open('app/assets/images/Lemonade.jpg')
 )
@@ -183,6 +185,7 @@ TXT
 Track.create!(
   title: "Electric Lady",
   artist: "Janelle Monáe",
+  album: "The Electric Lady",
   lyrics: electric_lady_lyrics,
   image: File.open('app/assets/images/Electric-Lady.png')
 )
@@ -238,6 +241,7 @@ TXT
 Track.create!(
   title: "So Many Details",
   artist: "Toro Y Moi",
+  album: "Anything In Return",
   lyrics: so_many_details_lyrics,
   image: File.open('app/assets/images/Anything-In-Return.jpeg')
 )
@@ -280,6 +284,7 @@ TXT
 Track.create!(
   title: "Deadbeat Summer",
   artist: "Neon Indian",
+  album: "Psychic Chasms",
   lyrics: deadbeat_summer_lyrics,
   image: File.open('app/assets/images/Psychic-Chasms.jpg')
 )
@@ -370,6 +375,7 @@ TXT
 Track.create!(
   title: "Paranoid",
   artist: "Kanye West",
+  album: "808s & Heartbreak",
   lyrics: paranoid_lyrics,
   image: File.open('app/assets/images/808s-And-Heartbreak.jpg')
 )
