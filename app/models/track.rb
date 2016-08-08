@@ -28,4 +28,9 @@ class Track < ActiveRecord::Base
     foreign_key: :submitter_id,
     primary_key: :id
   )
+
+  has_many :annotations,
+    class_name: "Annotation",
+    foreign_key: :track_id,
+    primary_key: :id
 end

@@ -28,6 +28,11 @@ class User < ActiveRecord::Base
     primary_key: :id
   )
 
+  has_many :annotations,
+    class_name: "Annotation",
+    foreign_key: :submitter_id,
+    primary_key: :id
+
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
 

@@ -85,7 +85,7 @@ the API.
 
 **Objective:** Tracks can be annotated by users. Sections of track lyrics can be highlighted and made into referents which refer to annotations. After creation, annotations will appear and disappear beside their referents when referents are selected and unselected.
 
-- [ ] create `Annotation` model and join table
+- [x] create `Annotation` model and join table
 - [ ] build out API, Flux loop, and components for Annotation CRUD
 - implement each annotation component, building out the flux loop as needed.
   - [ ] `AnnotationReferent`
