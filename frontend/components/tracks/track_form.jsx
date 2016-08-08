@@ -9,13 +9,21 @@ const TrackForm = React.createClass({
       artist: "",
       album: "",
       lyrics: "",
+      imageFile: null,
+      imageUrl: null
     };
   },
 
   handleSubmit(event) {
+    let formData = new FormData();
+    formData.append("track[title]", this.state.title);
+    formData.append("track[artist]", this.state.artist);
+    formData.append("track[album]", this.state.album);
+    formData.append("track[lyrics]", this.state.lyrics);
+    formData.append("track[image]", this.state.imageFile);
     event.preventDefault();
-    const track = Object.assign({}, this.state);
-    TrackActions.createTrack(track);
+    const track = Object.assign({}, formData);
+    TrackActions.createTrack(formData);
     this.navigateToIndex();
   },
 
@@ -30,6 +38,20 @@ const TrackForm = React.createClass({
 
   update (property) {
     return (e) => this.setState({[property]: e.target.value});
+  },
+
+  updateFile (e) {
+    let fileReader = new FileReader();
+    let file = e.currentTarget.files[0];
+    fileReader.onloadend = function () {
+      this.setState({ imageFile: file, imageUrl: fileReader.result });
+    }.bind(this);
+
+    if (file) {
+      fileReader.readAsDataURL(file);
+    } else {
+      this.setState({ imageUrl: "", imageFile: null});
+    }
   },
 
   render () {
@@ -72,11 +94,15 @@ const TrackForm = React.createClass({
                 value={this.state.lyrics}
                 onChange={this.update("lyrics")}/>
 
+              <input type="file" onChange={this.updateFile}/>
+
               <input
                 type="submit"
                 className="form-button"
                 value="Submit"
                 onClick={this.handleSubmit}/>
+
+              <img src={this.state.imageUrl}></img>
             </div>
           </div>
 

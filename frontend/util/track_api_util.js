@@ -19,11 +19,13 @@ const TrackApiUtil = {
     });
   },
 
-  createTrack(track, receiveSingleTrack){
+  createTrack(formData, receiveSingleTrack){
     $.ajax({
       url: '/api/tracks/',
       method: "POST",
-      data: {track: track},
+      contentType: false,
+      processData: false,
+      data: formData,
       success (receivedTrack) {
         receiveSingleTrack(receivedTrack);
       }
