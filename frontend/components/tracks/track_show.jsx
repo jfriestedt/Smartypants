@@ -65,19 +65,24 @@ const TrackShow = React.createClass ({
     if (!this.state.annotation.selection) {
       return;
     } else {
-      return <AnnotationContainer annotation={this.state.annotation} trackId={this.props.params.trackId}/>;
+      return <AnnotationContainer annotation={this.state.annotation}
+                                  trackId={this.props.params.trackId}/>;
     }
   },
 
+  buildLyricsWithReferents () {
+
+  },
+
   render () {
-    let referents = [];
-
-    if (this.state.song.annotations) {
-      const annotations = this.state.song.annotations;
-      annotations.forEach(function (annotation) {
-
-      });
-    }
+    // let referents = [];
+    //
+    // if (this.state.song.annotations) {
+    //   const annotations = this.state.song.annotations;
+    //   annotations.forEach(function (annotation) {
+    //
+    //   });
+    // }
 
     let trackInfo = <hgroup className="track-show-title-artist-inset">
                       <h1>Loading...</h1>

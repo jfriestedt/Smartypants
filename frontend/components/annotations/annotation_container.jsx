@@ -61,7 +61,6 @@ const AnnotationContainer = React.createClass ({
   },
 
   render () {
-    debugger
 
     let containerStyle = {
       top: this.props.annotation.yPosition - 360
