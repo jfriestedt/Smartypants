@@ -19,6 +19,7 @@ const TrackForm = require('./components/tracks/track_form');
 
 // Misc
 const SessionActions = require('./actions/session_actions');
+const SessionStore = require('./stores/session_store');
 
 // React Modal
 const Modal = require("react-modal");
@@ -33,7 +34,6 @@ window.TrackActions = require('./actions/track_actions');
 
 const App = React.createClass({
   render () {
-
     return (
       <div className="App">
         <NavBar />
@@ -48,10 +48,16 @@ const appRouter = (
     <Route path="/" component={App}>
       <IndexRoute component={TrackIndex} />
       <Route path="/tracks/:trackId" component={TrackShow} />
-      <Route path="/new" component={TrackForm} />
+      <Route path="/new" component={TrackForm} onEnter={ensureLoggedIn} />
     </Route>
   </Router>
 );
+
+function ensureLoggedIn (nextState, replace) {
+  if (!SessionStore.isUserLoggedIn()) {
+    replace('/');
+  }
+}
 
 document.addEventListener('DOMContentLoaded', function () {
   Modal.setAppElement(document.body);
