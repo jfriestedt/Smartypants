@@ -24,11 +24,11 @@ const resetAllTracks = (tracks) => {
 
 const resetSingleTrack = (track) => {
   for (var i = 0; i < _tracks.length; i++) {
-    if (_tracks[i] === track) {
+    if (_tracks[i].id === track.id) {
       _tracks.splice(i, 1);
     }
   }
-  _tracks.unshift(track);
+  _tracks.push(track);
 };
 
 TrackStore.__onDispatch = (payload) => {

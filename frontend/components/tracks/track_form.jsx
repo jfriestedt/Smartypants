@@ -16,6 +16,7 @@ const TrackForm = React.createClass({
 
   handleSubmit(event) {
     let formData = new FormData();
+    
     formData.append("track[title]", this.state.title);
     formData.append("track[artist]", this.state.artist);
     formData.append("track[album]", this.state.album);
@@ -23,6 +24,7 @@ const TrackForm = React.createClass({
     if (this.state.imageFile) {
       formData.append("track[image]", this.state.imageFile);
     }
+
     event.preventDefault();
     const track = Object.assign({}, formData);
     TrackActions.createTrack(formData);
