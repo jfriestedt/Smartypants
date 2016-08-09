@@ -1,4 +1,6 @@
 const React = require('react');
+const ReactDOM = require('react-dom');
+const Autosize = require('autosize');
 
 const AnnotationContainer = React.createClass ({
   getInitialState () {
@@ -6,6 +8,11 @@ const AnnotationContainer = React.createClass ({
       annotationButtonRevealed: true,
       annotationFormRevealed: false
     };
+  },
+
+  componentDidUpdate () {
+    const annotationFormTextArea = ReactDOM.findDOMNode(this.refs.textarea);
+    Autosize(annotationFormTextArea);
   },
 
   revealAnnotationForm (e) {
@@ -36,7 +43,8 @@ const AnnotationContainer = React.createClass ({
       if (this.state.annotationFormRevealed) {
         return (
           <form className="annotation-form">
-            <textarea rows="7"
+            <textarea ref="textarea"
+                      rows="7"
                       cols="47"
                       placeholder="Say something super smart"/>
             <hr></hr>
