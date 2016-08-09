@@ -21,12 +21,30 @@ const AnnotationContainer = React.createClass ({
       top: this.props.annotation.yPosition - 360
     };
 
-    let annotationBeginButton = () => {
+    const annotationBeginButton = () => {
       if (this.state.annotationButtonRevealed) {
         return (
-          <button className="annotation-begin-button">
+          <button className="annotation-begin-button"
+                  onClick={this.revealAnnotationForm}>
             Start the Smartypants Annotation
           </button>
+        );
+      }
+    };
+
+    const annotationForm = () => {
+      if (this.state.annotationFormRevealed) {
+        return (
+          <form className="annotation-form">
+            <textarea rows="7"
+                      cols="47"
+                      placeholder="Say something super smart"/>
+            <hr></hr>
+            <div className="annotation-form-button-group">
+              <button className="annotation-form-button-save">Save</button>
+              <button className="annotation-form-button-cancel">Cancel</button>
+            </div>
+          </form>
         );
       }
     };
@@ -34,6 +52,7 @@ const AnnotationContainer = React.createClass ({
     return (
       <div className="annotation-container" style={containerStyle}>
         {annotationBeginButton()}
+        {annotationForm()}
       </div>
     );
   }

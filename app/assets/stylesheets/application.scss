@@ -399,12 +399,14 @@ button {
     .track-show-primary-column {
       width: 58%;
       box-sizing: border-box;
-      font-size: 20px;
+      font-size: 19px;
 
       .track-lyrics {
         white-space: pre-wrap;
         padding: 0 1rem;
         padding-top: 1em;
+        line-height: 1.7em;
+        font-weight: 500;
       }
     }
 
@@ -413,10 +415,6 @@ button {
       padding: 0 1rem;
       padding-top: 1em;
       box-sizing: border-box;
-
-      .annotation-container {
-        width: 100%;
-      }
     }
   }
 }
@@ -514,12 +512,15 @@ button {
 /* Annotation Container */
 
 .annotation-container {
+  width: 100%;
   position: relative;
   padding-left: 1rem;
   padding-top: 1rem;
   height: min-content;
   font-size: 20px;
   box-sizing: content-box;
+
+  border: 1px solid red;
 
 
   .annotation-begin-button {
@@ -529,6 +530,21 @@ button {
     height: min-content;
     box-sizing: content-box;
     padding: .25rem .5rem;
+  }
+
+  .annotation-form {
+    width: 100%;
+    display: block;
+  }
+
+  .annotation-form > textarea {
+    background: #f5f5f5;
+    padding: .5rem;
+    /* margin-left: -.5rem; */
+    /* margin-right: -.5rem; */
+    font-weight: 500;
+    font-size: 16px;
+    margin: 1rem -.5rem;
   }
 }
 

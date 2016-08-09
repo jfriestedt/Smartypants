@@ -16,7 +16,7 @@ const TrackForm = React.createClass({
 
   handleSubmit(event) {
     let formData = new FormData();
-    
+
     formData.append("track[title]", this.state.title);
     formData.append("track[artist]", this.state.artist);
     formData.append("track[album]", this.state.album);
