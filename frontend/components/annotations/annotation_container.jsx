@@ -4,7 +4,7 @@ const AnnotationContainer = React.createClass ({
   render () {
     return (
       <div className="annotation-container">
-        YO!!!
+        "{this.props.annotation.selection}"
       </div>
     );
   }

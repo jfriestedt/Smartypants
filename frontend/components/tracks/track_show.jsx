@@ -42,6 +42,13 @@ const TrackShow = React.createClass ({
   },
 
   sendAnnotation (e) {
+    if(document.getSelection().toString().length === 0) {
+      this.setState({
+        annotation: {}
+      });
+      return;
+    }
+
     let startIndex = document.getSelection().anchorOffset;
     let endIndex = document.getSelection().focusOffset;
 
@@ -71,7 +78,7 @@ const TrackShow = React.createClass ({
     if (!this.state.annotation.annotationContainerRevealed) {
       return;
     } else {
-      return <AnnotationContainer />;
+      return <AnnotationContainer annotation={this.state.annotation}/>;
     }
   },
 
@@ -96,6 +103,7 @@ const TrackShow = React.createClass ({
       trackLyrics = <TrackLyrics
                       track={this.state.track}
                       sendAnnotation={this.sendAnnotation}
+                      removeAnnotation={this.removeAnnotation}
                     />;
       trackImg = <img src={this.state.track.image_url}></img>;
     }
