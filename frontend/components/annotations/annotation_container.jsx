@@ -8,7 +8,9 @@ const AnnotationContainer = React.createClass ({
     };
     return (
       <div className="annotation-container" style={containerStyle}>
-        <p>{this.props.annotation.selection}</p>
+        <button className="annotation-begin-button">
+          Start the Smartypants Annotation
+        </button>
       </div>
     );
   }

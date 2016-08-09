@@ -519,6 +519,27 @@ button {
   padding-top: 1rem;
   height: min-content;
   font-size: 20px;
+  box-sizing: content-box;
+
+
+  .annotation-begin-button {
+    border: 2px solid black;
+    font-size: 14px;
+    font-weight: 600;
+    height: min-content;
+    box-sizing: content-box;
+    padding: .25rem .5rem;
+  }
+}
+
+.annotation-container:before {
+  content: '';
+  background-color: #99a7ee;
+  position: absolute;
+  bottom: 0;
+  left: -0.5rem;
+  width: .4rem;
+  top: 1rem;
 }
 
 
