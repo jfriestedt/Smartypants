@@ -1,7 +1,6 @@
 const React = require('react');
 const TrackStore = require('../../stores/track_store');
 const TrackActions = require('../../actions/track_actions');
-const TrackLyrics = require('./track_lyrics');
 const AnnotationContainer = require('../annotations/annotation_container');
 
 const TrackShow = React.createClass ({
@@ -71,6 +70,15 @@ const TrackShow = React.createClass ({
   },
 
   render () {
+    let referents = [];
+
+    if (this.state.song.annotations) {
+      const annotations = this.state.song.annotations;
+      annotations.forEach(function (annotation) {
+
+      });
+    }
+
     let trackInfo = <hgroup className="track-show-title-artist-inset">
                       <h1>Loading...</h1>
                     </hgroup>;
@@ -88,11 +96,10 @@ const TrackShow = React.createClass ({
                     <h2>{this.state.track.artist}</h2>
                     {trackAlbum}
                   </hgroup>;
-      trackLyrics = <TrackLyrics
-                      track={this.state.track}
-                      sendAnnotation={this.sendAnnotation}
-                      removeAnnotation={this.removeAnnotation}
-                    />;
+      trackLyrics = <span className="track-lyrics"
+                          onMouseUp={this.sendAnnotation}>
+                      {this.state.track.lyrics}
+                    </span>;
       trackImg = <img src={this.state.track.image_url}></img>;
     }
 
