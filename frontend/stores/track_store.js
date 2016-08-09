@@ -28,7 +28,7 @@ const resetSingleTrack = (track) => {
       _tracks.splice(i, 1);
     }
   }
-  _tracks.push(track);
+  _tracks.unshift(track);
 };
 
 TrackStore.__onDispatch = (payload) => {
@@ -38,7 +38,6 @@ TrackStore.__onDispatch = (payload) => {
       TrackStore.__emitChange();
       break;
     case TrackConstants.TRACK_RECEIVED:
-
       resetSingleTrack(payload.track);
       TrackStore.__emitChange();
       break;

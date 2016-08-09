@@ -19,7 +19,8 @@
 class Track < ActiveRecord::Base
   validates :title, :artist, :lyrics, presence: true
 
-  has_attached_file :image, default_url: "Tycho.jpg"
+  # TODO: Default image not working???
+  has_attached_file :image, default_url: "Default.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   belongs_to(
