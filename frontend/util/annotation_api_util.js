@@ -1,7 +1,7 @@
 const AnnotationApiUtil = {
-  createAnnotation(annotation, receiveSingleAnnotation){
+  createAnnotation(annotation, trackId, receiveSingleAnnotation){
     $.ajax({
-      url: '/api/annotations/',
+      url: '/api/tracks/' + trackId + '/annotations/',
       method: "POST",
       data: annotation,
       success (receivedAnnotation) {

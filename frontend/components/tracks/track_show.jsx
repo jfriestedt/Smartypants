@@ -33,14 +33,6 @@ const TrackShow = React.createClass ({
     this.setState(this.getStateFromStore());
   },
 
-  displayAnnotation (stuff) {
-    this.setState({
-      annotation: {
-        stuff: stuff
-      }
-    });
-  },
-
   sendAnnotation (e) {
     if(document.getSelection().toString().length === 0) {
       this.setState({
@@ -59,10 +51,6 @@ const TrackShow = React.createClass ({
     const selection = this.state.track.lyrics.slice(startIndex, endIndex);
 
     const annotation = {
-      annotationContainerRevealed: true,
-      annotationButtonRevealed: true,
-      annotationFormRevealed: false,
-      annotationShowRevealed: false,
       startIndex: startIndex,
       endIndex: endIndex,
       selection: selection,
@@ -75,10 +63,10 @@ const TrackShow = React.createClass ({
   },
 
   annotationContainer () {
-    if (!this.state.annotation.annotationContainerRevealed) {
+    if (!this.state.annotation.selection) {
       return;
     } else {
-      return <AnnotationContainer annotation={this.state.annotation}/>;
+      return <AnnotationContainer annotation={this.state.annotation} trackId={this.props.params.trackId}/>;
     }
   },
 
