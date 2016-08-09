@@ -4,12 +4,11 @@ const AnnotationContainer = React.createClass ({
 
   render () {
     let containerStyle = {
-      position: 'relative',
-      top: this.props.annotation.yPosition - 345
+      top: this.props.annotation.yPosition - 360
     };
     return (
       <div className="annotation-container" style={containerStyle}>
-        "{this.props.annotation.selection}"
+        <p>{this.props.annotation.selection}</p>
       </div>
     );
   }
