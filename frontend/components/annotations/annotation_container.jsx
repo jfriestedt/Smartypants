@@ -48,11 +48,21 @@ const AnnotationContainer = React.createClass ({
         body: stateAnnotation.body,
       }
     };
-    
+
     AnnotationActions.createAnnotation(annotation, trackId);
   },
 
+  closeAnnotation (e) {
+    this.setState({
+      annotation: {},
+      annotationButtonRevealed: false,
+      annotationFormRevealed: false
+    });
+  },
+
   render () {
+    debugger
+
     let containerStyle = {
       top: this.props.annotation.yPosition - 360
     };
@@ -84,7 +94,10 @@ const AnnotationContainer = React.createClass ({
                       onClick={this.createAnnotation}>
                       Save
               </button>
-              <button className="annotation-form-button-cancel">Cancel</button>
+              <button className="annotation-form-button-cancel"
+                      onClick={this.closeAnnotation}>
+                      Cancel
+              </button>
             </div>
           </div>
         );
