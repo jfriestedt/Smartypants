@@ -11,7 +11,7 @@ Smartypants is a single-page web application clone of Genius.com, a site which a
 - [x] Hosting on Heroku
 - [x] New account creation, login, and guest/demo login
 - [ ] A production README, replacing this README
-- [ ] Tracks
+- [x] Tracks
   - [x] Smooth, bug-free navigation
   - [x] Adequate seed data to demonstrate the site's features
   - [x] Adequate CSS styling
@@ -86,18 +86,12 @@ the API.
 **Objective:** Tracks can be annotated by users. Sections of track lyrics can be highlighted and made into referents which refer to annotations. After creation, annotations will appear and disappear beside their referents when referents are selected and unselected.
 
 - [x] create `Annotation` model and join table
-- [ ] build out API, Flux loop, and components for Annotation CRUD
+- [x] build out API, Flux loop, and components for Annotation CRUD
 - implement each annotation component, building out the flux loop as needed.
   - [ ] `AnnotationReferent`
-  - [ ] `AnnotationContainer`
-  - [ ] `AnnotationForm`
-  - [ ] `AnnotationContent`
-  - [ ] `AnnotationHeader`
-  - [ ] `AnnotationBody`
-  - [ ] `AnnotationButtonGroup`
-  - [ ] `AnnotationBeginButton`
-  - [ ] `AnnotationEditButton`
-  - [ ] `AnnotationDeleteButton`
+  - [x] `AnnotationContainer`
+  - [x] `AnnotationForm`
+  - [x] `AnnotationBody`
 - [ ] style annotation components
 - [ ] seed annotations
 
