@@ -1,7 +1,6 @@
 const React = require('react');
 const TrackStore = require('../../stores/track_store');
 const TrackActions = require('../../actions/track_actions');
-const AnnotationStore = require('../../stores/annotation_store');
 const AnnotationContainer = require('../annotations/annotation_container');
 
 const TrackShow = React.createClass ({
@@ -18,13 +17,11 @@ const TrackShow = React.createClass ({
 
   componentDidMount () {
     this.trackListener = TrackStore.addListener(this._onChange);
-    this.annotationListener = AnnotationStore.addListener(this._onChange);
     TrackActions.fetchSingleTrack(parseInt(this.props.params.trackId));
   },
 
   componentWillUnmount () {
     this.trackListener.remove();
-    this.annotationListener.remove();
   },
 
   componentWillReceiveProps (newProps) {

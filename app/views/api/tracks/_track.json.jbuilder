@@ -1,5 +1,3 @@
-# json.extract! track, :id, :title, :artist, :album, :lyrics
-
 json.id track.id
 json.title track.title
 json.artist track.artist
