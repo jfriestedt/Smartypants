@@ -16,9 +16,9 @@ Smartypants is a single-page web application clone of Genius.com, a site which a
   - [x] Adequate seed data to demonstrate the site's features
   - [x] Adequate CSS styling
 - [ ] Annotations
-  - [ ] Smooth, bug-free navigation
+  - [x] Smooth, bug-free navigation
   - [ ] Adequate seed data to demonstrate the site's features
-  - [ ] Adequate CSS styling
+  - [x] Adequate CSS styling
 - [ ] Comments
   - [ ] Smooth, bug-free navigation
   - [ ] Adequate seed data to demonstrate the site's features
@@ -88,11 +88,10 @@ the API.
 - [x] create `Annotation` model and join table
 - [x] build out API, Flux loop, and components for Annotation CRUD
 - implement each annotation component, building out the flux loop as needed.
-  - [ ] `AnnotationReferent`
   - [x] `AnnotationContainer`
   - [x] `AnnotationForm`
   - [x] `AnnotationBody`
-- [ ] style annotation components
+- [x] style annotation components
 - [ ] seed annotations
 
 Phase 3 will be the most difficult and time-consuming phase of the project. It builds the key functionality of the site, and therefore, its full completion will take precedence over building of later features in the event of a time issue.
