@@ -19,6 +19,16 @@ const AnnotationApiUtil = {
         receiveSingleTrack(receivedAnnotation);
       }
     });
+  },
+
+  destroyAnnotation(annotationId, trackId, receiveSingleTrack){
+    $.ajax({
+      url: 'api/tracks/' + trackId + '/annotations/' + annotationId,
+      method: "DELETE",
+      success (receivedData) {
+        receiveSingleTrack(receivedData);
+      }
+    });
   }
 };
 

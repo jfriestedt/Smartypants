@@ -24,6 +24,14 @@ const AnnotationActions = {
       trackId,
       TrackActions.receiveSingleTrack
     );
+  },
+
+  destroyAnnotation (annotationId, trackId) {
+    AnnotationApiUtil.destroyAnnotation(
+      annotationId,
+      trackId,
+      TrackActions.receiveSingleTrack
+    );
   }
 };
 

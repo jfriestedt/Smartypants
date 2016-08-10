@@ -30,7 +30,6 @@ const TrackActions = {
     });
   },
 
-
 };
 
 module.exports = TrackActions;

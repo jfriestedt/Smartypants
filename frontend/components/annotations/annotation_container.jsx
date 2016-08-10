@@ -61,6 +61,13 @@ const AnnotationContainer = React.createClass ({
     AnnotationActions.updateAnnotation(annotation, annotation.track.id);
   },
 
+  destroyAnnotation (e) {
+    e.preventDefault();
+    const annotation = this.state.annotation;
+    const annotationId = annotation.id;
+    AnnotationActions.destroyAnnotation(annotationId, annotation.track.id);
+  },
+
   createAnnotation () {
 
     let stateAnnotation = this.state.annotation;
@@ -102,7 +109,10 @@ const AnnotationContainer = React.createClass ({
                   onClick={this.revealEditForm}>
             Edit
           </button>
-          <button className="annotation-show-button-delete">Delete</button>
+          <button className="annotation-show-button-delete"
+                  onClick={this.destroyAnnotation}>
+            Delete
+          </button>
         </div>
       );
     }
