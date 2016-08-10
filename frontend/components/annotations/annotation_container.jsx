@@ -85,6 +85,8 @@ const AnnotationContainer = React.createClass ({
   },
 
   closeAnnotation (e) {
+    this.props.resetState();
+
     this.setState({
       annotation: {},
       annotationButtonRevealed: false,

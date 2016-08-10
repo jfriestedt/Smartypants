@@ -8,8 +8,8 @@ const TrackShow = React.createClass ({
     return {
       track: TrackStore.find(parseInt(this.props.params.trackId)),
       annotation: {},
-      selected: false,
-      focused: false,
+      selected: null,
+      focused: null,
     };
   },
 
@@ -55,8 +55,7 @@ const TrackShow = React.createClass ({
 
     this.setState({
       annotation: annotation,
-      focused: true,
-      selected: false
+      focused: parseInt(e.currentTarget.id),
     });
   },
 
@@ -67,7 +66,8 @@ const TrackShow = React.createClass ({
         docSelection.anchorNode !== docSelection.focusNode ||
         docSelection.anchorNode.parentElement.className !== "nonreferent") {
       this.setState({
-        annotation: {}
+        annotation: {},
+        focused: null
       });
       return;
     }
@@ -97,8 +97,15 @@ const TrackShow = React.createClass ({
 
     this.setState({
       annotation: annotation,
-      focused: false,
-      selected: true
+      focused: null,
+    });
+  },
+
+  resetState () {
+    debugger
+    this.setState({
+      annotation: {},
+      focused: null
     });
   },
 
@@ -107,7 +114,8 @@ const TrackShow = React.createClass ({
       return;
     } else {
       return <AnnotationContainer annotation={this.state.annotation}
-                                  trackId={this.props.params.trackId}/>;
+                                  trackId={this.props.params.trackId}
+                                  resetState={this.resetState}/>;
     }
   },
 
@@ -139,8 +147,14 @@ const TrackShow = React.createClass ({
         } else {
            newLine = false;
         }
+        let className;
+        if (this.state.focused === annotation.id) {
+          className = "referent focused";
+        } else {
+          className = "referent";
+        }
 
-        let span =  <span className="referent"
+        let span =  <span className={className}
                           id={annotation.id}
                           onClick={this.revealAnnotationShow}>
                       {sectionText}
