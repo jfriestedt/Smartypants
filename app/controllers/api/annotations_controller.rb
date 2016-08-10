@@ -4,7 +4,6 @@ class Api::AnnotationsController < ApplicationController
   end
 
   def create
-    debugger
     @annotation = Annotation.new(annotation_params)
     @annotation.author = current_user
     @annotation.track_id = params[:track_id]

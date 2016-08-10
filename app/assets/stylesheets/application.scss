@@ -594,7 +594,25 @@ hr {
   top: 1rem;
 }
 
+/* Referents */
 
+.track-lyrics {
+  display: block;
+}
+
+.referent, .nonreferent {
+  display: inline;
+}
+
+.referent {
+  background: #eee;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.referent:hover {
+  background: yellow;
+}
 
 
 

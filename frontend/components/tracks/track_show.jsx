@@ -4,15 +4,15 @@ const TrackActions = require('../../actions/track_actions');
 const AnnotationContainer = require('../annotations/annotation_container');
 
 const TrackShow = React.createClass ({
-  getInitialState () {
-    return this.getStateFromStore();
-  },
-
   getStateFromStore () {
     return {
-       track: TrackStore.find(parseInt(this.props.params.trackId)),
-       annotation: {},
-      };
+      track: TrackStore.find(parseInt(this.props.params.trackId)),
+      annotation: {}
+    };
+  },
+
+  getInitialState () {
+    return this.getStateFromStore();
   },
 
   componentDidMount () {
@@ -70,19 +70,64 @@ const TrackShow = React.createClass ({
     }
   },
 
-  buildLyricsWithReferents () {
 
-  },
 
   render () {
-    // let referents = [];
-    //
-    // if (this.state.song.annotations) {
-    //   const annotations = this.state.song.annotations;
-    //   annotations.forEach(function (annotation) {
-    //
-    //   });
-    // }
+
+    const buildLyricsWithReferents = () => {
+      const track = this.state.track;
+
+      let annotations = track.annotations.slice();
+      let startIndices = [];
+      let endIndices = [];
+      let annotationIds = [];
+      let sections = [];
+
+      annotations.forEach(function (annotation) {
+        startIndices.push(annotation.referent_start_index);
+        endIndices.push(annotation.referent_end_index);
+        annotationIds.push(annotation.id);
+      });
+
+      let i = 0;
+
+      while (i < this.state.track.lyrics.length) {
+        if (startIndices.indexOf(i) >= 0) {
+          let endIndex = endIndices[startIndices.indexOf(i)];
+          let id = annotationIds[startIndices.indexOf(i)];
+          let className = "referent";
+
+          sections.push({text: this.state.track.lyrics.slice(i, endIndex),
+                          className: className,
+                          id: id});
+
+          if (i === endIndex) {
+            i++;
+          } else {
+            i = endIndex;
+          }
+
+        } else {
+          let unannotatedLyric = "";
+          while (
+            startIndices.indexOf(i) === -1 &&
+            i < this.state.track.lyrics.length
+          ) {
+            unannotatedLyric += this.state.track.lyrics[i];
+            i++;
+          }
+
+          sections.push({ text: unannotatedLyric,
+                          className: "nonreferent"});
+        }
+      }
+
+      return (
+        <div className="track-lyrics">
+          {sections.map(function (section, id) { return (<span className={section.className} key={id} id={section.id}>{section.text}</span>); })}
+        </div>
+      );
+    };
 
     let trackInfo = <hgroup className="track-show-title-artist-inset">
                       <h1>Loading...</h1>
@@ -101,10 +146,10 @@ const TrackShow = React.createClass ({
                     <h2>{this.state.track.artist}</h2>
                     {trackAlbum}
                   </hgroup>;
-      trackLyrics = <span className="track-lyrics"
+      trackLyrics = <div  className="track-lyrics-container"
                           onMouseUp={this.sendAnnotation}>
-                      {this.state.track.lyrics}
-                    </span>;
+                      {buildLyricsWithReferents()}
+                    </div>;
       trackImg = <img src={this.state.track.image_url}></img>;
     }
 
