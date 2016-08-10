@@ -116,9 +116,21 @@ const AnnotationContainer = React.createClass ({
 
     const annotationShow = () => {
       if (this.state.annotationShowRevealed) {
+        let authorUsername = this.state.annotation.author.username;
         return (
           <div className="annotation-show">
-            {this.state.annotation.body}
+            <hgroup className="annotation-header">
+              <h3>Smartypants Annotation added by {authorUsername}</h3>
+            </hgroup>
+            <div className="annotation-body">
+              <p>{this.state.annotation.body}</p>
+            </div>
+            <div className="annotation-show-button-group">
+              <button className="annotation-show-button-edit">Edit</button>
+              <button className="annotation-show-button-delete">Delete</button>
+            </div>
+            <div className="annotation-show-vote-form-container">
+            </div>
           </div>
         );
       }
