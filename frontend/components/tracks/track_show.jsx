@@ -33,7 +33,9 @@ const TrackShow = React.createClass ({
   },
 
   sendAnnotation (e) {
-    if(document.getSelection().toString().length === 0) {
+    if (document.getSelection().toString().length === 0 ||
+        document.getSelection().anchorNode !== document.getSelection().focusNode ||
+        document.getSelection().anchorNode.parentElement.className !== "nonreferent") {
       this.setState({
         annotation: {}
       });
