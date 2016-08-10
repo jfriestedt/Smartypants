@@ -609,10 +609,12 @@ hr {
 
 .referent:hover {
   background: #ffff64;
+  transition: all 0.2s ease;
 }
 
 .referent, .nonreferent {
   display: inline;
+  font-size: 19px;
 }
 
 

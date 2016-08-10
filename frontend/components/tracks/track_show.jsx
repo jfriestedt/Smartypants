@@ -32,10 +32,39 @@ const TrackShow = React.createClass ({
     this.setState(this.getStateFromStore());
   },
 
-  sendAnnotation (e) {
-    if (document.getSelection().toString().length === 0 ||
-        document.getSelection().anchorNode !== document.getSelection().focusNode ||
-        document.getSelection().anchorNode.parentElement.className !== "nonreferent") {
+  findAnnotationById (id) {
+    let annotations = this.state.track.annotations;
+
+    for (var i = 0; i < annotations.length; i++) {
+      if (annotations[i].id === id) { return annotations[i]; }
+    }
+  },
+
+  revealAnnotationShow (e) {
+    e.preventDefault();
+
+    const track = this.state.track;
+
+    let annotationId = parseInt(e.currentTarget.id);
+    let annotation = this.findAnnotationById(annotationId);
+    let annotationBody = annotation.body;
+    let yPosition = e.pageY;
+
+    this.setState({
+      annotation: {
+        annotationId: annotationId,
+        body: annotationBody,
+        yPosition: e.pageY
+      }
+    });
+  },
+
+  sendSelection (e) {
+    const docSelection = document.getSelection();
+
+    if (docSelection.toString().length === 0 ||
+        docSelection.anchorNode !== docSelection.focusNode ||
+        docSelection.anchorNode.parentElement.className !== "nonreferent") {
       this.setState({
         annotation: {}
       });
@@ -71,17 +100,12 @@ const TrackShow = React.createClass ({
   },
 
   annotationContainer () {
-    if (!this.state.annotation.selection) {
+    if (!this.state.annotation.yPosition) {
       return;
     } else {
       return <AnnotationContainer annotation={this.state.annotation}
                                   trackId={this.props.params.trackId}/>;
     }
-  },
-
-  revealAnnotation (e) {
-    e.preventDefault();
-    console.log('Annotation revealed~!');
   },
 
   addLineBreakIfNewLine (boolean) {
@@ -115,7 +139,7 @@ const TrackShow = React.createClass ({
 
         let span =  <span className="referent"
                           id={annotation.id}
-                          onClick={this.revealAnnotation}>
+                          onClick={this.revealAnnotationShow}>
                       {sectionText}
                     </span>;
 
@@ -185,7 +209,7 @@ const TrackShow = React.createClass ({
                     {trackAlbum}
                   </hgroup>;
       trackLyrics = <div  className="track-lyrics-container"
-                          onMouseUp={this.sendAnnotation}>
+                          onMouseUp={this.sendSelection}>
                       {this.buildLyricsWithReferents()}
                     </div>;
       trackImg = <img src={this.state.track.image_url}></img>;

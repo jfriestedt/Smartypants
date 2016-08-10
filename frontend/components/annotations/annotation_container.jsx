@@ -5,11 +5,21 @@ const AnnotationActions = require('../../actions/annotation_actions');
 
 const AnnotationContainer = React.createClass ({
   getInitialState () {
-    return {
-      annotation: this.props.annotation,
-      annotationButtonRevealed: true,
-      annotationFormRevealed: false
-    };
+    if (this.props.annotation.annotationId) {
+      return {
+        annotation: this.props.annotation,
+        annotationButtonRevealed: false,
+        annotationFormRevealed: false,
+        annotationShowRevealed: true
+      };
+    } else {
+      return {
+        annotation: this.props.annotation,
+        annotationButtonRevealed: true,
+        annotationFormRevealed: false,
+        annotationShowRevealed: false
+      };
+    }
   },
 
   componentDidUpdate () {
@@ -21,7 +31,8 @@ const AnnotationContainer = React.createClass ({
     e.preventDefault();
     this.setState({
       annotationButtonRevealed: false,
-      annotationFormRevealed: true
+      annotationFormRevealed: true,
+      annotationShowRevealed: false
     });
   },
 
@@ -103,10 +114,21 @@ const AnnotationContainer = React.createClass ({
       }
     };
 
+    const annotationShow = () => {
+      if (this.state.annotationShowRevealed) {
+        return (
+          <div className="annotation-show">
+            {this.state.annotation.body}
+          </div>
+        );
+      }
+    };
+
     return (
       <div className="annotation-container" style={containerStyle}>
         {annotationBeginButton()}
         {annotationForm()}
+        {annotationShow()}
       </div>
     );
   }
