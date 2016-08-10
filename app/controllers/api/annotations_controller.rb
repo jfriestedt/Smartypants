@@ -9,11 +9,20 @@ class Api::AnnotationsController < ApplicationController
     @annotation.track_id = params[:track_id]
 
     if @annotation.save!
-      # render :show
       @track = @annotation.track
       render 'api/tracks/show'
     else
       render json: @annotation.errors.full_messages, status: 422
+    end
+  end
+
+  def update
+    @annotation = Annotation.find(params[:id].to_i)
+    if @annotation.update!(body: params[:annotation][:body]);
+      @track = @annotation.track
+      render 'api/tracks/show'
+    else
+      render json: @annotation.errors.full_message, status: 422
     end
   end
 

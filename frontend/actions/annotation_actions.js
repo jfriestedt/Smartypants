@@ -16,6 +16,14 @@ const AnnotationActions = {
       trackId,
       TrackActions.receiveSingleTrack
     );
+  },
+
+  updateAnnotation (annotation, trackId) {
+    AnnotationApiUtil.updateAnnotation(
+      annotation,
+      trackId,
+      TrackActions.receiveSingleTrack
+    );
   }
 };
 

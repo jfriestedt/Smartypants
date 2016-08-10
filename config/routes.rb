@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :users, only: [:create]
     resource :session, only: [:create, :destroy, :show]
     resources :tracks, only: [:create, :index, :show] do
-      resources :annotations, only: [:create, :show]
+      resources :annotations, only: [:create, :show, :update]
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

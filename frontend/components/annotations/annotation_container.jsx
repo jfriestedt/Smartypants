@@ -47,8 +47,21 @@ const AnnotationContainer = React.createClass ({
     });
   },
 
-  createAnnotation (e) {
+  handleClick (e) {
     e.preventDefault();
+    if (this.state.annotation.id) {
+      this.updateAnnotation();
+    } else {
+      this.createAnnotation();
+    }
+  },
+
+  updateAnnotation () {
+    const annotation = this.state.annotation;
+    AnnotationActions.updateAnnotation(annotation, annotation.track.id);
+  },
+
+  createAnnotation () {
 
     let stateAnnotation = this.state.annotation;
     let trackId = parseInt(this.props.trackId);
@@ -125,7 +138,7 @@ const AnnotationContainer = React.createClass ({
             <hr></hr>
             <div className="annotation-form-button-group">
               <button className="annotation-form-button-save"
-                      onClick={this.createAnnotation}>
+                      onClick={this.handleClick}>
                       Save
               </button>
               <button className="annotation-form-button-cancel"
