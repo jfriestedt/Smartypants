@@ -2,6 +2,7 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 const Autosize = require('autosize');
 const AnnotationActions = require('../../actions/annotation_actions');
+const SessionStore = require('../../stores/session_store');
 
 const AnnotationContainer = React.createClass ({
   getInitialState () {
@@ -80,6 +81,20 @@ const AnnotationContainer = React.createClass ({
     });
   },
 
+  buttonGroup () {
+    if (SessionStore.currentUser().id === this.state.annotation.author.id) {
+      return (
+        <div className="annotation-show-button-group">
+          <button className="annotation-show-button-edit"
+                  onClick={this.revealEditForm}>
+            Edit
+          </button>
+          <button className="annotation-show-button-delete">Delete</button>
+        </div>
+      );
+    }
+  },
+
   render () {
 
     let containerStyle = {
@@ -134,13 +149,7 @@ const AnnotationContainer = React.createClass ({
             <div className="annotation-body">
               <p>{this.state.annotation.body}</p>
             </div>
-            <div className="annotation-show-button-group">
-              <button className="annotation-show-button-edit"
-                      onClick={this.revealEditForm}>
-                Edit
-              </button>
-              <button className="annotation-show-button-delete">Delete</button>
-            </div>
+            {this.buttonGroup()}
             <div className="annotation-show-vote-form-container">
             </div>
           </div>
