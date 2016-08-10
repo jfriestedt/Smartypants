@@ -84,64 +84,79 @@ const TrackShow = React.createClass ({
     console.log('Annotation revealed~!');
   },
 
+  addLineBreakIfNewLine (boolean) {
+    if (boolean) {
+      return (<br />);
+    } else {
+      return;
+    }
+  },
+
   buildLyricsWithReferents () {
     const track = this.state.track;
-
     let annotations = track.annotations.slice();
-    let startIndices = [];
-    let endIndices = [];
-    let annotationIds = [];
     let sections = [];
+    let annotation;
+    let currentIndex = 0;
+    let newLine;
 
-    annotations.forEach(function (annotation) {
-      startIndices.push(annotation.referent_start_index);
-      endIndices.push(annotation.referent_end_index);
-      annotationIds.push(annotation.id);
-    });
+    annotation = annotations.shift();
+    while (annotations.length > 0) {
+      if (currentIndex === annotation.referent_start_index) {
+        let sectionText = this.state.track.lyrics.slice(
+                            currentIndex,
+                            annotation.referent_end_index + 1);
 
-    let i = 0;
-
-    while (i < this.state.track.lyrics.length) {
-      if (startIndices.indexOf(i) >= 0) {
-        let endIndex = endIndices[startIndices.indexOf(i)];
-        let id = annotationIds[startIndices.indexOf(i)];
-        sections.push({text: this.state.track.lyrics.slice(i, endIndex),
-          className: "referent",
-          id: id,
-          onClick: this.revealAnnotation});
-
-          if (i === endIndex) {
-            i++;
-          } else {
-            i = endIndex;
-          }
-
-      } else {
-        let unannotatedLyric = "";
-
-        while (
-          startIndices.indexOf(i) === -1 &&
-          i < this.state.track.lyrics.length
-        ) {
-          unannotatedLyric += this.state.track.lyrics[i];
-          i++;
+        if (sectionText.slice(-1) === "\n") {
+           newLine = true;
+        } else {
+           newLine = false;
         }
 
-        sections.push({ text: unannotatedLyric,
-                        className: "nonreferent"});
+        let span =  <span className="referent"
+                          id={annotation.id}
+                          onClick={this.revealAnnotation}>
+                      {sectionText}
+                    </span>;
+
+        sections.push(span);
+        currentIndex = annotation.referent_end_index + 1;
+        annotation = annotations.shift();
+      } else {
+        let sectionText = this.state.track.lyrics.slice(
+                            currentIndex,
+                            annotation.referent_start_index);
+
+        if (sectionText.slice(-1) === "\n") {
+          newLine = true;
+        } else {
+          newLine = false;
+        }
+
+        let span =  <span className="nonreferent">
+                      {sectionText}
+                    </span>;
+
+        sections.push(span);
+        currentIndex = annotation.referent_start_index;
       }
     }
 
-  return (
-    <div className="track-lyrics">
-      {sections.map(function (section, id) {
-        return (
-          <span className={section.className} key={id} id={section.id} onClick={section.onClick}>
-            {section.text}
-          </span>);
-        })}
-      </div>
-    );
+    let bookendSpan;
+    if (currentIndex === 0) {
+      bookendSpan = <span className="nonreferent">
+                      {this.state.track.lyrics}
+                    </span>;
+    } else if (currentIndex < this.state.track.lyrics.length){
+      bookendSpan = <span className="nonreferent">
+                      {this.state.track.lyrics.slice(currentIndex,
+                      this.state.track.lyrics.length)}
+                    </span>;
+    }
+
+    sections.push(bookendSpan);
+
+    return (<div className="track-lyrics">{sections}</div>);
   },
 
   render () {
