@@ -8,8 +8,10 @@ class Api::AnnotationsController < ApplicationController
     @annotation.author = current_user
     @annotation.track_id = params[:track_id]
 
-    if @annotation.save
-      render :show
+    if @annotation.save!
+      # render :show
+      @track = @annotation.track
+      render 'api/tracks/show'
     else
       render json: @annotation.errors.full_messages, status: 422
     end

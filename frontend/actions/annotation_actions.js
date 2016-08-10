@@ -1,6 +1,7 @@
-const AnnotationConstants = require('../constants/track_constants');
+const AnnotationConstants = require('../constants/annotation_constants');
 const AnnotationApiUtil = require('../util/annotation_api_util');
 const AppDispatcher = require('../dispatcher/dispatcher');
+const TrackActions = require('./track_actions');
 
 const AnnotationActions = {
   fetchSingleAnnotation (annotationId) {
@@ -14,7 +15,7 @@ const AnnotationActions = {
     AnnotationApiUtil.createAnnotation(
       annotation,
       trackId,
-      AnnotationActions.receiveSingleAnnotation
+      TrackActions.receiveSingleTrack
     );
   },
 

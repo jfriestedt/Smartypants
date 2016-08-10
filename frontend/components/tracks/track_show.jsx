@@ -1,6 +1,7 @@
 const React = require('react');
 const TrackStore = require('../../stores/track_store');
 const TrackActions = require('../../actions/track_actions');
+const AnnotationStore = require('../../stores/annotation_store');
 const AnnotationContainer = require('../annotations/annotation_container');
 
 const TrackShow = React.createClass ({
@@ -17,11 +18,13 @@ const TrackShow = React.createClass ({
 
   componentDidMount () {
     this.trackListener = TrackStore.addListener(this._onChange);
+    this.annotationListener = AnnotationStore.addListener(this._onChange);
     TrackActions.fetchSingleTrack(parseInt(this.props.params.trackId));
   },
 
   componentWillUnmount () {
     this.trackListener.remove();
+    this.annotationListener.remove();
   },
 
   componentWillReceiveProps (newProps) {
@@ -42,12 +45,19 @@ const TrackShow = React.createClass ({
 
     let startIndex = document.getSelection().anchorOffset;
     let endIndex = document.getSelection().focusOffset;
+    let element = document.getSelection().anchorNode.parentElement;
 
     if (startIndex > endIndex) {
       startIndex = [endIndex, endIndex = startIndex][0];
     }
 
     const selection = this.state.track.lyrics.slice(startIndex, endIndex);
+
+    while (element.previousSibling) {
+      startIndex += element.previousSibling.innerText.length;
+      endIndex += element.previousSibling.innerText.length;
+      element = element.previousSibling;
+    }
 
     const annotation = {
       startIndex: startIndex,
@@ -69,8 +79,6 @@ const TrackShow = React.createClass ({
                                   trackId={this.props.params.trackId}/>;
     }
   },
-
-
 
   render () {
 
@@ -130,7 +138,12 @@ const TrackShow = React.createClass ({
 
       return (
         <div className="track-lyrics">
-          {sections.map(function (section, id) { return (<span className={section.className} key={id} id={section.id}>{section.text}</span>); })}
+          {sections.map(function (section, id) {
+             return (
+               <span className={section.className} key={id} id={section.id}>
+                 {section.text}
+               </span>);
+             })}
         </div>
       );
     };

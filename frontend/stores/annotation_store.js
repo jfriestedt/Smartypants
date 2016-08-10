@@ -20,11 +20,12 @@ AnnotationStore.find = (annotationId) => {
 
 const resetSingleAnnotation = (annotation) => {
   for (var i = 0; i < _annotations.length; i++) {
-    if (_annotations[i] === annotation) {
+    if (_annotations[i].id === annotation.id) {
       _annotations.splice(i, 1);
-      _annotations.push(annotation);
     }
   }
+  debugger;
+  _annotations.push(annotation);
 };
 
 AnnotationStore.__onDispatch = (payload) => {
