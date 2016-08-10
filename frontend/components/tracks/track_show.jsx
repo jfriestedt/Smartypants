@@ -74,6 +74,12 @@ const TrackShow = React.createClass ({
 
   render () {
 
+    if (!this.state.track || !this.state.track.annotations) {
+      return (
+        <div></div>
+      );
+    }
+
     const buildLyricsWithReferents = () => {
       const track = this.state.track;
 
