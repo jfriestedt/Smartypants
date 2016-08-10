@@ -5,7 +5,7 @@ const AnnotationActions = require('../../actions/annotation_actions');
 
 const AnnotationContainer = React.createClass ({
   getInitialState () {
-    if (this.props.annotation.annotationId) {
+    if (this.props.annotation.id) {
       return {
         annotation: this.props.annotation,
         annotationButtonRevealed: false,

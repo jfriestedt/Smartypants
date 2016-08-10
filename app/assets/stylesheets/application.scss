@@ -612,6 +612,10 @@ hr {
   transition: all 0.2s ease;
 }
 
+.referent:focus {
+  background: #ffff64;
+}
+
 .referent, .nonreferent {
   display: inline;
   font-size: 19px;

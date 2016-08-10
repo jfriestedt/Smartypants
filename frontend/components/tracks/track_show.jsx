@@ -7,7 +7,9 @@ const TrackShow = React.createClass ({
   getStateFromStore () {
     return {
       track: TrackStore.find(parseInt(this.props.params.trackId)),
-      annotation: {}
+      annotation: {},
+      selected: false,
+      focused: false,
     };
   },
 
@@ -47,15 +49,14 @@ const TrackShow = React.createClass ({
 
     let annotationId = parseInt(e.currentTarget.id);
     let annotation = this.findAnnotationById(annotationId);
+    annotation.yPosition = e.pageY;
     let annotationBody = annotation.body;
     let yPosition = e.pageY;
 
     this.setState({
-      annotation: {
-        annotationId: annotationId,
-        body: annotationBody,
-        yPosition: e.pageY
-      }
+      annotation: annotation,
+      focused: true,
+      selected: false
     });
   },
 
@@ -95,12 +96,14 @@ const TrackShow = React.createClass ({
     };
 
     this.setState({
-      annotation: annotation
+      annotation: annotation,
+      focused: false,
+      selected: true
     });
   },
 
   annotationContainer () {
-    if (!this.state.annotation.yPosition) {
+    if (Object.getOwnPropertyNames(this.state.annotation).length === 0) {
       return;
     } else {
       return <AnnotationContainer annotation={this.state.annotation}
