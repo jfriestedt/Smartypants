@@ -71,6 +71,15 @@ const AnnotationContainer = React.createClass ({
     });
   },
 
+  revealEditForm (e) {
+    e.preventDefault();
+    this.setState({
+      annotationButtonRevealed: false,
+      annotationFormRevealed: true,
+      annotationShowRevealed: false
+    });
+  },
+
   render () {
 
     let containerStyle = {
@@ -126,7 +135,10 @@ const AnnotationContainer = React.createClass ({
               <p>{this.state.annotation.body}</p>
             </div>
             <div className="annotation-show-button-group">
-              <button className="annotation-show-button-edit">Edit</button>
+              <button className="annotation-show-button-edit"
+                      onClick={this.revealEditForm}>
+                Edit
+              </button>
               <button className="annotation-show-button-delete">Delete</button>
             </div>
             <div className="annotation-show-vote-form-container">
