@@ -9,7 +9,6 @@ const CommentsContainer = React.createClass({
     return({ body: "" });
   },
 
-  // TODO: Should this be componentDidMount?
   componentDidUpdate () {
     const commentFormTextArea = ReactDOM.findDOMNode(this.refs.textarea);
     Autosize(commentFormTextArea);
