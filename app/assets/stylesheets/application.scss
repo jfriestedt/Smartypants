@@ -214,6 +214,12 @@ hr {
       /* float: right; */
       margin-top: 0.5rem;
   }
+
+  .guest {
+    font-size: 14px;
+    font-weight: 400;
+    padding: 5px 9px;
+  }
 }
 
 /* Modal */
@@ -599,31 +605,31 @@ hr {
     resize: none
   }
 
-  .annotation-form-button-group > button {
-    display: inline-block;
-    font-size: 16px;
-    font-weight: 600;
-    padding: .25rem .4rem;
-    margin-right: 5px;
-    transition: all 0.2s ease;
-  }
+}
+.form-button-group > button {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 600;
+  padding: .25rem .4rem;
+  margin-right: 5px;
+  transition: all 0.2s ease;
+}
 
-  .annotation-form-button-save {
-    border: 2px solid #0ecb27;
-    color: #0ecb27;
-  }
+.form-button-save {
+  border: 2px solid #0ecb27;
+  color: #0ecb27;
+}
 
-  .annotation-form-button-save:hover {
-    background-color: rgba(14,203,39,.2);
-  }
+.form-button-save:hover {
+  background-color: rgba(14,203,39,.2);
+}
 
-  .annotation-form-button-cancel {
-    color: #9a9a9a;
-  }
+.annotation-form-button-cancel {
+  color: #9a9a9a;
+}
 
-  .annotation-form-button-cancel:hover {
-    background-color: rgba(154,154,154,.2);
-  }
+.annotation-form-button-cancel:hover {
+  background-color: rgba(154,154,154,.2);
 }
 
 .annotation-container:before {
@@ -711,7 +717,32 @@ hr {
   }
 }
 
+/* Comments */
 
+.comments-container {
+  .comments-form {
+    background: rgba(204, 204, 204, .2);
+    margin-top: 1rem;
+    padding: .75rem;
+    width: 80%;
+    box-sizing: border-box;
+
+    textarea {
+      background: #fff;
+      border: .15rem solid #ccc;
+      padding: .25rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      font-size: 15px;
+      resize: vertical;
+      width: 100%;
+    }
+
+    textarea:focus {
+      box-shadow: #99a7ee 0 0 .3em inset;
+    }
+  }
+}
 
 
 
