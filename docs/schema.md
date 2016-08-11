@@ -5,7 +5,7 @@ column name       | data type | details
 ------------------|-----------|-----------------------
 id                | integer   | not null, primary key
 title             | string    | not null
-album             | integer   | 
+album             | integer   |
 artist            | string    | not null
 image_file_name   | string    |
 image_content_type| string    |
@@ -32,7 +32,6 @@ column name | data type | details
 id          | integer   | not null, primary key
 author_id   | integer   | not null, foreign key (references users), indexed
 track_id    | integer   | not null, foreign key (references tracks), indexed
-date        | datetime  | not null
 body        | text      | not null
 
 ## annotation_comments
@@ -41,7 +40,6 @@ column name | data type | details
 id          | integer   | not null, primary key
 author_id   | integer   | not null, foreign key (references users), indexed
 annotation_id integer   | not null, foreign key (references annotations), indexed
-date        | datetime  | not null
 body        | text      | not null
 
 ## tags
