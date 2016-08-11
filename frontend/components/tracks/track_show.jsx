@@ -124,9 +124,8 @@ const TrackShow = React.createClass ({
     let sections = [];
     let annotation;
     let currentIndex = 0;
-
     annotation = annotations.shift();
-    while (annotations.length > 0) {
+    while (Boolean(annotation) || annotations.length > 0) {
       if (currentIndex === annotation.referent_start_index) {
         let sectionText = this.state.track.lyrics.slice(
                             currentIndex,
