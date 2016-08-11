@@ -22,7 +22,7 @@ class Api::AnnotationsController < ApplicationController
       @track = @annotation.track
       render 'api/tracks/show'
     else
-      render json: @annotation.errors.full_message, status: 422
+      render json: @annotation.errors.full_messages, status: 422
     end
   end
 
