@@ -22,10 +22,10 @@
 /app/assets/javascripts/bundle.js.map
 /app/assets/javascripts/comments.coffee
 /app/assets/javascripts/tracks.coffee
-.DS_Store
 app/assets/stylesheets/comments.scss
 app/helpers/comments_helper.rb
 test/controllers/comments_controller_test.rb
+.DS_Store
 
 # Ignore application configuration
 /config/application.yml
