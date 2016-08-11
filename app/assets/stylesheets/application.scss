@@ -643,12 +643,28 @@ hr {
   }
 
   .annotation-show-button-group > button {
-    border: 2px solid black;
     margin-right: 0.3rem;
-    padding: .2rem 0.5rem;
-    font-size: 15px;
+    padding: 0.3rem 0.5rem;
+    font-size: 16px;
     font-weight: 600;
     display: inline-block;
+    transition: all 0.1s ease;
+  }
+
+  .annotation-show-button-edit {
+    border: 2px solid black;
+  }
+
+  .annotation-show-button-edit:hover {
+    background: rgba(204, 204, 204, .2);
+  }
+
+  .annotation-show-button-delete {
+    color: #9a9a9a
+  }
+
+  .annotation-show-button-delete:hover {
+    background: rgba(154, 154, 154, .2)
   }
 
   // hgroup {
