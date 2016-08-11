@@ -1,6 +1,7 @@
 const TrackConstants = require('../constants/track_constants');
 const TrackApiUtil = require('../util/track_api_util');
 const AppDispatcher = require('../dispatcher/dispatcher');
+const CommentConstants = require('../constants/comment_constants');
 
 const TrackActions = {
 
@@ -30,6 +31,12 @@ const TrackActions = {
     });
   },
 
+  receiveSingleComment (comment) {
+    AppDispatcher.dispatch({
+      actionType: CommentConstants.TRACK_COMMENT_RECEIVED,
+      comment: comment
+    });
+  }
 };
 
 module.exports = TrackActions;

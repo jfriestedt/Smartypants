@@ -1,6 +1,7 @@
 const AnnotationApiUtil = require('../util/annotation_api_util');
 const AppDispatcher = require('../dispatcher/dispatcher');
 const TrackActions = require('./track_actions');
+const CommentConstants = require('../constants/comment_constants');
 
 const AnnotationActions = {
   fetchSingleAnnotation (annotationId) {
@@ -32,6 +33,13 @@ const AnnotationActions = {
       trackId,
       TrackActions.receiveSingleTrack
     );
+  },
+
+  receiveSingleComment (comment) {
+    AppDispatcher.dispatch({
+      actionType: CommentConstants.ANNOTATION_COMMENT_RECEIVED,
+      comment: comment
+    });
   }
 };
 

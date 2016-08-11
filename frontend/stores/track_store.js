@@ -1,6 +1,7 @@
 const Store = require('flux/utils').Store;
 const AppDispatcher = require('../dispatcher/dispatcher.js');
 const TrackConstants = require('../constants/track_constants');
+const CommentConstants = require('../constants/comment_constants');
 
 const TrackStore = new Store(AppDispatcher);
 
@@ -31,6 +32,25 @@ const resetSingleTrack = (track) => {
   _tracks.push(track);
 };
 
+const addAnnotationComment = (comment) => {
+  for (var i = 0; i < _tracks.length; i++) {
+    for (var j = 0; j < _tracks[i].annotations.length; j++) {
+      if (_tracks[i].annotations[j].id === comment.commentable_id) {
+        _tracks[i].annotations[j].comments.push(comment);
+      }
+    }
+  }
+
+};
+
+const addTrackComment = (comment) => {
+  for (var i = 0; i < _tracks.length; i++) {
+    if (comment.commentable_id === _tracks[i].id) {
+      _tracks[i].comments.push(comment);
+    }
+  }
+};
+
 TrackStore.__onDispatch = (payload) => {
   switch (payload.actionType) {
     case TrackConstants.TRACKS_RECEIVED:
@@ -39,6 +59,14 @@ TrackStore.__onDispatch = (payload) => {
       break;
     case TrackConstants.TRACK_RECEIVED:
       resetSingleTrack(payload.track);
+      TrackStore.__emitChange();
+      break;
+    case CommentConstants.ANNOTATION_COMMENT_RECEIVED:
+      addAnnotationComment(payload.comment);
+      TrackStore.__emitChange();
+      break;
+    case CommentConstants.TRACK_COMMENT_RECEIVED:
+      addTrackComment(payload.comment);
       TrackStore.__emitChange();
       break;
   }

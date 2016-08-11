@@ -1,6 +1,7 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const Autosize = require('autosize');
+const CommentActions = require('../../actions/comment_actions');
 
 const CommentsContainer = React.createClass({
   getInitialState () {
@@ -9,8 +10,8 @@ const CommentsContainer = React.createClass({
 
   // TODO: Should this be componentDidMount?
   componentDidUpdate () {
-    const annotationFormTextArea = ReactDOM.findDOMNode(this.refs.textarea);
-    Autosize(annotationFormTextArea);
+    const commentFormTextArea = ReactDOM.findDOMNode(this.refs.textarea);
+    Autosize(commentFormTextArea);
   },
 
   updateBody (e) {
@@ -18,8 +19,19 @@ const CommentsContainer = React.createClass({
     let body = e.target.value;
 
     this.setState({
-      body: body
+      body: body,
     });
+  },
+
+  handleClick (e) {
+    e.preventDefault();
+    let comment = {
+      body: this.state.body,
+      commentable_type: this.props.commentableType,
+      commentable_id: this.props.commentable.id
+    };
+
+    CommentActions.createComment(comment);
   },
 
   render () {

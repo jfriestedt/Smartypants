@@ -123,7 +123,7 @@ const AnnotationContainer = React.createClass ({
 
   annotationCommentForm () {
     return (
-      <CommentsContainer  commentableType="annotation"
+      <CommentsContainer  commentableType="Annotation"
                           commentable={this.state.annotation}
                           author={SessionStore.currentUser()}/>
     );
