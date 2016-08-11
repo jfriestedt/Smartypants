@@ -33,6 +33,11 @@ class User < ActiveRecord::Base
     foreign_key: :submitter_id,
     primary_key: :id
 
+  has_many :comments,
+    class_name: "Comment",
+    foreign_key: :author_id,
+    primary_key: :id
+
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
 
