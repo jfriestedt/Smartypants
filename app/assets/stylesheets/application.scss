@@ -720,10 +720,10 @@ hr {
 /* Comments */
 
 .comments-container {
+  background: rgba(204, 204, 204, .2);
+  padding: .75rem;
+
   .comments-form {
-    background: rgba(204, 204, 204, .2);
-    margin-top: 1rem;
-    padding: .75rem;
     width: 80%;
     box-sizing: border-box;
 
@@ -740,6 +740,33 @@ hr {
 
     textarea:focus {
       box-shadow: #99a7ee 0 0 .3em inset;
+    }
+  }
+
+  .comment {
+    border-top: 1px solid #99a7ee;
+    margin-top: 1rem;
+    padding-top: 1rem;
+
+    .comment-header {
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: space-between;
+
+      h3 {
+        font-weight: 600;
+        font-size: 15px;
+      }
+
+      h4 {
+        font-size: 11px;
+        font-weight: 600;
+        color: darkgrey;
+      }
+    }
+
+    p {
+      font-weight: 500;
     }
   }
 }

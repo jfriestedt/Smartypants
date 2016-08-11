@@ -35,9 +35,6 @@ const CommentsContainer = React.createClass({
   },
 
   render () {
-    // {this.props.commentable.comments.map(function (comment) {
-    //   return (<Comment comment={comment}/>);
-    // })}
     return (
       <div className="comments-container">
         <div className="comments-form">
@@ -53,8 +50,19 @@ const CommentsContainer = React.createClass({
             </button>
           </div>
         </div>
-        <div className="comments-index">
-        </div>
+        <ul className="comments-index">
+          {this.props.commentable.comments.map(function (comment, i) {
+            return (
+              <li className="comment" key={i}>
+                <hgroup className="comment-header">
+                  <h3>{comment.author.username}</h3>
+                  <h4>{comment.time_ago} ago</h4>
+                </hgroup>
+                <p>{comment.body}</p>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     );
   }
