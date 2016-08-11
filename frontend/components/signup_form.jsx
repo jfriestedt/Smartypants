@@ -68,7 +68,7 @@ const SigninForm = React.createClass({
               Already have an account? <button
                                           className="form-switch-button"
                                           onClick={this.props.switchForms}>
-                                          Sign Up!
+                                          Sign In!
                                         </button>
             </span>
 

@@ -70,7 +70,7 @@ const LoginForm = React.createClass({
 
           <div className="form-button-group">
             <input className="form-button" type="submit" value="Login" />
-            <button className="form-button" onClick={this._guestLogin}>
+            <button className="guest form-button" onClick={this._guestLogin}>
               Guest Login
             </button>
           </div>
