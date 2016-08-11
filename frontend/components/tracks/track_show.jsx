@@ -118,21 +118,12 @@ const TrackShow = React.createClass ({
     }
   },
 
-  addLineBreakIfNewLine (boolean) {
-    if (boolean) {
-      return (<br />);
-    } else {
-      return;
-    }
-  },
-
   buildLyricsWithReferents () {
     const track = this.state.track;
     let annotations = track.annotations.slice();
     let sections = [];
     let annotation;
     let currentIndex = 0;
-    let newLine;
 
     annotation = annotations.shift();
     while (annotations.length > 0) {
@@ -140,12 +131,6 @@ const TrackShow = React.createClass ({
         let sectionText = this.state.track.lyrics.slice(
                             currentIndex,
                             annotation.referent_end_index + 1);
-
-        if (sectionText.slice(-1) === "\n") {
-           newLine = true;
-        } else {
-           newLine = false;
-        }
         let className;
         if (this.state.focused === annotation.id) {
           className = "referent focused";
@@ -167,12 +152,6 @@ const TrackShow = React.createClass ({
         let sectionText = this.state.track.lyrics.slice(
                             currentIndex,
                             annotation.referent_start_index);
-
-        if (sectionText.slice(-1) === "\n") {
-          newLine = true;
-        } else {
-          newLine = false;
-        }
 
         let span =  <span className="nonreferent"
                           key={currentIndex}>
