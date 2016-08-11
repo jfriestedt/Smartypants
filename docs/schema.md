@@ -42,11 +42,6 @@ author_id   | integer   | not null, foreign key (references users), indexed
 annotation_id integer   | not null, foreign key (references annotations), indexed
 body        | text      | not null
 
-## tags
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-name        | string    | not null
 
 ## votes
 column name | data type | details
@@ -63,3 +58,9 @@ id              | integer   | not null, primary key
 username        | string    | not null, indexed, unique
 password_digest | string    | not null
 session_token   | string    | not null, indexed, unique
+
+## tags
+column name | data type | details
+------------|-----------|-----------------------
+id          | integer   | not null, primary key
+name        | string    | not null

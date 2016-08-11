@@ -22,13 +22,19 @@ class Annotation < ActiveRecord::Base
     presence: true
   )
 
-  belongs_to :author,
+  belongs_to(
+    :author,
     class_name: "User",
     foreign_key: :author_id,
     primary_key: :id
+  )
 
-  belongs_to :track,
+  belongs_to(
+    :track,
     class_name: "Track",
     foreign_key: :track_id,
     primary_key: :id
+  )
+
+  has_many :comments, as: :commentable
 end

@@ -19,7 +19,6 @@
 class Track < ActiveRecord::Base
   validates :title, :artist, :lyrics, presence: true
 
-  # TODO: Default image not working???
   has_attached_file :image, default_url: "Default.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
@@ -30,8 +29,12 @@ class Track < ActiveRecord::Base
     primary_key: :id
   )
 
-  has_many :annotations,
+  has_many(
+    :annotations,
     class_name: "Annotation",
     foreign_key: :track_id,
     primary_key: :id
+  )
+
+  has_many :comments, as: :commentable
 end
