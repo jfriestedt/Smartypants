@@ -102,7 +102,6 @@ const TrackShow = React.createClass ({
   },
 
   resetState () {
-    debugger
     this.setState({
       annotation: {},
       focused: null
@@ -156,6 +155,7 @@ const TrackShow = React.createClass ({
 
         let span =  <span className={className}
                           id={annotation.id}
+                          key={currentIndex}
                           onClick={this.revealAnnotationShow}>
                       {sectionText}
                     </span>;
@@ -174,7 +174,8 @@ const TrackShow = React.createClass ({
           newLine = false;
         }
 
-        let span =  <span className="nonreferent">
+        let span =  <span className="nonreferent"
+                          key={currentIndex}>
                       {sectionText}
                     </span>;
 
@@ -185,11 +186,13 @@ const TrackShow = React.createClass ({
 
     let bookendSpan;
     if (currentIndex === 0) {
-      bookendSpan = <span className="nonreferent">
+      bookendSpan = <span className="nonreferent"
+                          key={currentIndex}>
                       {this.state.track.lyrics}
                     </span>;
     } else if (currentIndex < this.state.track.lyrics.length){
-      bookendSpan = <span className="nonreferent">
+      bookendSpan = <span className="nonreferent"
+                          key={currentIndex}>
                       {this.state.track.lyrics.slice(currentIndex,
                       this.state.track.lyrics.length)}
                     </span>;
