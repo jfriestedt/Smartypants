@@ -67,50 +67,57 @@ const TrackForm = React.createClass({
             <h2>Primary info</h2>
             <small>* required</small>
           </header>
-
-          <div className="track-form-column">
-            <div className="track-form">
-              <label className="track-field-label">BY *</label>
-              <input  type="text"
-                className="track-field-input"
-                value={this.state.artist}
-                placeholder="The primary artist, author, creator, etc."
-                onChange={this.update("artist")}/>
-
-              <label className="track-field-label">TITLE *</label>
-              <input  type="text"
-                className="track-field-input"
-                value={this.state.title}
-                placeholder="Title"
-                onChange={this.update("title")}/>
-
-              <label className="track-field-label">ALBUM</label>
+          <div className="track-form-columns-container">
+            <div className="track-form-column">
+              <div className="track-form">
+                <label className="track-field-label">BY *</label>
                 <input  type="text"
                   className="track-field-input"
-                  value={this.state.album}
-                  placeholder="Album"
-                  onChange={this.update("album")}/>
+                  value={this.state.artist}
+                  placeholder="The primary artist, author, creator, etc."
+                  onChange={this.update("artist")}/>
 
-              <label className="track-field-label">LYRICS *</label>
-              <textarea className="track-field-input lyrics-input"
-                rows="20"
-                cols="40"
-                value={this.state.lyrics}
-                onChange={this.update("lyrics")}/>
+                <label className="track-field-label">TITLE *</label>
+                <input  type="text"
+                  className="track-field-input"
+                  value={this.state.title}
+                  placeholder="Title"
+                  onChange={this.update("title")}/>
 
-              <input type="file" onChange={this.updateFile}/>
+                <label className="track-field-label">ALBUM</label>
+                  <input  type="text"
+                    className="track-field-input"
+                    value={this.state.album}
+                    placeholder="Album"
+                    onChange={this.update("album")}/>
 
-              <input
-                type="submit"
-                className="form-button"
-                value="Submit"
-                onClick={this.handleSubmit}/>
+                <label className="track-field-label">LYRICS *</label>
+                <textarea className="track-field-input lyrics-input"
+                  rows="20"
+                  cols="40"
+                  value={this.state.lyrics}
+                  onChange={this.update("lyrics")}/>
+              </div>
+            </div>
+            <div className="track-form-column">
+              <div className="track-form">
+                <label className="track-field-label">IMAGE</label>
+                <input type="file" onChange={this.updateFile}/>
 
-              <img src={this.state.imageUrl}></img>
+                <label className="track-field-label">IMAGE PREVIEW</label>
+                <div className="track-form-image-preview-container">
+
+                  <img src={this.state.imageUrl}></img>
+
+                  <input
+                    type="submit"
+                    className="form-button"
+                    value="Submit"
+                    onClick={this.handleSubmit}/>
+                </div>
+              </div>
             </div>
           </div>
-
-          <div className="track-form-column"></div>
         </main>
       </section>
     );
