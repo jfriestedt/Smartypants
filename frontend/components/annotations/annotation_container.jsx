@@ -3,6 +3,7 @@ const ReactDOM = require('react-dom');
 const Autosize = require('autosize');
 const AnnotationActions = require('../../actions/annotation_actions');
 const SessionStore = require('../../stores/session_store');
+const CommentsContainer = require('../comments/comments_container');
 
 const AnnotationContainer = React.createClass ({
   getInitialState () {
@@ -120,6 +121,14 @@ const AnnotationContainer = React.createClass ({
     }
   },
 
+  annotationCommentForm () {
+    return (
+      <CommentsContainer  commentableType="annotation"
+                          commentable={this.state.annotation}
+                          author={SessionStore.currentUser()}/>
+    );
+  },
+
   render () {
 
     let containerStyle = {
@@ -148,8 +157,8 @@ const AnnotationContainer = React.createClass ({
                       value={this.state.annotation.body}
                       onChange={this.updateBody}/>
             <hr></hr>
-            <div className="annotation-form-button-group">
-              <button className="annotation-form-button-save"
+            <div className="form-button-group">
+              <button className="form-button-save"
                       onClick={this.handleClick}>
                       Save
               </button>
@@ -175,6 +184,7 @@ const AnnotationContainer = React.createClass ({
               <p>{this.state.annotation.body}</p>
             </div>
             {this.buttonGroup()}
+            {this.annotationCommentForm()}
             <div className="annotation-show-vote-form-container">
             </div>
           </div>
