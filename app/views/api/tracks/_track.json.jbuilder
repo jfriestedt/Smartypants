@@ -5,3 +5,6 @@ json.album track.album
 json.lyrics track.lyrics
 json.image_url asset_path(track.image.url)
 json.submitter track.submitter
+json.comments track.comments do |comment|
+  json.partial! 'api/comments/comment', comment: comment
+end

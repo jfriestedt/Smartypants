@@ -2,6 +2,7 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 const Autosize = require('autosize');
 const CommentActions = require('../../actions/comment_actions');
+const SessionStore = require('../../stores/session_store');
 
 const CommentsContainer = React.createClass({
   getInitialState () {
@@ -34,22 +35,34 @@ const CommentsContainer = React.createClass({
     CommentActions.createComment(comment);
   },
 
-  render () {
-    return (
-      <div className="comments-container">
+  commentsForm () {
+    if (SessionStore.isUserLoggedIn()) {
+      return (
         <div className="comments-form">
           <textarea ref="textarea"
-                    rows="2"
-                    placeholder="Please, enlighten us..."
-                    value={this.state.body}
-                    onChange={this.updateBody}/>
+            rows="2"
+            placeholder="Please, enlighten us..."
+            value={this.state.body}
+            onChange={this.updateBody}/>
           <div className="form-button-group">
             <button className="form-button-save"
-                    onClick={this.handleClick}>
-                    Submit
+              onClick={this.handleClick}>
+              Submit
             </button>
           </div>
         </div>
+      );
+    } else {
+      return (
+        <h3 className="form-sign-in-prompt">Sign in to leave a comment!</h3>
+      );
+    }
+  },
+
+  render () {
+    return (
+      <div className="comments-container">
+        {this.commentsForm()}
         <ul className="comments-index">
           {this.props.commentable.comments.map(function (comment, i) {
             return (

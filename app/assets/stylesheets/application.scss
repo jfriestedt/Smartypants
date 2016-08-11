@@ -437,13 +437,15 @@ hr {
       width: 58%;
       box-sizing: border-box;
       font-size: 19px;
+      display: block;
+      padding: 0 1rem;
+      padding-top: 1em;
 
       .track-lyrics {
         white-space: pre-wrap;
-        padding: 0 1rem;
-        padding-top: 1em;
         line-height: 1.7em;
         font-weight: 500;
+        margin-bottom: 1em;
       }
     }
 
@@ -724,6 +726,12 @@ hr {
   background: rgba(204, 204, 204, .2);
   padding: .75rem;
 
+  .form-sign-in-prompt {
+    color: #a9a9a9;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
   .comments-form {
     width: 100%;
     box-sizing: border-box;
@@ -762,13 +770,18 @@ hr {
       h4 {
         font-size: 11px;
         font-weight: 600;
-        color: darkgrey;
+        color: #a9a9a9;
       }
     }
 
     p {
       font-weight: 500;
+      font-size: 16px;
     }
+  }
+
+  .comment:first-of-type {
+    margin-top: 2rem;
   }
 }
 

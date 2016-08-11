@@ -22,7 +22,7 @@ Smartypants is a single-page web application clone of Genius.com, a site which a
 - [ ] Comments
   - [ ] Smooth, bug-free navigation
   - [ ] Adequate seed data to demonstrate the site's features
-  - [ ] Adequate CSS styling
+  - [x] Adequate CSS styling
 - [ ] Upvotes
   - [ ] Smooth, bug-free navigation
   - [ ] Adequate seed data to demonstrate the site's features
@@ -100,17 +100,17 @@ Phase 3 will be the most difficult and time-consuming phase of the project. It b
 
 **Objective:** Users can create, edit, and delete comments for tracks and annotations.
 
-- [ ] create `TrackComment` & `AnnotationComment` models and join tables
+- [x] create `Comment` model & polymorphic associations
 - build out API, Flux loop, and components for:
   - [ ] displaying comments on tracks
   - [ ] adding comments to tracks
   - [ ] editing comments on tracks
   - [ ] deleting comments from tracks
-  - [ ] displaying comments on annotations
-  - [ ] adding comments to annotations
+  - [x] displaying comments on annotations
+  - [x] adding comments to annotations
   - [ ] editing comments on annotations
   - [ ] deleting comments from annotations
-- [ ] style comment elements
+- [x] style comment elements
 - [ ] seed comments
 
 ### Phase 5: Upvotes & Downvotes (1 day, W2 F 6pm)

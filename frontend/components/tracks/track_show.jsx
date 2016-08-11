@@ -2,6 +2,8 @@ const React = require('react');
 const TrackStore = require('../../stores/track_store');
 const TrackActions = require('../../actions/track_actions');
 const AnnotationContainer = require('../annotations/annotation_container');
+const SessionStore = require('../../stores/session_store');
+const CommentsContainer = require('../comments/comments_container');
 
 const TrackShow = React.createClass ({
   getStateFromStore () {
@@ -232,6 +234,9 @@ const TrackShow = React.createClass ({
         <div className="track-columns-container">
           <div className="track-show-primary-column">
             {trackLyrics}
+            <CommentsContainer  commentableType="Track"
+                                commentable={this.state.track}
+                                author={SessionStore.currentUser()}/>
           </div>
           <div className="track-show-secondary-column">
             {this.annotationContainer()}

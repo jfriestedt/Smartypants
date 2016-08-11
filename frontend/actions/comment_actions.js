@@ -7,7 +7,7 @@ const CommentActions = {
   createComment (comment) {
     if (comment.commentable_type === "Annotation") {
       this.createAnnotationComment(comment);
-    } else if (comment.commentable_type === "track") {
+    } else if (comment.commentable_type === "Track") {
       this.createTrackComment(comment);
     }
   },
