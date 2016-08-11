@@ -196,6 +196,24 @@ hr {
     border-radius: 2px;
     width: 370px;
   }
+
+  .form-switch-button {
+      color: #5ba7c2;
+      margin-left: 0.3rem;
+  }
+
+  .form-switch-button:hover {
+      color: #a5cfde;
+  }
+
+  .switch-prompt {
+      font-size: 14px;
+      font-weight: 400;
+      color: #EDE8E9;
+      text-align: center;
+      /* float: right; */
+      margin-top: 0.5rem;
+  }
 }
 
 /* Modal */
@@ -214,9 +232,10 @@ hr {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 
   section {
-    display: block;
+    display: flex;
   }
 
   .smartypants-intro {
@@ -254,7 +273,7 @@ hr {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-
+  max-width: 1210px;
   padding-top: 0.5rem;
 
   h2 {
@@ -278,7 +297,7 @@ hr {
   flex-direction: column;
   justify-content: space-between;
   color: #fff;
-  height: 600px;
+  height: 550px;
   width: 30%;
   min-width: 295px;
   max-width: 362px;
@@ -286,15 +305,14 @@ hr {
   margin: .5rem;
   margin-top: 1.5rem;
   cursor: pointer;
+  position: relative;
 }
 
 .track-index-item-overlay {
   position: absolute;
-  width: 30%;
-  min-width: 295px;
-  max-width: 362px;
-  height: 600px;
-  background: linear-gradient(180deg, transparent 20%, black 50%)
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, transparent 20%, black 68%)
 }
 
 .track-index-item-info {
@@ -312,7 +330,7 @@ hr {
 
 .track-index-item-img-container {
   width: 100%;
-  height: 50%;
+  height: 66%;
   background-size: cover;
   background-repeat: no-repeat;
 
@@ -407,6 +425,7 @@ hr {
     width: 1000px;
     background: #fff;
     display: flex;
+    padding-bottom: 1em;
 
     .track-show-primary-column {
       width: 58%;

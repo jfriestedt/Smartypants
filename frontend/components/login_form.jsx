@@ -75,6 +75,14 @@ const LoginForm = React.createClass({
             </button>
           </div>
 
+          <span className="switch-prompt">
+            Don't have an account?  <button
+                                      className="form-switch-button"
+                                      onClick={this.props.switchForms}>
+                                      Sign Up!
+                                    </button>
+          </span>
+
         </form>
       </div>
     );

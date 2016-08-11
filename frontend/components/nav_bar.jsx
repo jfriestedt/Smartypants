@@ -43,6 +43,14 @@ const NavBar = React.createClass({
     ModalStyle.content.opacity = 1;
   },
 
+  switchForms () {
+
+    this.setState ({
+      modalOpen: true,
+      logIn: !this.state.logIn
+    });
+  },
+
   greeting () {
     if (SessionStore.isUserLoggedIn()) {
       return (
@@ -59,7 +67,7 @@ const NavBar = React.createClass({
       );
     } else {
 
-      const form = (this.state.logIn) ? <LoginForm /> : <SignupForm />;
+      const form = (this.state.logIn) ? <LoginForm switchForms={this.switchForms}/> : <SignupForm switchForms={this.switchForms}/>;
 
       return (
         <hgroup className="nav-group">
@@ -91,13 +99,26 @@ const NavBar = React.createClass({
     }
   },
 
-  // TODO: Change "Add a Song" link's route to the add track route, when it exists.
+  addSongButton () {
+    if (SessionStore.isUserLoggedIn()) {
+      return (
+        <Link to="/new" className="nav-button">ADD SONG</Link>
+      );
+    } else {
+      return (
+        <button className="nav-button"
+          onClick={this._handleModalClick.bind(this, true)}>
+          ADD SONG
+        </button>
+      );
+    }
+  },
 
   render () {
     return (
       <nav className="nav-bar">
         <div className="nav-left-container">
-          <Link to="/new" className="nav-button">ADD SONG</Link>
+          {this.addSongButton()}
         </div>
         <div className="logo-container">
           <Link to="/" className="nav-logo logo" />

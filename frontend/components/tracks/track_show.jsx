@@ -17,6 +17,10 @@ const TrackShow = React.createClass ({
     return this.getStateFromStore();
   },
 
+  componentWillMount () {
+    document.body.style.backgroundColor = "#fafafa";
+  },
+
   componentDidMount () {
     this.trackListener = TrackStore.addListener(this._onChange);
     TrackActions.fetchSingleTrack(parseInt(this.props.params.trackId));
@@ -24,6 +28,7 @@ const TrackShow = React.createClass ({
 
   componentWillUnmount () {
     this.trackListener.remove();
+    document.body.style.backgroundColor = null;
   },
 
   componentWillReceiveProps (newProps) {

@@ -14,6 +14,14 @@ const TrackForm = React.createClass({
     };
   },
 
+  componentWillMount () {
+    document.body.style.backgroundColor = "#000";
+  },
+
+  componentWillUnmount () {
+    document.body.style.backgroundColor = null;
+  },
+
   handleSubmit(event) {
     let formData = new FormData();
 
