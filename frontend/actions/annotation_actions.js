@@ -5,7 +5,7 @@ const CommentConstants = require('../constants/comment_constants');
 const AnnotationConstants = require('../constants/annotation_constants');
 
 const AnnotationActions = {
-  createAnnotation (annotation, trackId) {
+  createAnnotation (annotation, trackId, cb) {
     AnnotationApiUtil.createAnnotation(
       annotation,
       trackId,

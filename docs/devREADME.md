@@ -4,14 +4,6 @@
 
 [heroku]: https://smartypants-app.herokuapp.com/
 
-Smartypants is a single-page web app clone of Genius.com, a site which allows users to view and collaboratively annotate lyrics to popular songs.
-
-
-
-<!--  -->
-<!--  -->
-<!--  -->
-
 ## Minimum Viable Product
 
 Smartypants is a single-page web application clone of Genius.com, a site which allows users to view and collaboratively annotate lyrics to popular songs. By the end of Week 9, this app will, at a minimum, satisfy the following criteria:

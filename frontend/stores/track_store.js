@@ -9,6 +9,7 @@ const TrackStore = new Store(AppDispatcher);
 
 let _tracks = [];
 let _revealedAnnotation = {};
+let _saved = null;
 
 TrackStore.all = () => {
   return _tracks.slice();
@@ -87,6 +88,10 @@ const revealNewAnnotation = (newAnnotation) => {
   if (newAnnotation) { _revealedAnnotation = newAnnotation; }
 };
 
+const saved = () => {
+  return _saved;
+};
+
 TrackStore.__onDispatch = (payload) => {
   switch (payload.actionType) {
     case TrackConstants.TRACKS_RECEIVED:
@@ -96,6 +101,7 @@ TrackStore.__onDispatch = (payload) => {
     case TrackConstants.TRACK_RECEIVED:
       resetSingleTrack(payload.track);
       revealNewAnnotation(payload.track.newAnnotation);
+      _saved = true;
       TrackStore.__emitChange();
       break;
     case CommentConstants.ANNOTATION_COMMENT_RECEIVED:
