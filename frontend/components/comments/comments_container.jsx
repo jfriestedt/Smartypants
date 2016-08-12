@@ -32,6 +32,10 @@ const CommentsContainer = React.createClass({
     };
 
     CommentActions.createComment(comment);
+
+    this.setState({
+      body: ""
+    });
   },
 
   commentsForm () {

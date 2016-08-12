@@ -36,7 +36,7 @@ const TrackActions = {
       actionType: CommentConstants.TRACK_COMMENT_RECEIVED,
       comment: comment
     });
-  }
+  },
 };
 
 module.exports = TrackActions;

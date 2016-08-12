@@ -5,6 +5,7 @@ const AnnotationActions = require('../../actions/annotation_actions');
 const SessionStore = require('../../stores/session_store');
 const CommentsContainer = require('../comments/comments_container');
 const VoteActions = require('../../actions/vote_actions');
+const TrackStore = require('../../stores/track_store');
 
 const AnnotationContainer = React.createClass ({
   getInitialState () {
@@ -25,9 +26,24 @@ const AnnotationContainer = React.createClass ({
     }
   },
 
-  componentDidUpdate () {
+  componentDidMount () {
+    this.trackListener = TrackStore.addListener(this._onChange);
     const annotationFormTextArea = ReactDOM.findDOMNode(this.refs.textarea);
     Autosize(annotationFormTextArea);
+  },
+
+  componentWillUnmount () {
+    this.trackListener.remove();
+  },
+
+  // TODO: Why isn't this working???
+  _onChange () {
+    this.setState({
+      annotation: this.props.annotation,
+      annotationButtonRevealed: false,
+      annotationFormRevealed: false,
+      annotationShowRevealed: true
+    });
   },
 
   revealAnnotationForm (e) {
@@ -132,13 +148,14 @@ const AnnotationContainer = React.createClass ({
 
   voterButtonGroup () {
     if (SessionStore.isUserLoggedIn()) {
+      const className = "score " + this.props.annotation.score_color;
       return (
         <div className="vote-form-container">
           <button className="upvote-button"
                   onClick={this.sendUpvote}>
             Quite Astute!
           </button>
-          <span className="score">{this.props.annotation.score}</span>
+          <span className={className}>{this.props.annotation.score}</span>
           <button className="downvote-button"
                   onClick={this.sendDownvote}>
             You Idiot!

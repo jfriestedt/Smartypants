@@ -2,15 +2,9 @@ const AnnotationApiUtil = require('../util/annotation_api_util');
 const AppDispatcher = require('../dispatcher/dispatcher');
 const TrackActions = require('./track_actions');
 const CommentConstants = require('../constants/comment_constants');
+const AnnotationConstants = require('../constants/annotation_constants');
 
 const AnnotationActions = {
-  fetchSingleAnnotation (annotationId) {
-    AnnotationApiUtil.fetchSingleAnnotation(
-      annotationId,
-      AnnotationActions.receiveSingleAnnotation
-    );
-  },
-
   createAnnotation (annotation, trackId) {
     AnnotationApiUtil.createAnnotation(
       annotation,
@@ -39,6 +33,13 @@ const AnnotationActions = {
     AppDispatcher.dispatch({
       actionType: CommentConstants.ANNOTATION_COMMENT_RECEIVED,
       comment: comment
+    });
+  },
+
+  setRevealedAnnotation (id) {
+    AppDispatcher.dispatch({
+      actionType: AnnotationConstants.ANNOTATION_REVEALED,
+      id: id
     });
   }
 };

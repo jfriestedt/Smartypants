@@ -2,10 +2,14 @@ const Store = require('flux/utils').Store;
 const AppDispatcher = require('../dispatcher/dispatcher.js');
 const TrackConstants = require('../constants/track_constants');
 const CommentConstants = require('../constants/comment_constants');
+const VoteConstants = require('../constants/vote_constants');
+const AnnotationConstants = require('../constants/annotation_constants');
 
 const TrackStore = new Store(AppDispatcher);
 
 let _tracks = [];
+// TODO: Make flux cycle to update this
+let _revealedAnnotation = {};
 
 TrackStore.all = () => {
   return _tracks.slice();
@@ -17,6 +21,10 @@ TrackStore.find = (trackId) => {
       return _tracks[i];
     }
   }
+};
+
+TrackStore.revealedAnnotation = () => {
+  return Object.assign({}, _revealedAnnotation);
 };
 
 const resetAllTracks = (tracks) => {
@@ -40,13 +48,27 @@ const addAnnotationComment = (comment) => {
       }
     }
   }
-
 };
 
 const addTrackComment = (comment) => {
   for (var i = 0; i < _tracks.length; i++) {
     if (comment.commentable_id === _tracks[i].id) {
       _tracks[i].comments.push(comment);
+    }
+  }
+};
+
+// TODO: What goes here?
+const addVote = (vote) => {
+  return;
+};
+
+const revealAnnotation = (id) => {
+  for (var i = 0; i < _tracks.length; i++) {
+    for (var j = 0; j < _tracks[i].annotations.length; j++) {
+      if (_tracks[i].annotations[j].id === id) {
+        _revealedAnnotation = {annotation: _tracks[i].annotations[j]};
+      }
     }
   }
 };
@@ -67,6 +89,14 @@ TrackStore.__onDispatch = (payload) => {
       break;
     case CommentConstants.TRACK_COMMENT_RECEIVED:
       addTrackComment(payload.comment);
+      TrackStore.__emitChange();
+      break;
+    case VoteConstants.VOTE_RECEIVED:
+      addVote(payload.vote);
+      TrackStore.__emitChange();
+      break;
+    case AnnotationConstants.ANNOTATION_REVEALED:
+      revealAnnotation(payload.id)
       TrackStore.__emitChange();
       break;
   }

@@ -4,12 +4,13 @@ const TrackActions = require('../../actions/track_actions');
 const AnnotationContainer = require('../annotations/annotation_container');
 const SessionStore = require('../../stores/session_store');
 const CommentsContainer = require('../comments/comments_container');
+const AnnotationActions = require('../../actions/annotation_actions');
 
 const TrackShow = React.createClass ({
   getStateFromStore () {
     return {
       track: TrackStore.find(parseInt(this.props.params.trackId)),
-      annotation: {},
+      annotation: TrackStore.revealedAnnotation(),
       selected: null,
       focused: null,
     };
@@ -59,6 +60,8 @@ const TrackShow = React.createClass ({
     annotation.yPosition = e.pageY;
     let annotationBody = annotation.body;
     let yPosition = e.pageY;
+
+    AnnotationActions.setRevealedAnnotation(annotationId);
 
     this.setState({
       annotation: annotation,
