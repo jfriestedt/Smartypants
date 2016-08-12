@@ -38,6 +38,11 @@ class User < ActiveRecord::Base
     foreign_key: :author_id,
     primary_key: :id
 
+  has_many :votes,
+    class_name: "Vote",
+    foreign_key: :id,
+    primary_key: :voter_id
+
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
 

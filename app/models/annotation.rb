@@ -10,6 +10,8 @@
 #  referent_end_index   :integer          not null
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
+#  score                :integer          default(0), not null
+#
 
 class Annotation < ActiveRecord::Base
   validates(
@@ -34,6 +36,11 @@ class Annotation < ActiveRecord::Base
     foreign_key: :track_id,
     primary_key: :id
   )
+
+  has_many :votes,
+    class_name: "Vote",
+    primary_key: :id,
+    foreign_key: :annotation_id
 
   has_many :comments, as: :commentable
 end

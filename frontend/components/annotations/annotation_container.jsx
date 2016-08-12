@@ -4,6 +4,7 @@ const Autosize = require('autosize');
 const AnnotationActions = require('../../actions/annotation_actions');
 const SessionStore = require('../../stores/session_store');
 const CommentsContainer = require('../comments/comments_container');
+const VoteActions = require('../../actions/vote_actions');
 
 const AnnotationContainer = React.createClass ({
   getInitialState () {
@@ -104,7 +105,7 @@ const AnnotationContainer = React.createClass ({
     });
   },
 
-  buttonGroup () {
+  authorButtonGroup () {
     if (SessionStore.currentUser().id === this.state.annotation.author.id) {
       return (
         <div className="annotation-show-button-group">
@@ -129,8 +130,47 @@ const AnnotationContainer = React.createClass ({
     );
   },
 
-  render () {
+  voterButtonGroup () {
+    if (SessionStore.isUserLoggedIn()) {
+      return (
+        <div className="vote-form-container">
+          <button className="upvote-button"
+                  onClick={this.sendUpvote}>
+            Quite Astute!
+          </button>
+          <span className="score">{this.props.annotation.score}</span>
+          <button className="downvote-button"
+                  onClick={this.sendDownvote}>
+            You Idiot!
+          </button>
+        </div>
+      );
+    }
+  },
 
+  sendUpvote (e) {
+    e.preventDefault();
+    const vote = {
+      voter_id: SessionStore.currentUser().id,
+      annotation_id: this.props.annotation.id,
+      value: 1
+    };
+
+    VoteActions.createUpvote(vote);
+  },
+
+  sendDownvote (e) {
+    e.preventDefault();
+    const vote = {
+      voter_id: SessionStore.currentUser().id,
+      annotation_id: this.props.annotation.id,
+      value: -1
+    };
+
+    VoteActions.createDownvote(vote);
+  },
+
+  render () {
     let containerStyle = {
       top: this.props.annotation.yPosition - 360
     };
@@ -183,7 +223,8 @@ const AnnotationContainer = React.createClass ({
             <div className="annotation-body">
               <p>{this.state.annotation.body}</p>
             </div>
-            {this.buttonGroup()}
+            {this.authorButtonGroup()}
+            {this.voterButtonGroup()}
             {this.annotationCommentForm()}
             <div className="annotation-show-vote-form-container">
             </div>

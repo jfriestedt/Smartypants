@@ -10,6 +10,7 @@
 #  referent_end_index   :integer          not null
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
+#  score                :integer          default(0), not null
 #
 
 require 'test_helper'
