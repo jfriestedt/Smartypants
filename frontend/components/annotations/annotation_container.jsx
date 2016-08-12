@@ -231,8 +231,6 @@ const AnnotationContainer = React.createClass ({
 
     const annotationShow = () => {
       if (this.state.annotationShowRevealed) {
-        let that = this;
-        debugger;
         let authorUsername = this.props.annotation.author.username;
         return (
           <div className="annotation-show">
