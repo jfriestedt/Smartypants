@@ -10,7 +10,8 @@ class Api::VotesController < ApplicationController
     else
       @vote = Vote.new(vote_params)
       if @vote.save!
-        render :show
+        @votes = @vote.annotation.votes
+        render :index
       else
         render json: @vote.errors.full_messages, status: 422
       end

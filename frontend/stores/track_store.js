@@ -8,7 +8,6 @@ const AnnotationConstants = require('../constants/annotation_constants');
 const TrackStore = new Store(AppDispatcher);
 
 let _tracks = [];
-// TODO: Make flux cycle to update this
 let _revealedAnnotation = {};
 
 TrackStore.all = () => {
@@ -64,14 +63,17 @@ const addVote = (vote) => {
 };
 
 const revealAnnotation = (id) => {
-  debugger
   for (var i = 0; i < _tracks.length; i++) {
     for (var j = 0; j < _tracks[i].annotations.length; j++) {
       if (_tracks[i].annotations[j].id === id) {
-        _revealedAnnotation = {annotation: _tracks[i].annotations[j]};
+        _revealedAnnotation = _tracks[i].annotations[j];
       }
     }
   }
+};
+
+const removeRevealedAnnotation = () => {
+  _revealedAnnotation = {};
 };
 
 TrackStore.__onDispatch = (payload) => {
@@ -98,6 +100,10 @@ TrackStore.__onDispatch = (payload) => {
       break;
     case AnnotationConstants.ANNOTATION_REVEALED:
       revealAnnotation(payload.id);
+      TrackStore.__emitChange();
+      break;
+    case AnnotationConstants.ANNOTATION_REMOVED:
+      removeRevealedAnnotation();
       TrackStore.__emitChange();
       break;
   }

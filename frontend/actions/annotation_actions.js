@@ -41,6 +41,12 @@ const AnnotationActions = {
       actionType: AnnotationConstants.ANNOTATION_REVEALED,
       id: id
     });
+  },
+
+  removeRevealedAnnotation () {
+    AppDispatcher.dispatch({
+      actionType: AnnotationConstants.ANNOTATION_REMOVED
+    });
   }
 };
 

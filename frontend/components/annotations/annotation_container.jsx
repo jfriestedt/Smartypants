@@ -231,7 +231,7 @@ const AnnotationContainer = React.createClass ({
 
     const annotationShow = () => {
       if (this.state.annotationShowRevealed) {
-        let authorUsername = this.state.annotation.author.username;
+        let authorUsername = this.props.annotation.author.username;
         return (
           <div className="annotation-show">
             <hgroup className="annotation-header">

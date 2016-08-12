@@ -1,5 +1,5 @@
 const VoteConstants = {
-  VOTE_CONSTANTS: "VOTE_CONSTANTS"
+  VOTE_RECEIVED: "VOTE_RECEIVED"
 };
 
 module.exports = VoteConstants;

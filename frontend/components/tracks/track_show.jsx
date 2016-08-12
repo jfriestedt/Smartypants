@@ -116,6 +116,8 @@ const TrackShow = React.createClass ({
       annotation: {},
       focused: null
     });
+
+    AnnotationActions.removeRevealedAnnotation();
   },
 
   annotationContainer () {

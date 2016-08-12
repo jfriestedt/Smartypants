@@ -8,3 +8,6 @@ json.submitter track.submitter
 json.comments track.comments do |comment|
   json.partial! 'api/comments/comment', comment: comment
 end
+json.annotations track.annotations.sort_by { |annotation| annotation.referent_start_index } do |annotation|
+  json.partial! 'api/annotations/annotation', annotation: annotation
+end
