@@ -64,6 +64,7 @@ const addVote = (vote) => {
 };
 
 const revealAnnotation = (id) => {
+  debugger
   for (var i = 0; i < _tracks.length; i++) {
     for (var j = 0; j < _tracks[i].annotations.length; j++) {
       if (_tracks[i].annotations[j].id === id) {
@@ -96,7 +97,7 @@ TrackStore.__onDispatch = (payload) => {
       TrackStore.__emitChange();
       break;
     case AnnotationConstants.ANNOTATION_REVEALED:
-      revealAnnotation(payload.id)
+      revealAnnotation(payload.id);
       TrackStore.__emitChange();
       break;
   }
