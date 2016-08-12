@@ -58,7 +58,6 @@ const addTrackComment = (comment) => {
 };
 
 const updateScore = (vote) => {
-  debugger
   const annotationId = vote.annotationId;
   for (var i = 0; i < _tracks.length; i++) {
     for (var j = 0; j < _tracks[i].annotations.length; j++) {
@@ -84,6 +83,10 @@ const removeRevealedAnnotation = () => {
   _revealedAnnotation = {};
 };
 
+const revealNewAnnotation = (newAnnotation) => {
+  if (newAnnotation) { _revealedAnnotation = newAnnotation; }
+};
+
 TrackStore.__onDispatch = (payload) => {
   switch (payload.actionType) {
     case TrackConstants.TRACKS_RECEIVED:
@@ -92,6 +95,7 @@ TrackStore.__onDispatch = (payload) => {
       break;
     case TrackConstants.TRACK_RECEIVED:
       resetSingleTrack(payload.track);
+      revealNewAnnotation(payload.track.newAnnotation);
       TrackStore.__emitChange();
       break;
     case CommentConstants.ANNOTATION_COMMENT_RECEIVED:

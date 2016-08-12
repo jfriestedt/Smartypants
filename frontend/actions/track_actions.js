@@ -2,6 +2,7 @@ const TrackConstants = require('../constants/track_constants');
 const TrackApiUtil = require('../util/track_api_util');
 const AppDispatcher = require('../dispatcher/dispatcher');
 const CommentConstants = require('../constants/comment_constants');
+const AnnotationConstants = require('../constants/annotation_constants');
 
 const TrackActions = {
 
@@ -28,6 +29,14 @@ const TrackActions = {
     AppDispatcher.dispatch({
       actionType: TrackConstants.TRACK_RECEIVED,
       track: track
+    });
+  },
+
+  receiveSingleTrackWithAnnotation (track, annotationId) {
+    AppDispatcher.dispatch({
+      actionType: AnnotationConstants.ANNOTATION_CREATED,
+      track: track,
+      annotationId: annotationId
     });
   },
 

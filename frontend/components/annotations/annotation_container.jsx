@@ -36,7 +36,6 @@ const AnnotationContainer = React.createClass ({
     this.trackListener.remove();
   },
 
-  // TODO: Why isn't this working???
   _onChange () {
     this.setState({
       annotation: this.props.annotation,
@@ -148,7 +147,6 @@ const AnnotationContainer = React.createClass ({
 
   voterButtonGroup () {
     if (SessionStore.isUserLoggedIn()) {
-      debugger
       const className = "score " + this.props.annotation.score_color;
       return (
         <div className="vote-form-container">

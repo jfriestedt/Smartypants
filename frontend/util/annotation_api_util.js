@@ -4,8 +4,8 @@ const AnnotationApiUtil = {
       url: '/api/tracks/' + trackId + '/annotations/',
       method: "POST",
       data: annotation,
-      success (receivedAnnotation) {
-        receiveSingleTrack(receivedAnnotation);
+      success (receivedTrack) {
+        receiveSingleTrack(receivedTrack);
       }
     });
   },
