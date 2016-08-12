@@ -43,4 +43,9 @@ class Annotation < ActiveRecord::Base
     foreign_key: :annotation_id
 
   has_many :comments, as: :commentable
+
+  def tally_score
+    votes.pluck(:value).inject(&:+) || 0
+  end
+
 end

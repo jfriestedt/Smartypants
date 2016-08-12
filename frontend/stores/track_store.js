@@ -57,9 +57,17 @@ const addTrackComment = (comment) => {
   }
 };
 
-// TODO: What goes here?
-const addVote = (vote) => {
-  return;
+const updateScore = (vote) => {
+  debugger
+  const annotationId = vote.annotationId;
+  for (var i = 0; i < _tracks.length; i++) {
+    for (var j = 0; j < _tracks[i].annotations.length; j++) {
+      if (_tracks[i].annotations[j].id === vote.annotationId) {
+        _tracks[i].annotations[j].score = vote.score;
+      }
+      // revealAnnotation(annotationId);
+    }
+  }
 };
 
 const revealAnnotation = (id) => {
@@ -95,7 +103,7 @@ TrackStore.__onDispatch = (payload) => {
       TrackStore.__emitChange();
       break;
     case VoteConstants.VOTE_RECEIVED:
-      addVote(payload.vote);
+      updateScore(payload.vote);
       TrackStore.__emitChange();
       break;
     case AnnotationConstants.ANNOTATION_REVEALED:

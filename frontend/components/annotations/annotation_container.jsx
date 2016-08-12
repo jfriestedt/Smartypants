@@ -148,6 +148,7 @@ const AnnotationContainer = React.createClass ({
 
   voterButtonGroup () {
     if (SessionStore.isUserLoggedIn()) {
+      debugger
       const className = "score " + this.props.annotation.score_color;
       return (
         <div className="vote-form-container">
@@ -188,6 +189,7 @@ const AnnotationContainer = React.createClass ({
   },
 
   render () {
+
     let containerStyle = {
       top: this.props.annotation.yPosition - 360
     };

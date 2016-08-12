@@ -1,11 +1,11 @@
 const VoteApiUtil = {
-  createVote (vote, receiveVote) {
+  createVote (vote, cb) {
     $.ajax({
       url: "api/votes",
       method: "POST",
       data: {vote},
       success: function (receivedVote) {
-        receiveVote(receivedVote);
+        cb(receivedVote);
       }
     });
   }
