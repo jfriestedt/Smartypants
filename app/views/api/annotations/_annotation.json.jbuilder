@@ -13,4 +13,4 @@ end
 #   json.partial! 'api/votes/vote', vote: vote
 # end
 
-json.score annotation.tally_score
+json.score @score

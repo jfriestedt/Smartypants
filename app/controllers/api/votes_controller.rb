@@ -3,7 +3,7 @@ class Api::VotesController < ApplicationController
     vote = Vote.find_by(voter_id: vote_params[:voter_id], annotation_id: vote_params[:annotation_id])
     if vote && vote.value != vote_params[:value].to_i
       vote.update!(vote_params)
-      vote.annotation.score = tally_score(vote.annotation)
+      @score = tally_score(vote.annotation)
       @vote = vote
       render :show
     elsif vote && vote.value == vote_params[:value].to_i

@@ -11,20 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160812001213) do
+ActiveRecord::Schema.define(version: 20160816201022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "annotations", force: :cascade do |t|
-    t.integer  "author_id",                        null: false
-    t.integer  "track_id",                         null: false
-    t.text     "body",                             null: false
-    t.integer  "referent_start_index",             null: false
-    t.integer  "referent_end_index",               null: false
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-    t.integer  "score",                default: 0, null: false
+    t.integer  "author_id",            null: false
+    t.integer  "track_id",             null: false
+    t.text     "body",                 null: false
+    t.integer  "referent_start_index", null: false
+    t.integer  "referent_end_index",   null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   add_index "annotations", ["author_id"], name: "index_annotations_on_author_id", using: :btree
