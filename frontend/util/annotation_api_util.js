@@ -1,22 +1,22 @@
 const AnnotationApiUtil = {
-  createAnnotation(annotation, trackId, receiveSingleTrack){
+  createAnnotation(annotation, trackId, yPosition, receiveTrackWithNewAnnotation){
     $.ajax({
       url: '/api/tracks/' + trackId + '/annotations/',
       method: "POST",
       data: annotation,
       success (receivedTrack) {
-        receiveSingleTrack(receivedTrack);
+        receiveTrackWithNewAnnotation(receivedTrack, yPosition);
       }
     });
   },
 
-  updateAnnotation(annotation, trackId, receiveSingleTrack){
+  updateAnnotation(annotation, trackId, yPosition, receiveTrackWithUpdatedAnnotation){
     $.ajax({
       url: 'api/tracks/' + trackId + '/annotations/' + annotation.id,
       method: "PATCH",
       data: {annotation: annotation},
-      success (receivedAnnotation) {
-        receiveSingleTrack(receivedAnnotation);
+      success (receivedTrack) {
+        receiveTrackWithUpdatedAnnotation(receivedTrack, yPosition);
       }
     });
   },

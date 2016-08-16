@@ -5,20 +5,40 @@ const CommentConstants = require('../constants/comment_constants');
 const AnnotationConstants = require('../constants/annotation_constants');
 
 const AnnotationActions = {
-  createAnnotation (annotation, trackId, cb) {
+  createAnnotation (annotation, trackId, yPosition) {
     AnnotationApiUtil.createAnnotation(
       annotation,
       trackId,
-      TrackActions.receiveSingleTrack
+      yPosition,
+      // TrackActions.receiveSingleTrack
+      AnnotationActions.receiveTrackWithNewAnnotation
     );
   },
 
-  updateAnnotation (annotation, trackId) {
+  updateAnnotation (annotation, trackId, yPosition) {
     AnnotationApiUtil.updateAnnotation(
       annotation,
       trackId,
-      TrackActions.receiveSingleTrack
+      yPosition,
+      // TrackActions.receiveSingleTrack
+      AnnotationActions.receiveTrackWithUpdatedAnnotation
     );
+  },
+
+  receiveTrackWithUpdatedAnnotation (track, yPosition) {
+    AppDispatcher.dispatch({
+      actionType: AnnotationConstants.ANNOTATION_UPDATED,
+      track: track,
+      yPosition: yPosition
+    });
+  },
+
+  receiveTrackWithNewAnnotation (track, yPosition) {
+    AppDispatcher.dispatch({
+      actionType: AnnotationConstants.ANNOTATION_CREATED,
+      track: track,
+      yPosition: yPosition
+    });
   },
 
   destroyAnnotation (annotationId, trackId) {

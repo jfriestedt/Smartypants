@@ -75,7 +75,7 @@ const AnnotationContainer = React.createClass ({
 
   updateAnnotation () {
     const annotation = this.state.annotation;
-    AnnotationActions.updateAnnotation(annotation, annotation.track.id);
+    AnnotationActions.updateAnnotation(annotation, annotation.track.id, annotation.yPosition);
   },
 
   destroyAnnotation (e) {
@@ -86,7 +86,6 @@ const AnnotationContainer = React.createClass ({
   },
 
   createAnnotation () {
-
     let stateAnnotation = this.state.annotation;
     let trackId = parseInt(this.props.trackId);
 
@@ -98,7 +97,11 @@ const AnnotationContainer = React.createClass ({
       }
     };
 
-    AnnotationActions.createAnnotation(annotation, trackId);
+    AnnotationActions.createAnnotation(
+      annotation,
+      trackId,
+      stateAnnotation.yPosition
+    );
   },
 
   closeAnnotation (e) {
@@ -187,9 +190,17 @@ const AnnotationContainer = React.createClass ({
   },
 
   render () {
-    let containerStyle = {
-      top: this.state.annotation.yPosition - 360
-    };
+    let containerStyle;
+
+    if (this.state.annotation.yPosition) {
+      containerStyle = {
+        top: this.state.annotation.yPosition - 360
+      };
+    } else {
+      containerStyle = {
+        top: TrackStore.yPosition() - 360
+      };
+    }
 
     const annotationBeginButton = () => {
       if (this.state.annotationButtonRevealed) {

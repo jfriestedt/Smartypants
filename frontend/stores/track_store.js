@@ -9,6 +9,7 @@ const TrackStore = new Store(AppDispatcher);
 
 let _tracks = [];
 let _revealedAnnotation = {};
+let _yPosition = null;
 let _saved = null;
 
 TrackStore.all = () => {
@@ -25,6 +26,10 @@ TrackStore.find = (trackId) => {
 
 TrackStore.revealedAnnotation = () => {
   return Object.assign({}, _revealedAnnotation);
+};
+
+TrackStore.yPosition = () => {
+  return _yPosition;
 };
 
 const resetAllTracks = (tracks) => {
@@ -92,6 +97,10 @@ const saved = () => {
   return _saved;
 };
 
+const updateYPosition = (yPosition) => {
+  _yPosition = yPosition;
+};
+
 TrackStore.__onDispatch = (payload) => {
   switch (payload.actionType) {
     case TrackConstants.TRACKS_RECEIVED:
@@ -127,6 +136,20 @@ TrackStore.__onDispatch = (payload) => {
     case AnnotationConstants.ANNOTATION_DELETED:
       resetSingleTrack(payload.track);
       removeRevealedAnnotation();
+      TrackStore.__emitChange();
+      break;
+    case AnnotationConstants.ANNOTATION_UPDATED:
+      resetSingleTrack(payload.track);
+      updateYPosition(payload.yPosition);
+      revealNewAnnotation(payload.track.newAnnotation);
+      _saved = true;
+      TrackStore.__emitChange();
+      break;
+    case AnnotationConstants.ANNOTATION_CREATED:
+      resetSingleTrack(payload.track);
+      updateYPosition(payload.yPosition);
+      revealNewAnnotation(payload.track.newAnnotation);
+      _saved = true;
       TrackStore.__emitChange();
       break;
   }
