@@ -124,6 +124,11 @@ TrackStore.__onDispatch = (payload) => {
       removeRevealedAnnotation();
       TrackStore.__emitChange();
       break;
+    case AnnotationConstants.ANNOTATION_DELETED:
+      resetSingleTrack(payload.track);
+      removeRevealedAnnotation();
+      TrackStore.__emitChange();
+      break;
   }
 };
 

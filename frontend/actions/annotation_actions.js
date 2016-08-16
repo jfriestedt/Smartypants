@@ -25,8 +25,16 @@ const AnnotationActions = {
     AnnotationApiUtil.destroyAnnotation(
       annotationId,
       trackId,
-      TrackActions.receiveSingleTrack
+      // TrackActions.receiveSingleTrack
+      AnnotationActions.receiveTrackWithDeletedAnnotation
     );
+  },
+
+  receiveTrackWithDeletedAnnotation (track) {
+    AppDispatcher.dispatch({
+      actionType: AnnotationConstants.ANNOTATION_DELETED,
+      track: track
+    });
   },
 
   receiveSingleComment (comment) {
