@@ -187,9 +187,8 @@ const AnnotationContainer = React.createClass ({
   },
 
   render () {
-
     let containerStyle = {
-      top: this.props.annotation.yPosition - 360
+      top: this.state.annotation.yPosition - 360
     };
 
     const annotationBeginButton = () => {
