@@ -65,7 +65,7 @@ const updateScore = (vote) => {
       if (_tracks[i].annotations[j].id === vote.annotationId) {
         _tracks[i].annotations[j].score = vote.score;
       }
-      // revealAnnotation(annotationId);
+      revealAnnotation(annotationId);
     }
   }
 };
@@ -86,6 +86,10 @@ const removeRevealedAnnotation = () => {
 
 const revealNewAnnotation = (newAnnotation) => {
   if (newAnnotation) { _revealedAnnotation = newAnnotation; }
+};
+
+const addYPositionToUpdatedAnnotation = (updatedAnnotation, yPosition) => {
+  _revealedAnnotation[yPosition] = yPosition;
 };
 
 const saved = () => {
@@ -129,6 +133,10 @@ TrackStore.__onDispatch = (payload) => {
       removeRevealedAnnotation();
       TrackStore.__emitChange();
       break;
+    case AnnotationConstants.ANNOTATION_UPDATED:
+      // debugger
+      resetSingleTrack(payload.track);
+      // addYPositionToUpdatedAnnotation(payload.yPosition);
   }
 };
 

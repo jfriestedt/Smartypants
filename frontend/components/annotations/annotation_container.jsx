@@ -75,7 +75,11 @@ const AnnotationContainer = React.createClass ({
 
   updateAnnotation () {
     const annotation = this.state.annotation;
-    AnnotationActions.updateAnnotation(annotation, annotation.track.id);
+    AnnotationActions.updateAnnotation(
+      annotation,
+      annotation.track.id,
+      annotation.yPosition
+    );
   },
 
   destroyAnnotation (e) {
@@ -187,6 +191,9 @@ const AnnotationContainer = React.createClass ({
   },
 
   render () {
+    let yPos = this.state.annotation.yPosition;
+    debugger
+
     let containerStyle = {
       top: this.state.annotation.yPosition - 360
     };

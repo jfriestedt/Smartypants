@@ -13,12 +13,22 @@ const AnnotationActions = {
     );
   },
 
-  updateAnnotation (annotation, trackId) {
+  updateAnnotation (annotation, trackId, yPosition) {
     AnnotationApiUtil.updateAnnotation(
       annotation,
       trackId,
-      TrackActions.receiveSingleTrack
+      yPosition,
+      // TrackActions.receiveSingleTrack
+      AnnotationActions.receiveTrackWithUpdatedAnnotation
     );
+  },
+
+  receiveTrackWithUpdatedAnnotation (track, yPosition) {
+    AppDispatcher.dispatch({
+      actionType: AnnotationConstants.ANNOTATION_UPDATED,
+      track: track,
+      yPosition: yPosition
+    });
   },
 
   destroyAnnotation (annotationId, trackId) {
