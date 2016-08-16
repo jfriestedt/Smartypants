@@ -32,6 +32,7 @@ const TrackShow = React.createClass ({
   componentWillUnmount () {
     this.trackListener.remove();
     document.body.style.backgroundColor = null;
+    AnnotationActions.removeRevealedAnnotation();
   },
 
   componentWillReceiveProps (newProps) {
