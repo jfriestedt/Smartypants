@@ -76,6 +76,7 @@ const TrackShow = React.createClass ({
     if (docSelection.toString().length === 0 ||
         docSelection.anchorNode !== docSelection.focusNode ||
         docSelection.anchorNode.parentElement.className !== "nonreferent") {
+
       this.setState({
         annotation: {},
         focused: null

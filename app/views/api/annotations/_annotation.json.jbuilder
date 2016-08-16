@@ -9,8 +9,4 @@ json.comments annotation.comments do |comment|
   json.partial! 'api/comments/comment', comment: comment
 end
 
-# json.votes annotation.votes do |vote|
-#   json.partial! 'api/votes/vote', vote: vote
-# end
-
-json.score @score
+json.score annotation.tally_score
