@@ -81,6 +81,7 @@ const TrackShow = React.createClass ({
         annotation: {},
         focused: null
       });
+
       return;
     }
 

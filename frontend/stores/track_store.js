@@ -102,7 +102,9 @@ const saved = () => {
 };
 
 const updateYPosition = (yPosition) => {
-  _yPosition = yPosition;
+  if (yPosition) {
+    _yPosition = yPosition;
+  }
 };
 
 TrackStore.__onDispatch = (payload) => {
