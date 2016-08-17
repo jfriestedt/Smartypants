@@ -155,12 +155,10 @@ const AnnotationContainer = React.createClass ({
         <div className="vote-form-container">
           <button className="upvote-button"
                   onClick={this.sendUpvote}>
-            Quite Astute!
           </button>
           <span className={className}>{this.props.annotation.score}</span>
           <button className="downvote-button"
                   onClick={this.sendDownvote}>
-            You Idiot!
           </button>
         </div>
       );

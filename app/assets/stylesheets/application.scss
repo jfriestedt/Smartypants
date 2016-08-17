@@ -807,13 +807,29 @@ hr {
   }
 
   .upvote-button {
-    color: green;
-    border: 2px solid green;
+    height: 50px;
+    width: 50px;
+    background-image: asset-url("grad_grey.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: all 0.2s ease;
   }
 
   .downvote-button {
-    color: red;
-    border: 2px solid red;
+    height: 0.2rem;
+    width: 0.2rem;
+    background-image: asset-url("dunce_grey.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: all 0.1s ease;
+  }
+
+  .upvote-button:hover {
+    background-image: asset-url("grad_green.png");
+  }
+
+  .downvote-button:hover {
+    background-image: asset-url("dunce_red.png");
   }
 
   .score {
