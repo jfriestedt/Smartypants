@@ -60,7 +60,7 @@ const NavBar = React.createClass({
   greeting () {
     if (SessionStore.isUserLoggedIn()) {
       return (
-        <hgroup className="nav-group">
+        <hgroup className="nav-right-container">
           <h2 className="nav-name nav-button">
             Welcome, {SessionStore.currentUser().username}!
           </h2>
@@ -76,7 +76,7 @@ const NavBar = React.createClass({
       const form = (this.state.logIn) ? <LoginForm switchForms={this.switchForms}/> : <SignupForm switchForms={this.switchForms}/>;
 
       return (
-        <hgroup className="nav-group">
+        <hgroup className="nav-right-container">
           <Modal
             isOpen={this.state.modalOpen}
             onRequestClose={this._onModalClose}

@@ -105,17 +105,24 @@ hr {
 }
 
 .nav-button {
-  margin: 10px;
+  padding: 10px;
   font-weight: 600;
   font-size: 12px;
-  line-break: strict;
   cursor: pointer;
+  transition: all 0.1s ease;
+  vertical-align: middle;
+  height: fit-content;
 }
 
-.nav-group {
-  display: flex;
-  align-items: center;
+.nav-button:hover {
+  color: #ffff64;
+  background-color: black;
 }
+
+// .nav-group {
+//   display: flex;
+//   align-items: center;
+// }
 
 .logo-container {
   display: flex;
@@ -135,13 +142,15 @@ hr {
 }
 
 .nav-left-container {
-  min-width: 192px;
+  width: 231px;
+  height: 41px;
 }
 
 .nav-right-container {
   display: flex;
   justify-content: flex-end;
-  min-width: 192px;
+  width: 231px;
+  height: 41px;
 }
 
 /* Session-Form */
@@ -286,10 +295,12 @@ hr {
     font-size: 1.7em;
     font-weight: 600;
     margin-bottom: 7px;
+    transition: all 0.1s ease;
   }
 
   h3 {
     font-size: 1.0em;
+    transition: all 0.1s ease;
   }
 
   h4 {
@@ -312,6 +323,16 @@ hr {
   margin-top: 1.5rem;
   cursor: pointer;
   position: relative;
+}
+
+.track-index-item:hover {
+  h2 {
+    font-size: 1.8em;
+  }
+
+  h3 {
+    font-size: 1.1em;
+  }
 }
 
 .track-index-item-overlay {
