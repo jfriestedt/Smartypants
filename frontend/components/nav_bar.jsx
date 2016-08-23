@@ -93,6 +93,7 @@ const NavBar = React.createClass({
           <button id="guest-login-button"
                   className="nav-button"
                   onClick={this._guestLogin}>
+            GUEST LOGIN
           </button>
           <button id="sign-up-button"
                   className="nav-button"
