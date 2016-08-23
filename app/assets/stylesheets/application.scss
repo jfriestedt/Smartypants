@@ -106,12 +106,14 @@ hr {
 
 .nav-button {
   padding: 10px;
+  padding-bottom: 14px;
   font-weight: 600;
   font-size: 12px;
   cursor: pointer;
   transition: all 0.1s ease;
   vertical-align: middle;
-  height: fit-content;
+  height: min-content;
+  box-sizing: content-box;
 }
 
 .nav-button:hover {
