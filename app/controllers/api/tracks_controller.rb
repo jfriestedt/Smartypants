@@ -1,6 +1,6 @@
 class Api::TracksController < ApplicationController
   def index
-    @tracks = Track.all.order(updated_at: :desc)
+    @tracks = Track.all.order(created_at: :desc)
   end
 
   def show

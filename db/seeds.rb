@@ -6,11 +6,15 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create!(username: "rbembleton", password: "whateveryouwantittobe")
-User.create!(username: "evelyn", password: "pizzalady")
-User.create!(username: "drake", password: "feelnoways")
+# Users
+
+User.create!(username: "scholar48", password: "whateveryouwantittobe")
+User.create!(username: "billsavant", password: "pizzalady")
+User.create!(username: "ProdigyJones", password: "feelnoways")
 
 User.create!(username: "guest", password: "password")
+
+# Tracks
 
 thinkin_bout_you_lyrics = <<-TXT
 A tornado flew around my room before you came
@@ -378,4 +382,495 @@ Track.create!(
   album: "808s & Heartbreak",
   lyrics: paranoid_lyrics,
   image: File.open('app/assets/images/808s-And-Heartbreak.jpg')
+)
+
+# Annotations
+
+Annotation.create!(
+  author_id: User.all[1].id,
+  track_id: Track.all[5].id,
+  body: "Kanye thinks \"paranoid\" is a good word to describe the way his partner is behaving.",
+  referent_start_index: 106,
+  referent_end_index: 133
+)
+Annotation.create!(
+  author_id: User.all[1].id,
+  track_id: Track.all[5].id,
+  body: "Repetition breeds understanding",
+  referent_start_index: 278,
+  referent_end_index: 477
+)
+Annotation.create!(
+  author_id: User.all[1].id,
+  track_id: Track.all[5].id,
+  body: "Kanye is capable of eliciting feelings that are appealing to his partner.",
+  referent_start_index: 646,
+  referent_end_index: 806
+)
+Annotation.create!(
+  author_id: User.all[1].id,
+  track_id: Track.all[4].id,
+  body: "Neon Indian captures the feeling of having nothing to do by repeating a simple phrase over and over",
+  referent_start_index: 201,
+  referent_end_index: 376
+)
+
+Annotation.create!(
+  author_id: User.all[1].id,
+  track_id: Track.all[4].id,
+  body: "Neon Indian sets the scene of a hot suburban day in the summer.",
+  referent_start_index: 0,
+  referent_end_index: 59
+)
+Annotation.create!(
+  author_id: User.all[1].id,
+  track_id: Track.all[3].id,
+  body: "The feeling Toro gets is indescribable because there's so much to discuss it would be impossible.",
+  referent_start_index: 250,
+  referent_end_index: 316
+)
+Annotation.create!(
+  author_id: User.all[1].id,
+  track_id: Track.all[3].id,
+  body: "Clever way to get back into a second verse from the chorus. 'Let's pick up where we started', as we revisit the verse musical structure",
+  referent_start_index: 448,
+  referent_end_index: 509
+)
+Annotation.create!(
+  author_id: User.all[1].id,
+  track_id: Track.all[3].id,
+  body: "Reconciliation may not be possible. Toro wonders what happened to the relationship.",
+  referent_start_index: 870,
+  referent_end_index: 981
+)
+Annotation.create!(
+  author_id: User.all[1].id,
+  track_id: Track.all[4].id,
+  body: "The electric lady is sure of herself",
+  referent_start_index: 105,
+  referent_end_index: 134
+)
+Annotation.create!(
+  author_id: User.all[1].id,
+  track_id: Track.all[4].id,
+  body: "We're in the future and we're at a party!!",
+  referent_start_index: 279,
+  referent_end_index: 309
+)
+Annotation.create!(
+  author_id: User.all[1].id,
+  track_id: Track.all[4].id,
+  body: "Electric lady presents herself as a messianic figure",
+  referent_start_index: 652,
+  referent_end_index: 713
+)
+Annotation.create!(
+  author_id: User.all[1].id,
+  track_id: Track.all[3].id,
+  body: "Right off the bat we know this is about someone lying",
+  referent_start_index: 10,
+  referent_end_index: 38
+)
+Annotation.create!(
+  author_id: User.all[1].id,
+  track_id: Track.all[3].id,
+  body: "Beyonce is hoping for a sign of life from her husband and that he picks up on her needs.",
+  referent_start_index: 210,
+  referent_end_index: 433
+)
+Annotation.create!(
+  author_id: User.all[1].id,
+  track_id: Track.all[0].id,
+  body: "Play on the \"got a bridge to sell you\" popular idiom",
+  referent_start_index: 610,
+  referent_end_index: 653
+)
+Annotation.create!(
+  author_id: User.all[1].id,
+  track_id: Track.all[0].id,
+  body: "Reference to the song \"It never rains in Southern California\" effortlessly flows into some wordplay about Frank's emotions when he thinks about this person",
+  referent_start_index: 71,
+  referent_end_index: 182
+)
+Annotation.create!(
+  author_id: User.all[1].id,
+  track_id: Track.all[0].id,
+  body: "Frank is in it for the long haul!",
+  referent_start_index: 355,
+  referent_end_index: 446
+)
+Annotation.create!(
+  author_id: User.all[2].id,
+  track_id: Track.all[5].id,
+  body: "You can tell from the background noise here that Kanye is talking to a friend in a party situation, describing a story that happened with his girl",
+  referent_start_index: 0,
+  referent_end_index: 19
+)
+Annotation.create!(
+  author_id: User.all[2].id,
+  track_id: Track.all[5].id,
+  body: "We first hear Kanye singing here - cool transition from the intro",
+  referent_start_index: 135,
+  referent_end_index: 196
+)
+Annotation.create!(
+  author_id: User.all[2].id,
+  track_id: Track.all[5].id,
+  body: "Kanye harshly sets up the scenario of an argument by saying that no one is going to love his partner if she acts the way she's acting",
+  referent_start_index: 501,
+  referent_end_index: 564
+)
+Annotation.create!(
+  author_id: User.all[2].id,
+  track_id: Track.all[5].id,
+  body: "Here Kanye references the 'heartbreak hotel', a running theme of the album",
+  referent_start_index: 1566,
+  referent_end_index: 1608
+)
+Annotation.create!(
+  author_id: User.all[2].id,
+  track_id: Track.all[4].id,
+  body: "Introducing the idea of being a deadbeat by being single-minded on stuff like food",
+  referent_start_index: 86,
+  referent_end_index: 121
+)
+Annotation.create!(
+  author_id: User.all[2].id,
+  track_id: Track.all[4].id,
+  body: "Evoking the image of a car driving away maybe?",
+  referent_start_index: 445,
+  referent_end_index: 501
+)
+Annotation.create!(
+  author_id: User.all[2].id,
+  track_id: Track.all[3].id,
+  body: "Toro takes on the character of an aggressive lover.",
+  referent_start_index: 0,
+  referent_end_index: 55
+)
+Annotation.create!(
+  author_id: User.all[2].id,
+  track_id: Track.all[3].id,
+  body: "Toro wonders why the club is so dead and presumably is told that it's the morning already",
+  referent_start_index: 166,
+  referent_end_index: 248
+)
+Annotation.create!(
+  author_id: User.all[2].id,
+  track_id: Track.all[4].id,
+  body: "Part of Janelle's fictional universe that the album describes is that sexuality is discouraged. Electric Lady wants to turn that around",
+  referent_start_index: 182,
+  referent_end_index: 245
+)
+Annotation.create!(
+  author_id: User.all[2].id,
+  track_id: Track.all[3].id,
+  body: "This is an incredible image she depicts of being physically pressed up against the emotional wall someone has put up. Great setup for the chorus.",
+  referent_start_index: 146,
+  referent_end_index: 199
+)
+Annotation.create!(
+  author_id: User.all[2].id,
+  track_id: Track.all[3].id,
+  body: "Back to the image of the ear pressed up against a surface, listening",
+  referent_start_index: 594,
+  referent_end_index: 641
+)
+Annotation.create!(
+  author_id: User.all[2].id,
+  track_id: Track.all[3].id,
+  body: "This whispered outro sets up the next track, \"Hold Up\"",
+  referent_start_index: 864,
+  referent_end_index: 891
+)
+Annotation.create!(
+  author_id: User.all[2].id,
+  track_id: Track.all[0].id,
+  body: "Frank comes up with a clever way of saying his room is messy",
+  referent_start_index: 0,
+  referent_end_index: 69
+)
+Annotation.create!(
+  author_id: User.all[2].id,
+  track_id: Track.all[0].id,
+  body: "That feeling when you're wondering if someone is thinking about you the way you're thinking about them.",
+  referent_start_index: 282,
+  referent_end_index: 353
+)
+Annotation.create!(
+  author_id: User.all[2].id,
+  track_id: Track.all[0].id,
+  body: "Trying to play off his feelings, which are obviously intense",
+  referent_start_index: 541,
+  referent_end_index: 609
+)
+Annotation.create!(
+  author_id: User.all[3].id,
+  track_id: Track.all[5].id,
+  body: "Picking right back up into the argument",
+  referent_start_index: 1189,
+  referent_end_index: 1329
+)
+Annotation.create!(
+  author_id: User.all[3].id,
+  track_id: Track.all[3].id,
+  body: "Interesting spin on words here",
+  referent_start_index: 618,
+  referent_end_index: 684
+)
+Annotation.create!(
+  author_id: User.all[3].id,
+  track_id: Track.all[3].id,
+  body: "The music sounds like it's spinning around at this point in the song and the words sort of reflect that feeling of spiraling",
+  referent_start_index: 983,
+  referent_end_index: 1185
+)
+
+Annotation.create!(
+  author_id: User.all[3].id,
+  track_id: Track.all[4].id,
+  body: "The proverbial glass ceiling that women historically couldn't get past",
+  referent_start_index: 752,
+  referent_end_index: 772
+)
+Annotation.create!(
+  author_id: User.all[3].id,
+  track_id: Track.all[3].id,
+  body: "This song is just so hopeless sounding and sad :[",
+  referent_start_index: 652,
+  referent_end_index: 854
+)
+
+# Comments
+
+Comment.create!(
+  author_id: User.all[1].id,
+  commentable_type: "Track",
+  body: "This track is such a jam. Love the synthpop vibe.",
+  commentable_id: 6
+)
+Comment.create!(
+  author_id: User.all[2].id,
+  commentable_type: "Annotation",
+  body: "It's also the central thesis of the song",
+  commentable_id: 2
+)
+Comment.create!(
+  author_id: User.all[2].id,
+  commentable_type: "Track",
+  body: "Yeah man this one is A+",
+  commentable_id: 6
+)
+Comment.create!(
+  author_id: User.all[2].id,
+  commentable_type: "Annotation",
+  body: "It's also the start of a cool transition into Kanye's vocals - see my next annotation",
+  commentable_id: 1
+)
+Comment.create!(
+  author_id: User.all[2].id,
+  commentable_type: "Track",
+  body: "This is one of the first tracks in the \"chillwave\" genre that emerged around 2009",
+  commentable_id: 5
+)
+Comment.create!(
+  author_id: User.all[2].id,
+  commentable_type: "Track",
+  body: "Yo the bass on this song is NASTY!",
+  commentable_id: 4
+)
+Comment.create!(
+  author_id: User.all[2].id,
+  commentable_type: "Annotation",
+  body: "This album is considered to be a part of the Afrofuturism genre",
+  commentable_id: 10
+)
+Comment.create!(
+  author_id: User.all[2].id,
+  commentable_type: "Track",
+  body: "Solange is featured on this track!",
+  commentable_id: 3
+)
+Comment.create!(
+  author_id: User.all[2].id,
+  commentable_type: "Annotation",
+  body: "I'm pretty sure it's Jay-Z",
+  commentable_id: 12
+)
+Comment.create!(
+  author_id: User.all[2].id,
+  commentable_type: "Track",
+  body: "THIS SONG IS BLESSED!! You can definitely tell that James Blake had a hand in it from the chord structure.",
+  commentable_id: 2
+)
+Comment.create!(
+  author_id: User.all[2].id,
+  commentable_type: "Annotation",
+  body: "I don't think this annotation gets into specifics enough",
+  commentable_id: 14
+)
+Comment.create!(
+  author_id: User.all[2].id,
+  commentable_type: "Annotation",
+  body: "Downvote for captain obvious annotation. Tell us something new!",
+  commentable_id: 30
+)
+Comment.create!(
+  author_id: User.all[3].id,
+  commentable_type: "Track",
+  body: "MMM THAT BEAT",
+  commentable_id: 6
+)
+Comment.create!(
+  author_id: User.all[3].id,
+  commentable_type: "Annotation",
+  body: "I don't follow",
+  commentable_id: 18
+)
+Comment.create!(
+  author_id: User.all[3].id,
+  commentable_type: "Annotation",
+  body: "Dude what? What a dumb annotation",
+  commentable_id: 2
+)
+Comment.create!(
+  author_id: User.all[3].id,
+  commentable_type: "Annotation",
+  body: "It's also a song on the album I think",
+  commentable_id: 20
+)
+Comment.create!(
+  author_id: User.all[3].id,
+  commentable_type: "Annotation",
+  body: "Vibes vibes vibes",
+  commentable_id: 4
+)
+Comment.create!(
+  author_id: User.all[3].id,
+  commentable_type: "Annotation",
+  body: "I wonder what I'm having for dinner tonight...................",
+  commentable_id: 21
+)
+Comment.create!(
+  author_id: User.all[3].id,
+  commentable_type: "Track",
+  body: "Neon Indian was among the first major artists labeled as Chillwave pioneers, along with Toro Y Moi and Washed Out",
+  commentable_id: 5
+)
+Comment.create!(
+  author_id: User.all[3].id,
+  commentable_type: "Track",
+  body: "Also, this track is a pretty blatant Todd Rundgren sample",
+  commentable_id: 5
+)
+Comment.create!(
+  author_id: User.all[3].id,
+  commentable_type: "Track",
+  body: "Who raps on the bridge though?",
+  commentable_id: 3
+)
+Comment.create!(
+  author_id: User.all[3].id,
+  commentable_type: "Track",
+  body: "Some other guy produced it primarily tho",
+  commentable_id: 2
+)
+
+# Votes
+
+Vote.create!(
+  value: 1, voter_id: User.all[1].id, annotation_id: Annotation.all[0].id
+)
+Vote.create!(
+  value: 1, voter_id: User.all[1].id, annotation_id: Annotation.all[1].id
+)
+Vote.create!(
+  value: 1, voter_id: User.all[1].id, annotation_id: Annotation.all[2].id
+)
+Vote.create!(
+  value: 1, voter_id: User.all[1].id, annotation_id: Annotation.all[3].id
+)
+Vote.create!(
+  value: 1, voter_id: User.all[1].id, annotation_id: Annotation.all[4].id
+)
+Vote.create!(
+  value: 1, voter_id: User.all[1].id, annotation_id: Annotation.all[10].id
+)
+Vote.create!(
+  value: 1, voter_id: User.all[1].id, annotation_id: Annotation.all[9].id
+)
+Vote.create!(
+  value: 1, voter_id: User.all[1].id, annotation_id: Annotation.all[8].id
+)
+Vote.create!(
+  value: 1, voter_id: User.all[1].id, annotation_id: Annotation.all[11].id
+)
+Vote.create!(
+  value: 1, voter_id: User.all[2].id, annotation_id: Annotation.all[1].id
+)
+Vote.create!(
+  value: 1, voter_id: User.all[2].id, annotation_id: Annotation.all[0].id
+)
+Vote.create!(
+  value: -1, voter_id: User.all[2].id, annotation_id: Annotation.all[18].id
+)
+Vote.create!(
+  value: -1, voter_id: User.all[2].id, annotation_id: Annotation.all[17].id
+)
+Vote.create!(
+  value: 1, voter_id: User.all[2].id, annotation_id: Annotation.all[20].id
+)
+Vote.create!(
+  value: 1, voter_id: User.all[2].id, annotation_id: Annotation.all[4].id
+)
+Vote.create!(
+  value: -1, voter_id: User.all[2].id, annotation_id: Annotation.all[21].id
+)
+Vote.create!(
+  value: 1, voter_id: User.all[2].id, annotation_id: Annotation.all[24].id
+)
+Vote.create!(
+  value: 1, voter_id: User.all[2].id, annotation_id: Annotation.all[8].id
+)
+Vote.create!(
+  value: 1, voter_id: User.all[2].id, annotation_id: Annotation.all[25].id
+)
+Vote.create!(
+  value: 1, voter_id: User.all[2].id, annotation_id: Annotation.all[26].id
+)
+Vote.create!(
+  value: 1, voter_id: User.all[2].id, annotation_id: Annotation.all[30].id
+)
+Vote.create!(
+  value: -1, voter_id: User.all[2].id, annotation_id: Annotation.all[13].id
+)
+Vote.create!(
+  value: -1, voter_id: User.all[2].id, annotation_id: Annotation.all[29].id
+)
+Vote.create!(
+  value: 1, voter_id: User.all[3].id, annotation_id: Annotation.all[0].id
+)
+Vote.create!(
+  value: -1, voter_id: User.all[3].id, annotation_id: Annotation.all[17].id
+)
+Vote.create!(
+  value: -1, voter_id: User.all[3].id, annotation_id: Annotation.all[1].id
+)
+Vote.create!(
+  value: 1, voter_id: User.all[3].id, annotation_id: Annotation.all[19].id
+)
+Vote.create!(
+  value: 1, voter_id: User.all[3].id, annotation_id: Annotation.all[3].id
+)
+Vote.create!(
+  value: -1, voter_id: User.all[3].id, annotation_id: Annotation.all[32].id
+)
+Vote.create!(
+  value: 1, voter_id: User.all[3].id, annotation_id: Annotation.all[33].id
+)
+Vote.create!(
+  value: -1, voter_id: User.all[3].id, annotation_id: Annotation.all[12].id
+)
+Vote.create!(
+  value: 1, voter_id: User.all[3].id, annotation_id: Annotation.all[26].id
 )
