@@ -20,6 +20,12 @@ const NavBar = React.createClass({
     SessionStore.addListener(this.forceUpdate.bind(this));
   },
 
+  _guestLogin (e) {
+    e.preventDefault();
+    let guestUser = {username: "guest", password: "password"};
+    SessionActions.login(guestUser);
+  },
+
   _handleLogOut(){
     SessionActions.logout();
     this.setState({modalOpen: false});
@@ -84,6 +90,10 @@ const NavBar = React.createClass({
 
           </Modal>
 
+          <button id="guest-login-button"
+                  className="nav-button"
+                  onClick={this._guestLogin}>
+          </button>
           <button id="sign-up-button"
                   className="nav-button"
                   onClick={this._handleModalClick.bind(this, false)}>
