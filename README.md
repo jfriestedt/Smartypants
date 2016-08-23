@@ -11,7 +11,7 @@ Smartypants is a single-page web app clone of Genius.com, a site which allows us
 ### Authorization
 ![auth]
 
-Users on Smartypants can sign up for accounts on the site - their accounts are created and validated using a custom authentication system that uses the BCrypt gem for encryption.
+Users on Smartypants can sign up for accounts on the site - their accounts are created and validated using a custom authentication  system that uses the BCrypt gem for encryption.
 
 Smartypants bootstraps the current user to the window so that frontend components will display & function appropriately depending on whether or not a user is logged in.
 
@@ -43,15 +43,82 @@ Users can create annotations by highlighting and unannotated section of lyrics o
 By the time the button has appeared, almost all of the information needed to display the button in the right place and eventually create an annotation has been collected:
 
 ```javascript
-// Event pageY stuff
+revealAnnotationShow (e) {
+  e.preventDefault();
+
+  const track = this.state.track;
+
+  let annotationId = parseInt(e.currentTarget.id);
+  let annotation = this.findAnnotationById(annotationId);
+  annotation.yPosition = e.pageY;
+  let annotationBody = annotation.body;
+  let yPosition = e.pageY;
+
+  AnnotationActions.setRevealedAnnotation(annotationId);
+
+  this.setState({
+    annotation: annotation,
+    focused: parseInt(e.currentTarget.id),
+  });
+}
 ```
 
 Here, we see that the element containing a track's lyrics has a mouseup event listener installed. This DOM event carries, among other things, a pageY property that gives a reference to a y-coordinate relative to the dimensions of a parent HTML element. Smartypants uses this pageY to inform where an annotation component should appear on the page.
 
-Annotations store a start-index and end-index which refer to indices in their parent track's lyrics. The snippet of lyrics bound by these indices is the lyric the annotation refers to. To get this info, we can query the DOM selection object for a an anchor node (selection start) and focus node (selection end), which is exactly what is happening here:
+Annotations store a start-index and end-index which refer to indices in their parent track's lyrics. The snippet of lyrics bound by these indices is the lyric the annotation refers to. To get this info, we can query the DOM selection object for a an anchor node (selection start) and focus node (selection end), which is essentially what is happening here:
 
 ```javascript
-// Selection object stuff
+const docSelection = document.getSelection();
+
+if (docSelection.toString().length === 0 ||
+    docSelection.anchorNode !== docSelection.focusNode ||
+    docSelection.anchorNode.parentElement.className !== "nonreferent") {
+
+  this.setState({
+    annotation: {},
+    focused: null
+  });
+
+  return;
+}
+
+let startIndex = document.getSelection().anchorOffset;
+let endIndex = document.getSelection().focusOffset;
+let element = document.getSelection().anchorNode.parentElement;
+
+if (startIndex > endIndex) {
+  startIndex = [endIndex, endIndex = startIndex][0];
+}
+
+const selection = this.state.track.lyrics.slice(startIndex, endIndex);
+
+while (element.previousSibling) {
+  startIndex += element.previousSibling.innerText.length;
+  endIndex += element.previousSibling.innerText.length;
+  element = element.previousSibling;
+}
+
+const annotation = {
+  startIndex: startIndex,
+  endIndex: endIndex,
+  selection: selection,
+  yPosition: e.pageY
+};
+
+this.setState({
+  annotation: annotation,
+  focused: null,
+});
+},
+
+resetState () {
+this.setState({
+  annotation: {},
+  focused: null
+});
+
+AnnotationActions.removeRevealedAnnotation();
+}
 ```
 
 By the time the necessary info is collected, all that is needed to complete a valid annotation is a body created by the user!
