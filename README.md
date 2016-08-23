@@ -4,146 +4,85 @@
 
 [heroku]: https://smartypants-app.herokuapp.com/
 
-Smartypants is a single-page web app clone of Genius.com, a site which allows users to view and collaboratively annotate lyrics to popular songs.
+Smartypants is a single-page web app clone of Genius.com, a site which allows users to view and collaboratively annotate lyrics to popular songs. Smartypants is built using Ruby on Rails on the backend and React.js / Flux on the frontend.
 
+## Features & Implementation
 
+### Authorization
+![auth]
 
-<!--  -->
-<!--  -->
-<!--  -->
+Users on Smartypants can sign up for accounts on the site - their accounts are created and validated using a custom authentication system that uses the BCrypt gem for encryption.
 
-## Minimum Viable Product
+Smartypants bootstraps the current user to the window so that frontend components will display & function appropriately depending on whether or not a user is logged in.
 
-Smartypants is a single-page web application clone of Genius.com, a site which allows users to view and collaboratively annotate lyrics to popular songs. By the end of Week 9, this app will, at a minimum, satisfy the following criteria:
+### Tracks
 
-- [x] Hosting on Heroku
-- [x] New account creation, login, and guest/demo login
-- [ ] A production README, replacing this README
-- [x] Tracks
-  - [x] Smooth, bug-free navigation
-  - [x] Adequate seed data to demonstrate the site's features
-  - [x] Adequate CSS styling
-- [ ] Annotations
-  - [x] Smooth, bug-free navigation
-  - [ ] Adequate seed data to demonstrate the site's features
-  - [x] Adequate CSS styling
-- [ ] Comments
-  - [ ] Smooth, bug-free navigation
-  - [ ] Adequate seed data to demonstrate the site's features
-  - [x] Adequate CSS styling
-- [ ] Upvotes
-  - [ ] Smooth, bug-free navigation
-  - [ ] Adequate seed data to demonstrate the site's features
-  - [ ] Adequate CSS styling
+#### Creating a Track
+![add-track]
 
-## Design Docs
-* [View Wireframes][views]
-* [React Components][components]
-* [Flux Cycles][flux-cycles]
-* [API endpoints][api-endpoints]
-* [DB schema][schema]
+Users can create tracks by navigating to a track creation route from the nav bar. Tracks require an artist, a title, and lyrics. They also take an optional album name and track image. Images are uploaded via the Paperclip gem and stored remotely via AWS S3 cloud storage.
 
-[views]: docs/views.md
-[components]: docs/components.md
-[flux-cycles]: docs/flux-cycles.md
-[api-endpoints]: docs/api-endpoints.md
-[schema]: docs/schema.md
+#### Viewing Tracks
+![track-show]
 
-## Implementation Timeline
+Once a track is created, it will be displayed as a clickable index item on the homepage.
 
-### Phase 1: Backend setup and Front End User Authentication (2 days, W1 W 6pm)
+<!-- Track show preview [x] -->
+When a track is clicked on from the homepage or navigated to, a component will render displaying all that track's stored information. On this page, annotations, comments, & annotation votes can be referenced and created.
 
-**Objective:** Functioning rails project with front-end Authentication
+### Annotations
+![annotation-show]
 
-- [x] create new project
-- [x] create `User` model
-- [x] authentication backend setup
-- [x] create `StaticPages` controller and root view
-- [x] set up webpack & flux architecture with skeleton files
-- [x] setup `APIUtil` to interact with the API
-- [x] set up flux cycle for frontend authorization
-- [x] user signup/signin "splash page" components
-- [x] nav bar component
-- [x] implement React Router
-- [x] style signin/signup components
-- [x] seed users
+Annotations are the primary CRUD resource of Smartypants. Users can create, edit, and destroy their annotations. Anyone using Smartypants, whether logged in or not, can view annotations.
 
-### Phase 2: Tracks Model, API, and components (2 days, W2 F 6pm)
+#### Creating an Annotation
+![annotation-button]
 
-**Objective:** Tracks can be created, read, edited and destroyed through
-the API.
+Users can create annotations by highlighting and unannotated section of lyrics on a track. A button will appear to the right of the selected lyrics, prompting the user to click through to begin annotation on the lyric.
 
-- [x] create `Track` model
-- [x] seed the database with a small amount of test data
-- [x] CRUD API for tracks (`TracksController`)
-- [x] jBuilder views for tracks
-- [x] test out API interaction in the console.
-- implement each track component, building out the flux loop as needed.
-  - [x] `TracksIndex`
-  - [x] `TrackIndexItem`
-  - [x] `TrackForm`
-  - [x] `TrackShow`
-    - [x] `TrackBanner`
-  - [x] add navigation between tracks index & track show views
-- [x] style track components
-- [x] implement file upload & track images
-- [x] seed tracks
+By the time the button has appeared, almost all of the information needed to display the button in the right place and eventually create an annotation has been collected:
 
-### Phase 3: Annotations (3 days, W2 W 6pm)
+```javascript
+// Event pageY stuff
+```
 
-**Objective:** Tracks can be annotated by users. Sections of track lyrics can be highlighted and made into referents which refer to annotations. After creation, annotations will appear and disappear beside their referents when referents are selected and unselected.
+Here, we see that the element containing a track's lyrics has a mouseup event listener installed. This DOM event carries, among other things, a pageY property that gives a reference to a y-coordinate relative to the dimensions of a parent HTML element. Smartypants uses this pageY to inform where an annotation component should appear on the page.
 
-- [x] create `Annotation` model and join table
-- [x] build out API, Flux loop, and components for Annotation CRUD
-- implement each annotation component, building out the flux loop as needed.
-  - [x] `AnnotationContainer`
-  - [x] `AnnotationForm`
-  - [x] `AnnotationBody`
-- [x] style annotation components
-- [ ] seed annotations
+Annotations store a start-index and end-index which refer to indices in their parent track's lyrics. The snippet of lyrics bound by these indices is the lyric the annotation refers to. To get this info, we can query the DOM selection object for a an anchor node (selection start) and focus node (selection end), which is exactly what is happening here:
 
-Phase 3 will be the most difficult and time-consuming phase of the project. It builds the key functionality of the site, and therefore, its full completion will take precedence over building of later features in the event of a time issue.
+```javascript
+// Selection object stuff
+```
 
-### Phase 4: Comments (1 day, W2 R 6pm)
+By the time the necessary info is collected, all that is needed to complete a valid annotation is a body created by the user!
 
-**Objective:** Users can create, edit, and delete comments for tracks and annotations.
+<!-- Annotation form [x]-->
 
-- [x] create `Comment` model & polymorphic associations
-- build out API, Flux loop, and components for:
-  - [ ] displaying comments on tracks
-  - [ ] adding comments to tracks
-  - [ ] editing comments on tracks
-  - [ ] deleting comments from tracks
-  - [x] displaying comments on annotations
-  - [x] adding comments to annotations
-  - [ ] editing comments on annotations
-  - [ ] deleting comments from annotations
-- [x] style comment elements
-- [ ] seed comments
+### Comments
+![comments]
 
-### Phase 5: Upvotes & Downvotes (1 day, W2 F 6pm)
+Tracks and annotations can each be commented on in Smartypants. Because comments for each resource are identical excepting for the type of parent associated with the comment, code is kept DRY by making comments polymorphic on the backend, and giving them a common React component on the frontend.
 
-**objective:** Users can upvote and downvote annotations. Annotations will display their cumulative up/down score.
+### Votes
+![votes]
 
-- [ ] create `AnnotationScore` & model and `UserScore` join table
-- build out API, Flux loop, and components for:
-  - [ ] displaying upvote & downvote buttons under annotations
-  - [ ] adding one point (maximum) per voter/annotation via upvote
-  - [ ] subtracting one point (maximum) per voter/annotation via downvote
-      (NB: creating an upvote on an annotation after creating a downvote will remove the downvote and add the upvote, and vice versa.)
-- [ ] style upvote & downvote elements
-- [ ] seed upvotes & downvotes
+Annotations can be voted up or down in Smartypants. Vote handling is largely done by a Rails controller, which requires that a given user may create only one vote per annotation. This means, for example, that a downvote that follows an upvote will remove the existing upvote and create a downvote instead, resulting in a net score change of -2 on the annotation.
 
 ### Bonus Features (TBD)
-- [ ] Add genre tags to tracks
-- [ ] Add site-wide track & lyrics search
-- [ ] Add extended track info to Track model & Track#show secondary column
-- [ ] Add albums, associate tracks with albums
-- [ ] Add User profiles
-- [ ] Add user 'smartyness' score, based on contributed annotations, comments, and up/downvotes
 
-[phase-one]: docs/phases/phase1.md
-[phase-two]: docs/phases/phase2.md
-[phase-three]: docs/phases/phase3.md
-[phase-four]: docs/phases/phase4.md
-[phase-five]: docs/phases/phase5.md
+These are features I plan to implement as time allows:
+
+* Album resource, associated with tracks and artists
+* Track, artist, & album search
+* Multiple contributors on annotations
+* User profiles, with a "smartyness" score associated with each user based on site contributions.
+
+[add-song]: ./docs/screenshots/add_song.png
+[annotation-button]: ./docs/screenshots/annotation_button.png
+[annotation-form]: ./docs/screenshots/annotation_form.png
+[annotation-show]: ./docs/screenshots/annotation_show.png
+[auth]: ./docs/screenshots/auth.png
+[comments]: ./docs/screenshots/comments.png
+[track-show]: ./docs/screenshots/track_show.png
+[tracks-index]: ./docs/screenshots/tracks_index.png
+[votes]: ./docs/screenshots/votes.png
