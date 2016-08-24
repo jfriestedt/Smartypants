@@ -1,6 +1,6 @@
 # Smartypants
 
-[Heroku link][heroku]
+[Live Site][heroku]
 
 [heroku]: http://smartypants.jonfriestedt.com/
 
