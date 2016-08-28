@@ -61,7 +61,7 @@ const NavBar = React.createClass({
     if (SessionStore.isUserLoggedIn()) {
       return (
         <hgroup className="nav-right-container">
-          <h2 className="nav-name nav-button">
+          <h2 className="nav-name nav-button greeting">
             Welcome, {SessionStore.currentUser().username}!
           </h2>
           <input  className="nav-button"
