@@ -384,6 +384,13 @@ Track.create!(
   image: File.open('app/assets/images/808s-And-Heartbreak.jpg')
 )
 
+# 0: Frank Ocean - Thinkin Bout You
+# 1: Beyonce - Pray You Catch Me
+# 2: Janelle Monae - Electric Lady
+# 3: Toro Y Moi - So Many Details
+# 4: Neon Indian - Deadbeat Summer
+# 5: Kanye West - Paranoid
+
 # Annotations
 
 Annotation.create!(
@@ -445,35 +452,35 @@ Annotation.create!(
 )
 Annotation.create!(
   author_id: User.all[1].id,
-  track_id: Track.all[4].id,
+  track_id: Track.all[2].id,
   body: "The electric lady is sure of herself",
   referent_start_index: 105,
   referent_end_index: 134
 )
 Annotation.create!(
   author_id: User.all[1].id,
-  track_id: Track.all[4].id,
+  track_id: Track.all[2].id,
   body: "We're in the future and we're at a party!!",
   referent_start_index: 279,
   referent_end_index: 309
 )
 Annotation.create!(
   author_id: User.all[1].id,
-  track_id: Track.all[4].id,
+  track_id: Track.all[2].id,
   body: "Electric lady presents herself as a messianic figure",
   referent_start_index: 652,
   referent_end_index: 713
 )
 Annotation.create!(
   author_id: User.all[1].id,
-  track_id: Track.all[3].id,
+  track_id: Track.all[1].id,
   body: "Right off the bat we know this is about someone lying",
   referent_start_index: 10,
   referent_end_index: 38
 )
 Annotation.create!(
   author_id: User.all[1].id,
-  track_id: Track.all[3].id,
+  track_id: Track.all[1].id,
   body: "Beyonce is hoping for a sign of life from her husband and that he picks up on her needs.",
   referent_start_index: 210,
   referent_end_index: 433
@@ -557,28 +564,28 @@ Annotation.create!(
 )
 Annotation.create!(
   author_id: User.all[2].id,
-  track_id: Track.all[4].id,
+  track_id: Track.all[2].id,
   body: "Part of Janelle's fictional universe that the album describes is that sexuality is discouraged. Electric Lady wants to turn that around",
   referent_start_index: 182,
   referent_end_index: 245
 )
 Annotation.create!(
   author_id: User.all[2].id,
-  track_id: Track.all[3].id,
+  track_id: Track.all[1].id,
   body: "This is an incredible image she depicts of being physically pressed up against the emotional wall someone has put up. Great setup for the chorus.",
   referent_start_index: 146,
   referent_end_index: 199
 )
 Annotation.create!(
   author_id: User.all[2].id,
-  track_id: Track.all[3].id,
+  track_id: Track.all[1].id,
   body: "Back to the image of the ear pressed up against a surface, listening",
   referent_start_index: 594,
   referent_end_index: 641
 )
 Annotation.create!(
   author_id: User.all[2].id,
-  track_id: Track.all[3].id,
+  track_id: Track.all[1].id,
   body: "This whispered outro sets up the next track, \"Hold Up\"",
   referent_start_index: 864,
   referent_end_index: 891
@@ -628,14 +635,14 @@ Annotation.create!(
 
 Annotation.create!(
   author_id: User.all[3].id,
-  track_id: Track.all[4].id,
+  track_id: Track.all[2].id,
   body: "The proverbial glass ceiling that women historically couldn't get past",
   referent_start_index: 752,
   referent_end_index: 772
 )
 Annotation.create!(
   author_id: User.all[3].id,
-  track_id: Track.all[3].id,
+  track_id: Track.all[1].id,
   body: "This song is just so hopeless sounding and sad :[",
   referent_start_index: 652,
   referent_end_index: 854
