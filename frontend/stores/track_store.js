@@ -39,10 +39,9 @@ const resetAllTracks = (tracks) => {
 const resetSingleTrack = (track) => {
   for (var i = 0; i < _tracks.length; i++) {
     if (_tracks[i].id === track.id) {
-      _tracks.splice(i, 1);
+      _tracks[i] = track;
     }
   }
-  _tracks.push(track);
 };
 
 const addAnnotationComment = (comment) => {
