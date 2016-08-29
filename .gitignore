@@ -25,6 +25,10 @@
 app/assets/stylesheets/comments.scss
 app/helpers/comments_helper.rb
 test/controllers/comments_controller_test.rb
+app/assets/images/dunce_grey.psd
+app/assets/images/dunce_red.psd
+app/assets/images/grad_green.psd
+app/assets/images/grad_grey.psd
 .DS_Store
 
 # Ignore application configuration
