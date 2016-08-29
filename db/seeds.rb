@@ -10,7 +10,7 @@
 
 User.create!(username: "scholar48", password: "whateveryouwantittobe")
 User.create!(username: "billsavant", password: "pizzalady")
-User.create!(username: "ProdigyJones", password: "feelnoways")
+User.create!(username: "ProdigyLuke", password: "feelnoways")
 
 User.create!(username: "guest", password: "password")
 
@@ -79,7 +79,8 @@ Track.create!(
   artist: "Frank Ocean",
   album: "Channel Orange",
   lyrics: thinkin_bout_you_lyrics,
-  image: File.open('app/assets/images/Channel-orange.jpg')
+  image: File.open('app/assets/images/Channel-orange.jpg'),
+  submitter_id: 3
 )
 
 pray_you_catch_me_lyrics = <<-TXT
@@ -126,7 +127,8 @@ Track.create!(
   artist: "Beyoncé",
   album: "Lemonade",
   lyrics: pray_you_catch_me_lyrics,
-  image: File.open('app/assets/images/Lemonade.jpg')
+  image: File.open('app/assets/images/Lemonade.jpg'),
+  submitter_id: 1
 )
 
 electric_lady_lyrics = <<-TXT
@@ -191,7 +193,8 @@ Track.create!(
   artist: "Janelle Monáe",
   album: "The Electric Lady",
   lyrics: electric_lady_lyrics,
-  image: File.open('app/assets/images/Electric-Lady.png')
+  image: File.open('app/assets/images/Electric-Lady.png'),
+  submitter_id: 2
 )
 
 so_many_details_lyrics = <<-TXT
@@ -247,7 +250,8 @@ Track.create!(
   artist: "Toro Y Moi",
   album: "Anything In Return",
   lyrics: so_many_details_lyrics,
-  image: File.open('app/assets/images/Anything-In-Return.jpeg')
+  image: File.open('app/assets/images/Anything-In-Return.jpeg'),
+  submitter_id: 2
 )
 
 deadbeat_summer_lyrics = <<-TXT
@@ -290,7 +294,8 @@ Track.create!(
   artist: "Neon Indian",
   album: "Psychic Chasms",
   lyrics: deadbeat_summer_lyrics,
-  image: File.open('app/assets/images/Psychic-Chasms.jpg')
+  image: File.open('app/assets/images/Psychic-Chasms.jpg'),
+  submitter_id: 3
 )
 
 paranoid_lyrics = <<-TXT
@@ -381,7 +386,8 @@ Track.create!(
   artist: "Kanye West",
   album: "808s & Heartbreak",
   lyrics: paranoid_lyrics,
-  image: File.open('app/assets/images/808s-And-Heartbreak.jpg')
+  image: File.open('app/assets/images/808s-And-Heartbreak.jpg'),
+  submitter_id: 1
 )
 
 # 0: Frank Ocean - Thinkin Bout You
