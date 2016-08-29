@@ -1,13 +1,33 @@
 const React = require('react');
 const hashHistory = require('react-router').hashHistory;
 
+const SessionStore = require('../../stores/session_store');
+const TrackActions = require('../../actions/track_actions');
+
 const TrackIndexItem = React.createClass ({
   contextTypes: {
     router: React.PropTypes.object.isRequired
   },
 
+  getInitialState () {
+    if (SessionStore.isUserLoggedIn()) {
+      return { loggedIn: true };
+    } else {
+      return { loggedIn: false };
+    }
+  },
+
+  componentDidMount () {
+    this.sessionListener = SessionStore.addListener(this.handleChange);
+  },
+
+  componentWillUnmount () {
+    this.sessionListener.remove();
+  },
+
   deleteButton () {
-    if (this.props.track.submitter.id === window.currentUser.id) {
+    if (this.state.loggedIn &&
+        this.props.track.submitter.id === window.currentUser.id) {
       return (
         <button className="delete-button"
                 onClick = {this.handleClick}>
@@ -15,6 +35,25 @@ const TrackIndexItem = React.createClass ({
         </button>
       );
     }
+  },
+
+  handleChange () {
+    if (SessionStore.isUserLoggedIn()) {
+      this.setState({
+        loggedIn: true
+      });
+    } else {
+      this.setState({
+        loggedIn: false
+      });
+    }
+  },
+
+  handleClick (e) {
+    e.stopPropagation();
+    e.preventDefault();
+    TrackActions.destroyTrack(this.props.track.id);
+    TrackActions.fetchAllTracks();
   },
 
   showTrack () {

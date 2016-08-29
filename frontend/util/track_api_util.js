@@ -30,6 +30,16 @@ const TrackApiUtil = {
         receiveSingleTrack(receivedTrack);
       }
     });
+  },
+
+  destroyTrack(trackId, receiveAllTracks) {
+    $.ajax({
+      url: '/api/tracks/' + trackId,
+      method: "DELETE",
+      success (receivedTracks) {
+        receiveAllTracks(receivedTracks);
+      }
+    });
   }
 };
 

@@ -1,6 +1,7 @@
 const React = require('react');
 const SessionActions = require('../actions/session_actions');
 const SessionStore = require('../stores/session_store');
+const TrackActions = require('../actions/track_actions');
 
 const LoginForm = React.createClass({
   contextTypes: {
@@ -22,6 +23,7 @@ const LoginForm = React.createClass({
   redirectIfLoggedIn() {
     if (SessionStore.isUserLoggedIn()) {
       this.context.router.push("/");
+      TrackActions.fetchAllTracks();
     }
   },
 

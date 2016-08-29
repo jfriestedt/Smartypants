@@ -18,6 +18,16 @@ class Api::TracksController < ApplicationController
       render json: @track.errors.full_messages, status: 422
     end
   end
+
+  def destroy
+    @track = Track.find(params[:id])
+
+    if @track.destroy
+      render :index
+    else
+      render json: @track.errors.full_messages, status: 422
+    end
+  end
 end
 
 private

@@ -37,6 +37,7 @@ const TrackForm = React.createClass({
     const track = Object.assign({}, formData);
     TrackActions.createTrack(formData);
     this.navigateToIndex();
+    TrackActions.fetchAllTracks();
   },
 
   handleCancel(event) {

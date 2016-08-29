@@ -18,6 +18,10 @@ const TrackActions = {
     TrackApiUtil.createTrack(track, TrackActions.receiveSingleTrack);
   },
 
+  destroyTrack (trackId) {
+    TrackApiUtil.destroyTrack(trackId, TrackActions.receiveAllTracks);
+  },
+
   receiveAllTracks (tracks) {
     AppDispatcher.dispatch({
       actionType: TrackConstants.TRACKS_RECEIVED,
