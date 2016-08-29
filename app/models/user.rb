@@ -66,6 +66,10 @@ class User < ActiveRecord::Base
     self.password_digest = BCrypt::Password.create(password)
   end
 
+  def wrote_annotation?(annotation)
+    annotation.author_id == self.id
+  end
+
   private
 
   def ensure_session_token
