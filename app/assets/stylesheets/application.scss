@@ -349,6 +349,26 @@ hr {
   flex-direction: column;
   padding: 6%;
   z-index: 1;
+
+  .track-index-item-submitter-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .delete-button {
+    margin: 0;
+    padding: 3px;
+    font: 12px sans-serif;
+    color: #626262;
+    text-align: right;
+    transition: all 0.1s ease;
+    border: 1px solid #626262;
+  }
+
+  .delete-button:hover {
+    color: red;
+    border: 1px solid red;
+  }
 }
 
 .track-index-item-title-and-artist-container {

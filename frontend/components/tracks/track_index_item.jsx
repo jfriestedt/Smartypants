@@ -6,6 +6,17 @@ const TrackIndexItem = React.createClass ({
     router: React.PropTypes.object.isRequired
   },
 
+  deleteButton () {
+    if (this.props.track.submitter.id === window.currentUser.id) {
+      return (
+        <button className="delete-button"
+                onClick = {this.handleClick}>
+          Delete
+        </button>
+      );
+    }
+  },
+
   showTrack () {
     this.context.router.push('/tracks/' + this.props.track.id);
   },
@@ -36,6 +47,7 @@ const TrackIndexItem = React.createClass ({
 
           <div className="track-index-item-submitter-container">
             <h4>Added by {submitter}</h4>
+            {this.deleteButton()}
           </div>
         </div>
       </div>

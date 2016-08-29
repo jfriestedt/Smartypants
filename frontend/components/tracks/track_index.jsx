@@ -27,7 +27,9 @@ const TrackIndex = React.createClass ({
         <section className="smartypants-intro">
           <h2>
             Smartypants is a home for people who know too much about
-            music. Show off your smarts.
+            music.
+            <br />
+            Show off your smarts.
           </h2>
         </section>
         <section className="main">
