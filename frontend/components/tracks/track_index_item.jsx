@@ -26,8 +26,10 @@ const TrackIndexItem = React.createClass ({
   },
 
   deleteButton () {
-    if (!SessionStore.isUserLoggedIn()) {
-      return "boogie woogie";
+    if (SessionStore.isUserLoggedIn()) {
+      return (
+        <div className="stupid-div"></div>
+      );
     } else {
       if (this.props.track.submitter.id === window.currentUser.id) {
         return (
@@ -89,6 +91,7 @@ const TrackIndexItem = React.createClass ({
 
           <div className="track-index-item-submitter-container">
             <h4>Added by {submitter}</h4>
+
             {this.deleteButton()}
           </div>
         </div>
