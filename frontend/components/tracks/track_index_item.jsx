@@ -26,8 +26,9 @@ const TrackIndexItem = React.createClass ({
   },
 
   deleteButton () {
-    if (SessionStore.isUserLoggedIn()) {
-      if (this.props.track.submitter.id === window.currentUser.id) {
+    if (this.state.loggedIn) {
+      debugger
+      if (this.props.track.submitter.id === SessionStore.currentUser().id) {
         return (
           <button className="delete-button"
                   onClick = {this.handleClick}>
