@@ -26,20 +26,9 @@ const TrackIndexItem = React.createClass ({
   },
 
   deleteButton () {
-    if (SessionStore.isUserLoggedIn()) {
-      console.log("ARE YOU LISTENING?");
-
-      console.log("HELLO?!?!");
-
-      if (1 < 2) {
-        console.log("1 IS LESS THAN 2!!!");
-      }
-
-      let sum = (1 + 4 + 7 + 3 + 7 + 4);
-
-      console.log(`${sum}!!!!!!!!!!!!`);
-      console.log("RECOMPILE YOU SHIT!!!");
-
+    if (!SessionStore.isUserLoggedIn()) {
+      console.log("OH HI NICE OF YOU TO JOIN ME HERE");
+    } else {
       if (this.props.track.submitter.id === window.currentUser.id) {
         return (
           <button className="delete-button"
