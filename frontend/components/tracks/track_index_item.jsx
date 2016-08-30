@@ -27,7 +27,7 @@ const TrackIndexItem = React.createClass ({
 
   deleteButton () {
     if (!SessionStore.isUserLoggedIn()) {
-      console.log("OH HI NICE OF YOU TO JOIN ME HERE");
+      return;
     } else {
       if (this.props.track.submitter.id === window.currentUser.id) {
         return (
