@@ -27,7 +27,7 @@ const TrackIndexItem = React.createClass ({
 
   deleteButton () {
     if (!SessionStore.isUserLoggedIn()) {
-      return;
+      return "boogie woogie";
     } else {
       if (this.props.track.submitter.id === window.currentUser.id) {
         return (
