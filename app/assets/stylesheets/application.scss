@@ -841,11 +841,13 @@ hr {
 /* Vote Form */
 
 .vote-form-container {
-  display: inline-block;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 1rem;
+  width: min-content;
 
   button {
-    margin-right: 0.5rem;
     padding: 0.3rem 0.5rem;
     font-size: 16px;
     font-weight: 600;
@@ -880,19 +882,19 @@ hr {
   }
 
   .score {
+    font-size: 18px;
     font-weight: 600;
-    margin-right: 0.5rem;
-    background: #eee;
-    border-radius: 50%;
-    padding: 0.3rem 0.4rem;
+    text-align: center;
+    padding: 0.3rem 0.5rem;
+    min-width: 1em;
   }
 
   .red {
-    color: red;
+    color: #fc1b25;
   }
 
   .green {
-    color: green;
+    color: #0ecb27;
   }
 }
 

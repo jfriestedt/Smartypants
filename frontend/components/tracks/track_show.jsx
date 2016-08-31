@@ -8,6 +8,9 @@ const AnnotationActions = require('../../actions/annotation_actions');
 
 const TrackShow = React.createClass ({
   getStateFromStore () {
+    if (!TrackStore.all()[0]) {
+      TrackActions.fetchAllTracks(this.props.params.trackId);
+    }
     return {
       track: TrackStore.find(parseInt(this.props.params.trackId)),
       annotation: TrackStore.revealedAnnotation(),

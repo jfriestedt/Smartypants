@@ -148,15 +148,22 @@ const AnnotationContainer = React.createClass ({
     );
   },
 
+  scoreColor (score) {
+    return parseInt(score) >= 0 ? "green" : "red";
+  },
+
   voterButtonGroup () {
     if (SessionStore.isUserLoggedIn()) {
-      const className = "score " + this.props.annotation.score_color;
+      let score = this.props.annotation.score;
+      if (parseInt(score) >= 0) { score = `+${score}`; }
+      const className = "score " + this.scoreColor(score);
+
       return (
         <div className="vote-form-container">
           <button className="upvote-button"
                   onClick={this.sendUpvote}>
           </button>
-          <span className={className}>{this.props.annotation.score}</span>
+          <span className={className}>{score}</span>
           <button className="downvote-button"
                   onClick={this.sendDownvote}>
           </button>
