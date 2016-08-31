@@ -208,6 +208,12 @@ hr {
     width: 370px;
   }
 
+  .errors {
+    color: #ff1464;
+    display: block;
+    text-align: center;
+  }
+
   .form-switch-button {
       color: #5ba7c2;
       margin-left: 0.3rem;
@@ -273,7 +279,6 @@ hr {
       cursor: pointer;
     }
 
-
   }
 }
 
@@ -282,7 +287,8 @@ hr {
   justify-content: center;
   border-top: 3px solid #ff1464;
   background: #ffffff;
-  width: 100%
+  width: 100%;
+  min-height: 1200px;
 }
 
 .track-index {

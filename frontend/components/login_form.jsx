@@ -3,6 +3,7 @@ const SessionActions = require('../actions/session_actions');
 const SessionStore = require('../stores/session_store');
 const TrackActions = require('../actions/track_actions');
 const ErrorStore = require('../stores/error_store');
+const ErrorActions = require('../actions/error_actions');
 
 const LoginForm = React.createClass({
   contextTypes: {
@@ -19,11 +20,12 @@ const LoginForm = React.createClass({
   },
 
   componentWillUnmount () {
+    ErrorStore.clearErrors();
     this.errorListener.remove();
     this.sessionListener.remove();
   },
 
-  fieldErrors: function (field) {
+  fieldErrors (field) {
     const errors = ErrorStore.errors("login");
     if (!errors[field]) { return; }
     const messages = errors[field].map(function (errorMsg, i) {
@@ -80,7 +82,6 @@ const LoginForm = React.createClass({
                   value={this.state.username}
                   onChange={this._changeUsername}
           />
-          { this.fieldErrors("username") }
 
           <label className="session-field-label">Password</label>
           <input  className="session-input"
@@ -88,7 +89,6 @@ const LoginForm = React.createClass({
                   value={this.state.pasword}
                   onChange={this._changePassword}
           />
-          { this.fieldErrors("password") }
 
           <div className="form-button-group">
             <input className="form-button" type="submit" value="Login" />

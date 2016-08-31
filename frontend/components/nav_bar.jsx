@@ -20,6 +20,10 @@ const NavBar = React.createClass({
     SessionStore.addListener(this.forceUpdate.bind(this));
   },
 
+  closeModal () {
+    this.setState({modalOpen: false});
+  },
+
   _guestLogin (e) {
     e.preventDefault();
     let guestUser = {username: "guest", password: "password"};
@@ -73,7 +77,7 @@ const NavBar = React.createClass({
       );
     } else {
 
-      const form = (this.state.logIn) ? <LoginForm switchForms={this.switchForms}/> : <SignupForm switchForms={this.switchForms}/>;
+      const form = (this.state.logIn) ? <LoginForm closeModal={this.closeModal} switchForms={this.switchForms}/> : <SignupForm closeModal = {this.closeModal} switchForms={this.switchForms}/>;
 
       return (
         <hgroup className="nav-right-container">
