@@ -208,12 +208,6 @@ hr {
     width: 370px;
   }
 
-  .errors {
-    color: #ff1464;
-    display: block;
-    text-align: center;
-  }
-
   .form-switch-button {
       color: #5ba7c2;
       margin-left: 0.3rem;
@@ -603,6 +597,10 @@ hr {
       transition: all 0.2s ease;
       margin-bottom: 2.5rem;
     }
+
+    .errors {
+      text-align: left;
+    }
   }
 
   textarea {
@@ -898,7 +896,11 @@ hr {
   }
 }
 
-
+.errors {
+  color: #ff1464;
+  display: block;
+  text-align: center;
+}
 
 
 

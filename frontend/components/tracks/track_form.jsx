@@ -1,6 +1,8 @@
 const React = require('react');
 const TrackActions = require('../../actions/track_actions');
 const hashHistory = require('react-router').hashHistory;
+const ErrorStore = require('../../stores/error_store');
+const TrackStore = require('../../stores/track_store');
 
 const TrackForm = React.createClass({
   getInitialState() {
@@ -16,10 +18,25 @@ const TrackForm = React.createClass({
 
   componentWillMount () {
     document.body.style.backgroundColor = "#000";
+    this.errorListener = ErrorStore.addListener(this.updateErrors);
+    this.trackListener = TrackStore.addListener(this.navigateToIndex);
   },
 
   componentWillUnmount () {
     document.body.style.backgroundColor = null;
+    ErrorStore.clearErrors();
+    this.errorListener.remove();
+    this.trackListener.remove();
+  },
+
+  errors () {
+    const errors = ErrorStore.errors("track");
+    if (!errors["track"]) { return; }
+    const messages = errors["track"].map(function (errorMsg, i) {
+      return <li key={ i }>{ errorMsg }</li>;
+    });
+
+    return <ul className="errors">{ messages }</ul>;
   },
 
   handleSubmit(event) {
@@ -36,8 +53,6 @@ const TrackForm = React.createClass({
     event.preventDefault();
     const track = Object.assign({}, formData);
     TrackActions.createTrack(formData);
-    this.navigateToIndex();
-    TrackActions.fetchAllTracks();
   },
 
   handleCancel(event) {
@@ -46,11 +61,18 @@ const TrackForm = React.createClass({
   },
 
   navigateToIndex () {
-    hashHistory.push("/");
+    if (!this.errors["track"]) {
+      hashHistory.push("/");
+      TrackActions.fetchAllTracks();
+    }
   },
 
   update (property) {
     return (e) => this.setState({[property]: e.target.value});
+  },
+
+  updateErrors () {
+    this.forceUpdate();
   },
 
   updateFile (e) {
@@ -117,12 +139,12 @@ const TrackForm = React.createClass({
                 <div className="track-form-image-preview-container">
 
                   <img src={this.state.imageUrl}></img>
-
                   <input
                     type="submit"
                     className="form-button"
                     value="Submit"
                     onClick={this.handleSubmit}/>
+                  { this.errors() }
                 </div>
               </div>
             </div>

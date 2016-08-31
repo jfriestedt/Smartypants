@@ -19,7 +19,7 @@ const TrackApiUtil = {
     });
   },
 
-  createTrack(formData, receiveSingleTrack){
+  createTrack(formData, receiveSingleTrack, setErrors){
     $.ajax({
       url: '/api/tracks/',
       method: "POST",
@@ -28,6 +28,11 @@ const TrackApiUtil = {
       data: formData,
       success (receivedTrack) {
         receiveSingleTrack(receivedTrack);
+      },
+      error(xhr) {
+        console.log("Track error in TrackApiUtil#createTrack");
+        const errors = xhr.responseJSON;
+        setErrors("track", errors);
       }
     });
   },

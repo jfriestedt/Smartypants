@@ -3,6 +3,7 @@ const TrackApiUtil = require('../util/track_api_util');
 const AppDispatcher = require('../dispatcher/dispatcher');
 const CommentConstants = require('../constants/comment_constants');
 const AnnotationConstants = require('../constants/annotation_constants');
+const ErrorActions = require('../actions/error_actions');
 
 const TrackActions = {
 
@@ -15,7 +16,11 @@ const TrackActions = {
   },
 
   createTrack (track) {
-    TrackApiUtil.createTrack(track, TrackActions.receiveSingleTrack);
+    TrackApiUtil.createTrack(
+      track,
+      TrackActions.receiveSingleTrack,
+      ErrorActions.setErrors
+    );
   },
 
   destroyTrack (trackId) {
