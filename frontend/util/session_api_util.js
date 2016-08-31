@@ -1,3 +1,5 @@
+const ErrorStore = require("../stores/error_store");
+
 const SessionApiUtil = {
   signup (user, success, error) {
     $.ajax({
@@ -12,15 +14,16 @@ const SessionApiUtil = {
     });
   },
 
-  login (user, success, error) {
+  login (user, success, setErrors) {
     $.ajax({
       url: '/api/session',
       method: 'POST',
       data: { user },
       success,
       error(xhr) {
+        console.log("Login error in SessionApiUtil#login");
         const errors = xhr.responseJSON;
-        error("login", errors);
+        setErrors("login", errors);
       }
     });
   },

@@ -1,24 +1,38 @@
 const Store = require('flux/utils').Store;
 const AppDispatcher = require('../dispatcher/dispatcher.js');
-const ErrorConstants = ('../constants/error_constants');
+const ErrorConstants = require('../constants/error_constants');
 
 const ErrorStore = new Store(AppDispatcher);
 
 let _form = "";
 let _errors = [];
 
-ErrorStore.errors = (form) => {
-  if (form === _form) {
-    return _errors.slice();
+ErrorStore.errors = function (form) {
+  if (form !== _form) {
+    return {};
   }
+
+  var result = {};
+
+  var errors;
+  Object.keys(_errors).forEach(function (field) {
+    errors = _errors[field];
+    result[field] = errors.slice();
+  });
+
+  return result;
 };
 
-const _setErrors = (form, errors) => {
+ErrorStore.form = function () {
+  return _form.slice();
+};
+
+ErrorStore.setErrors = (form, errors) => {
   _form = form;
-  _errors = errors;
+  _errors[form] = errors;
 };
 
-const _clearErrors = (form, errors) => {
+ErrorStore.clearErrors = (form, errors) => {
   _form = "";
   _errors = [];
 };
@@ -26,12 +40,14 @@ const _clearErrors = (form, errors) => {
 ErrorStore.__onDispatch = (payload) => {
   switch (payload.actionType) {
     case ErrorConstants.SET_ERRORS:
-      _setErrors(payload.form, payload.errors);
+      ErrorStore.setErrors(payload.form, payload.errors);
       ErrorStore.__emitChange();
       break;
     case ErrorConstants.CLEAR_ERRORS:
-      _clearErrors();
+      ErrorStore.clearErrors();
       ErrorStore.__emitChange();
       break;
   }
 };
+
+module.exports = ErrorStore;

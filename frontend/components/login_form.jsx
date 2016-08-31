@@ -2,6 +2,7 @@ const React = require('react');
 const SessionActions = require('../actions/session_actions');
 const SessionStore = require('../stores/session_store');
 const TrackActions = require('../actions/track_actions');
+const ErrorStore = require('../stores/error_store');
 
 const LoginForm = React.createClass({
   contextTypes: {
@@ -13,11 +14,23 @@ const LoginForm = React.createClass({
   },
 
   componentDidMount () {
+    this.errorListener = ErrorStore.addListener(this.updateErrors);
     this.sessionListener = SessionStore.addListener(this.redirectIfLoggedIn);
   },
 
   componentWillUnmount () {
+    this.errorListener.remove();
     this.sessionListener.remove();
+  },
+
+  fieldErrors: function (field) {
+    const errors = ErrorStore.errors("login");
+    if (!errors[field]) { return; }
+    const messages = errors[field].map(function (errorMsg, i) {
+      return <li key={ i }>{ errorMsg }</li>;
+    });
+
+    return <ul className="errors">{ messages }</ul>;
   },
 
   redirectIfLoggedIn() {
@@ -50,10 +63,15 @@ const LoginForm = React.createClass({
     SessionActions.login(guestUser);
   },
 
+  updateErrors () {
+    this.forceUpdate();
+  },
+
   render () {
     return (
       <div className="session-form-container">
         <h1 className="session-heading">SIGN IN</h1>
+        { this.fieldErrors("login") }
         <form className="login-form" onSubmit={this._onSubmit}>
 
           <label className="session-field-label">Username</label>
@@ -62,6 +80,7 @@ const LoginForm = React.createClass({
                   value={this.state.username}
                   onChange={this._changeUsername}
           />
+          { this.fieldErrors("username") }
 
           <label className="session-field-label">Password</label>
           <input  className="session-input"
@@ -69,6 +88,7 @@ const LoginForm = React.createClass({
                   value={this.state.pasword}
                   onChange={this._changePassword}
           />
+          { this.fieldErrors("password") }
 
           <div className="form-button-group">
             <input className="form-button" type="submit" value="Login" />
