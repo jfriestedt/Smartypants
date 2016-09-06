@@ -77,7 +77,14 @@ const NavBar = React.createClass({
       );
     } else {
 
-      const form = (this.state.logIn) ? <LoginForm closeModal={this.closeModal} switchForms={this.switchForms}/> : <SignupForm closeModal = {this.closeModal} switchForms={this.switchForms}/>;
+      let form;
+      if (this.state.logIn) {
+        form = <LoginForm closeModal={this.closeModal}
+                          switchForms={this.switchForms}/>;
+      } else {
+        form = <SignupForm  closeModal = {this.closeModal}
+                            switchForms={this.switchForms}/>;
+      }
 
       return (
         <hgroup className="nav-right-container">
