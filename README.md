@@ -13,8 +13,6 @@ Smartypants is a single-page web app clone of Genius.com, a site which allows us
 
 Users on Smartypants can sign up for accounts on the site - their accounts are created and validated using a custom authentication  system that uses the BCrypt gem for encryption.
 
-Smartypants bootstraps the current user to the window so that frontend components will display & function appropriately depending on whether or not a user is logged in.
-
 ### Tracks
 
 #### Creating a Track
