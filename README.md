@@ -11,12 +11,12 @@ Smartypants is a single-page web app clone of Genius.com, a site which allows us
 ### Authorization
 ![auth]
 
-Users on Smartypants can sign up for accounts on the site - their accounts are created and validated using a custom authentication  system that uses the BCrypt gem for encryption.
+Users on Smartypants can sign up for accounts on the site - their accounts are created and validated using a custom authentication system that uses the BCrypt gem for encryption.
 
 ### Tracks
 
 #### Creating a Track
-![add-track]
+![add-song]
 
 Users can create tracks by navigating to a track creation route from the nav bar. Tracks require an artist, a title, and lyrics. They also take an optional album name and track image. Images are uploaded via the Paperclip gem and stored remotely via AWS S3 cloud storage.
 
