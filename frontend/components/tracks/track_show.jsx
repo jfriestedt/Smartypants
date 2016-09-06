@@ -76,24 +76,25 @@ const TrackShow = React.createClass ({
   sendSelection (e) {
     const docSelection = document.getSelection();
 
+    // If there's no selection object, do nothing.
     if (docSelection.toString().length === 0 ||
         docSelection.anchorNode !== docSelection.focusNode ||
         docSelection.anchorNode.parentElement.className !== "nonreferent") {
-
       this.setState({
         annotation: {},
         focused: null
       });
-
       return;
     }
 
+    // Grab indices from the selection object.
     let startIndex = document.getSelection().anchorOffset;
     let endIndex = document.getSelection().focusOffset;
     let element = document.getSelection().anchorNode.parentElement;
 
+    // Swap values if necessary.
     if (startIndex > endIndex) {
-      startIndex = [endIndex, endIndex = startIndex][0];
+      [startIndex, endIndex] = [endIndex, startIndex];
     }
 
     const selection = this.state.track.lyrics.slice(startIndex, endIndex);

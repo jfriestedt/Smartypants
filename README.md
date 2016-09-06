@@ -66,56 +66,51 @@ Here, we see that the element containing a track's lyrics has a mouseup event li
 Annotations store a start-index and end-index which refer to indices in their parent track's lyrics. The snippet of lyrics bound by these indices is the lyric the annotation refers to. To get this info, we can query the DOM selection object for a an anchor node (selection start) and focus node (selection end), which is essentially what is happening here:
 
 ```javascript
-const docSelection = document.getSelection();
+sendSelection (e) {
+  const docSelection = document.getSelection();
 
-if (docSelection.toString().length === 0 ||
-    docSelection.anchorNode !== docSelection.focusNode ||
-    docSelection.anchorNode.parentElement.className !== "nonreferent") {
+  // If there's no selection object, do nothing.
+  if (docSelection.toString().length === 0 ||
+      docSelection.anchorNode !== docSelection.focusNode ||
+      docSelection.anchorNode.parentElement.className !== "nonreferent") {
+    this.setState({
+      annotation: {},
+      focused: null
+    });
+    return;
+  }
+
+  // Grab indices from the selection object.
+  let startIndex = document.getSelection().anchorOffset;
+  let endIndex = document.getSelection().focusOffset;
+  let element = document.getSelection().anchorNode.parentElement;
+
+  // Swap values if necessary.
+  if (startIndex > endIndex) {
+    [startIndex, endIndex] = [endIndex, startIndex];
+  }
+
+  const selection = this.state.track.lyrics.slice(startIndex, endIndex);
+
+  // Account for any previous annotated lyrics - our parent element doesn't include those.
+  while (element.previousSibling) {
+    startIndex += element.previousSibling.innerText.length;
+    endIndex += element.previousSibling.innerText.length;
+    element = element.previousSibling;
+  }
+
+  // Package up the data to be sent.
+  const annotation = {
+    startIndex: startIndex,
+    endIndex: endIndex,
+    selection: selection,
+    yPosition: e.pageY
+  };
 
   this.setState({
-    annotation: {},
-    focused: null
+    annotation: annotation,
+    focused: null,
   });
-
-  return;
-}
-
-let startIndex = document.getSelection().anchorOffset;
-let endIndex = document.getSelection().focusOffset;
-let element = document.getSelection().anchorNode.parentElement;
-
-if (startIndex > endIndex) {
-  startIndex = [endIndex, endIndex = startIndex][0];
-}
-
-const selection = this.state.track.lyrics.slice(startIndex, endIndex);
-
-while (element.previousSibling) {
-  startIndex += element.previousSibling.innerText.length;
-  endIndex += element.previousSibling.innerText.length;
-  element = element.previousSibling;
-}
-
-const annotation = {
-  startIndex: startIndex,
-  endIndex: endIndex,
-  selection: selection,
-  yPosition: e.pageY
-};
-
-this.setState({
-  annotation: annotation,
-  focused: null,
-});
-},
-
-resetState () {
-this.setState({
-  annotation: {},
-  focused: null
-});
-
-AnnotationActions.removeRevealedAnnotation();
 }
 ```
 
