@@ -99,12 +99,15 @@ const TrackShow = React.createClass ({
 
     const selection = this.state.track.lyrics.slice(startIndex, endIndex);
 
+    // Account for any previous annotated lyrics - our parent element
+    // doesn't include those.
     while (element.previousSibling) {
       startIndex += element.previousSibling.innerText.length;
       endIndex += element.previousSibling.innerText.length;
       element = element.previousSibling;
     }
 
+    // Package up the data to be send.
     const annotation = {
       startIndex: startIndex,
       endIndex: endIndex,
