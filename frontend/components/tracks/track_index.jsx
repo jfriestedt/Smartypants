@@ -2,6 +2,7 @@ const React = require('react');
 const TrackActions = require ('../../actions/track_actions');
 const TrackStore = require('../../stores/track_store');
 const TrackIndexItem = require('./track_index_item');
+const AnnotationActions = require('../../actions/annotation_actions');
 
 const TrackIndex = React.createClass ({
   getInitialState () {

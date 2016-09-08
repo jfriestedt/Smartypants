@@ -12,13 +12,18 @@ const NavBar = React.createClass({
   getInitialState () {
     return({
       modalOpen: false,
-      logIn: false
+      logIn: false,
+      addSong: false
     });
   },
 
   componentDidMount () {
-    SessionStore.addListener(this.forceUpdate.bind(this));
+    SessionStore.addListener(this.update);
   },
+
+  contextTypes: {
+		router: React.PropTypes.object.isRequired
+	},
 
   closeModal () {
     this.setState({modalOpen: false});
@@ -32,13 +37,15 @@ const NavBar = React.createClass({
 
   _handleLogOut(){
     SessionActions.logout();
-    this.setState({modalOpen: false});
+    this.setState({modalOpen: false, addSong: false});
+    this.redirect();
   },
 
-  _handleModalClick (bool) {
+  _handleModalClick (bool, addSong) {
     this.setState({
        modalOpen: true,
-       logIn: bool
+       logIn: bool,
+       addSong: addSong
      });
   },
 
@@ -108,12 +115,12 @@ const NavBar = React.createClass({
           </button>
           <button id="sign-up-button"
                   className="nav-button"
-                  onClick={this._handleModalClick.bind(this, false)}>
+                  onClick={this._handleModalClick.bind(this, false, false)}>
             SIGN UP
           </button>
           <button id="sign-in-button"
                   className="nav-button"
-                  onClick={this._handleModalClick.bind(this, true)}>
+                  onClick={this._handleModalClick.bind(this, true, false)}>
             SIGN IN
           </button>
         </hgroup>
@@ -129,11 +136,24 @@ const NavBar = React.createClass({
     } else {
       return (
         <button className="nav-button"
-          onClick={this._handleModalClick.bind(this, true)}>
+          onClick={this._handleModalClick.bind(this, true, true)}>
           ADD SONG
         </button>
       );
     }
+  },
+
+  redirect () {
+    if (this.state.addSong) {
+      this.context.router.push("/new");
+    } else {
+      this.context.router.push("/");
+    }
+  },
+
+  update () {
+    this.forceUpdate();
+    this.redirect();
   },
 
   render () {

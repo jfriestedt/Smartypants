@@ -4,6 +4,7 @@ const TrackConstants = require('../constants/track_constants');
 const CommentConstants = require('../constants/comment_constants');
 const VoteConstants = require('../constants/vote_constants');
 const AnnotationConstants = require('../constants/annotation_constants');
+const SessionStore = require('./session_store');
 
 const TrackStore = new Store(AppDispatcher);
 
@@ -22,6 +23,10 @@ TrackStore.find = (trackId) => {
       return _tracks[i];
     }
   }
+};
+
+TrackStore.removeRevealedAnnotation = () => {
+  _revealedAnnotation = {};
 };
 
 TrackStore.revealedAnnotation = () => {
@@ -82,10 +87,6 @@ const revealAnnotation = (id) => {
       }
     }
   }
-};
-
-const removeRevealedAnnotation = () => {
-  _revealedAnnotation = {};
 };
 
 const revealNewAnnotation = (newAnnotation) => {

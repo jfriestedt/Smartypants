@@ -2,6 +2,7 @@ const AnnotationApiUtil = require('../util/annotation_api_util');
 const AppDispatcher = require('../dispatcher/dispatcher');
 const TrackActions = require('./track_actions');
 const CommentConstants = require('../constants/comment_constants');
+
 const AnnotationConstants = require('../constants/annotation_constants');
 
 const AnnotationActions = {
