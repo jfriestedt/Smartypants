@@ -1,7 +1,7 @@
 const React = require('react');
 const SessionActions = require('../actions/session_actions');
 const SessionStore = require('../stores/session_store');
-const TrackActions = require('../actions/track_actions')
+const TrackActions = require('../actions/track_actions');
 const ErrorStore = require('../stores/error_store');
 const ErrorActions = require('../actions/error_actions');
 
@@ -38,7 +38,7 @@ const SignupForm = React.createClass({
   redirectIfLoggedIn() {
     if (SessionStore.isUserLoggedIn()) {
       this.context.router.push("/");
-      TrackActions.fetchAllTrack();
+      TrackActions.fetchAllTracks();
     }
   },
 
