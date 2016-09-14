@@ -1,39 +1,12 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
 const Autosize = require('autosize');
 const CommentActions = require('../../actions/comment_actions');
+const React = require('react');
+const ReactDOM = require('react-dom');
 const SessionStore = require('../../stores/session_store');
 
 const CommentsContainer = React.createClass({
   getInitialState () {
-    return({ body: "" });
-  },
-
-  componentDidMount () {
-    const commentFormTextArea = ReactDOM.findDOMNode(this.refs.textarea);
-    Autosize(commentFormTextArea);
-  },
-
-  updateBody (e) {
-    e.preventDefault();
-    let body = e.target.value;
-
-    this.setState({
-      body: body,
-    });
-  },
-
-  handleClick (e) {
-    e.preventDefault();
-    let comment = {
-      body: this.state.body,
-      commentable_type: this.props.commentableType,
-      commentable_id: this.props.commentable.id
-    };
-
-    CommentActions.createComment(comment);
-
-    this.setState({
+    return ({
       body: ""
     });
   },
@@ -60,6 +33,35 @@ const CommentsContainer = React.createClass({
         <h3 className="form-sign-in-prompt">Sign in to leave a comment!</h3>
       );
     }
+  },
+
+  componentDidMount () {
+    const commentFormTextArea = ReactDOM.findDOMNode(this.refs.textarea);
+    Autosize(commentFormTextArea);
+  },
+
+  handleClick (e) {
+    e.preventDefault();
+    let comment = {
+      body: this.state.body,
+      commentable_type: this.props.commentableType,
+      commentable_id: this.props.commentable.id
+    };
+
+    CommentActions.createComment(comment);
+
+    this.setState({
+      body: ""
+    });
+  },
+
+  updateBody (e) {
+    e.preventDefault();
+    let body = e.target.value;
+
+    this.setState({
+      body: body,
+    });
   },
 
   render () {
