@@ -67,6 +67,14 @@ const addTrackComment = (comment) => {
   }
 };
 
+const deleteTrack = (trackId) => {
+  _tracks.forEach((track, i) => {
+    if (track.id === trackId) {
+      _tracks.splice(i, 1);
+    }
+  });
+};
+
 const updateScore = (vote) => {
   const annotationId = vote.annotationId;
   for (var i = 0; i < _tracks.length; i++) {
@@ -117,6 +125,10 @@ TrackStore.__onDispatch = (payload) => {
       resetSingleTrack(payload.track);
       revealNewAnnotation(payload.track.newAnnotation);
       _saved = true;
+      TrackStore.__emitChange();
+      break;
+    case TrackConstants.TRACK_DELETED:
+      deleteTrack(payload.trackId);
       TrackStore.__emitChange();
       break;
     case CommentConstants.ANNOTATION_COMMENT_RECEIVED:

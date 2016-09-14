@@ -30,7 +30,7 @@ const TrackIndexItem = React.createClass ({
       if (this.props.track.submitter.id === SessionStore.currentUser().id) {
         return (
           <button className="delete-button"
-                  onClick = {this.handleClick}>
+                  onClick = {this.handleDeleteClick}>
             Delete
           </button>
         );
@@ -50,11 +50,10 @@ const TrackIndexItem = React.createClass ({
     }
   },
 
-  handleClick (e) {
+  handleDeleteClick (e) {
     e.stopPropagation();
     e.preventDefault();
     TrackActions.destroyTrack(this.props.track.id);
-    TrackActions.fetchAllTracks();
   },
 
   showTrack () {

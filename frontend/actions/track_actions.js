@@ -23,8 +23,18 @@ const TrackActions = {
     );
   },
 
+  deleteTrackFromStore (trackId) {
+    AppDispatcher.dispatch({
+      actionType: TrackConstants.TRACK_DELETED,
+      trackId: trackId
+    });
+  },
+
   destroyTrack (trackId) {
-    TrackApiUtil.destroyTrack(trackId, TrackActions.receiveAllTracks);
+    TrackApiUtil.destroyTrack(
+      trackId,
+      TrackActions.deleteTrackFromStore
+    );
   },
 
   receiveAllTracks (tracks) {

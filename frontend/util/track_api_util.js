@@ -37,12 +37,12 @@ const TrackApiUtil = {
     });
   },
 
-  destroyTrack(trackId, receiveAllTracks) {
+  destroyTrack(trackId, deleteTrackFromStore) {
     $.ajax({
       url: '/api/tracks/' + trackId,
       method: "DELETE",
       success (receivedTracks) {
-        receiveAllTracks(receivedTracks);
+        deleteTrackFromStore(trackId);
       }
     });
   }
