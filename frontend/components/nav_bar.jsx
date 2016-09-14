@@ -36,16 +36,15 @@ const NavBar = React.createClass({
   },
 
   _handleLogOut(){
-    SessionActions.logout();
     this.setState({modalOpen: false, addSong: false});
-    this.redirect();
+    SessionActions.logout();
   },
 
-  _handleModalClick (bool, addSong) {
+  _handleModalClick (bool, addSongBool) {
     this.setState({
        modalOpen: true,
        logIn: bool,
-       addSong: addSong
+       addSong: addSongBool
      });
   },
 
@@ -61,7 +60,6 @@ const NavBar = React.createClass({
   },
 
   switchForms () {
-
     this.setState ({
       modalOpen: true,
       logIn: !this.state.logIn
