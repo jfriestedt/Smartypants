@@ -43,14 +43,9 @@ By the time the button has appeared, almost all of the information needed to dis
 ```javascript
 revealAnnotationShow (e) {
   e.preventDefault();
-
-  const track = this.state.track;
-
   let annotationId = parseInt(e.currentTarget.id);
   let annotation = this.findAnnotationById(annotationId);
   annotation.yPosition = e.pageY;
-  let annotationBody = annotation.body;
-  let yPosition = e.pageY;
 
   AnnotationActions.setRevealedAnnotation(annotationId);
 
@@ -58,7 +53,7 @@ revealAnnotationShow (e) {
     annotation: annotation,
     focused: parseInt(e.currentTarget.id),
   });
-}
+},
 ```
 
 Here, we see that the element containing a track's lyrics has a mouseup event listener installed. This DOM event carries, among other things, a pageY property that gives a reference to a y-coordinate relative to the dimensions of a parent HTML element. Smartypants uses this pageY to inform where an annotation component should appear on the page.

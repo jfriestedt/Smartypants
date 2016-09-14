@@ -56,14 +56,9 @@ const TrackShow = React.createClass ({
 
   revealAnnotationShow (e) {
     e.preventDefault();
-
-    const track = this.state.track;
-
     let annotationId = parseInt(e.currentTarget.id);
     let annotation = this.findAnnotationById(annotationId);
     annotation.yPosition = e.pageY;
-    let annotationBody = annotation.body;
-    let yPosition = e.pageY;
 
     AnnotationActions.setRevealedAnnotation(annotationId);
 
