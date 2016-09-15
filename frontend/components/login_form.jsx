@@ -1,9 +1,9 @@
+const ErrorActions = require('../actions/error_actions');
+const ErrorStore = require('../stores/error_store');
 const React = require('react');
 const SessionActions = require('../actions/session_actions');
 const SessionStore = require('../stores/session_store');
 const TrackActions = require('../actions/track_actions');
-const ErrorStore = require('../stores/error_store');
-const ErrorActions = require('../actions/error_actions');
 
 const LoginForm = React.createClass({
   contextTypes: {
@@ -60,7 +60,7 @@ const LoginForm = React.createClass({
 
   _guestLogin (e) {
     e.preventDefault();
-    let guestUser = {username: "guest", password: "password"};
+    let guestUser = { username: "guest", password: "password" };
     SessionActions.login(guestUser);
   },
 

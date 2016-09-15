@@ -61,7 +61,6 @@ const NavBar = React.createClass({
 
   switchForms () {
     this.setState ({
-      modalOpen: true,
       logIn: !this.state.logIn
     });
   },
