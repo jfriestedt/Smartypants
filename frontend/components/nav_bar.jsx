@@ -1,12 +1,11 @@
-const React = require('react');
 const Link = require('react-router').Link;
-const SessionStore = require('../stores/session_store');
-const SessionActions = require('../actions/session_actions');
 const Modal = require('react-modal');
 const ModalStyle = require('./modal_style');
+const React = require('react');
+const SessionStore = require('../stores/session_store');
+const SessionActions = require('../actions/session_actions');
 
-const LoginForm = require('./login_form');
-const SignupForm = require('./signup_form');
+const SessionForm = require('./session_form');
 
 const NavBar = React.createClass({
   getInitialState () {
@@ -31,11 +30,11 @@ const NavBar = React.createClass({
 
   _guestLogin (e) {
     e.preventDefault();
-    let guestUser = {username: "guest", password: "password"};
+    let guestUser = { username: "guest", password: "password" };
     SessionActions.login(guestUser);
   },
 
-  _handleLogOut(){
+  _handleLogOut () {
     this.setState({modalOpen: false, addSong: false});
     SessionActions.logout();
   },
@@ -83,11 +82,13 @@ const NavBar = React.createClass({
 
       let form;
       if (this.state.logIn) {
-        form = <LoginForm closeModal={this.closeModal}
-                          switchForms={this.switchForms}/>;
+        form = <SessionForm closeModal={this.closeModal}
+                            switchForms={this.switchForms}
+                            formType={"login"}/>;
       } else {
-        form = <SignupForm  closeModal = {this.closeModal}
-                            switchForms={this.switchForms}/>;
+        form = <SessionForm closeModal = {this.closeModal}
+                            switchForms={this.switchForms}
+                            formType={"signup"}/>;
       }
 
       return (

@@ -11,8 +11,6 @@ const hashHistory = ReactRouter.hashHistory;
 
 // Components
 const NavBar = require('./components/nav_bar');
-const LoginForm = require('./components/login_form');
-const SignupForm = require('./components/signup_form');
 const TrackIndex = require('./components/tracks/track_index');
 const TrackShow = require('./components/tracks/track_show');
 const TrackForm = require('./components/tracks/track_form');
