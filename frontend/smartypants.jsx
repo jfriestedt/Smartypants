@@ -24,14 +24,6 @@ const SessionStore = require('./stores/session_store');
 // React Modal
 const Modal = require("react-modal");
 
-// Window testing
-// window.user = { username: "wonipan", password: "George546!" };
-// window.SessionActions = require('./actions/session_actions');
-// window.SessionStore = require('./stores/session_store');
-window.TrackStore = require('./stores/track_store');
-// window.TrackApiUtil = require('./util/track_api_util');
-window.TrackActions = require('./actions/track_actions');
-
 const App = React.createClass({
   render () {
     return (
