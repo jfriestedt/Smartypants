@@ -38,7 +38,6 @@ const LoginForm = React.createClass({
   redirectIfLoggedIn() {
     if (SessionStore.isUserLoggedIn()) {
       this.context.router.push("/");
-      TrackActions.fetchAllTracks();
     }
   },
 
