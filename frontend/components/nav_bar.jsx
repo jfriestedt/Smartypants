@@ -103,7 +103,6 @@ const NavBar = React.createClass({
             <button className="close-button" onClick={this._onModalClose}>
               x
             </button>
-
           </Modal>
 
           <button id="guest-login-button"
