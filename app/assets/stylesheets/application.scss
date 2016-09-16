@@ -357,8 +357,9 @@ hr {
   }
 
   .delete-button {
+    box-sizing: border-box;
     margin: 0;
-    padding: 3px;
+    padding: 1px 3px;
     font: 12px sans-serif;
     color: #626262;
     text-align: right;
