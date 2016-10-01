@@ -148,12 +148,12 @@ TrackStore.__onDispatch = (payload) => {
       TrackStore.__emitChange();
       break;
     case AnnotationConstants.ANNOTATION_REMOVED:
-      removeRevealedAnnotation();
+      TrackStore.removeRevealedAnnotation();
       TrackStore.__emitChange();
       break;
     case AnnotationConstants.ANNOTATION_DELETED:
       resetSingleTrack(payload.track);
-      removeRevealedAnnotation();
+      TrackStore.removeRevealedAnnotation();
       TrackStore.__emitChange();
       break;
     case AnnotationConstants.ANNOTATION_UPDATED:
