@@ -7,6 +7,11 @@ const CommentsContainer = require('../comments/comments_container');
 const AnnotationActions = require('../../actions/annotation_actions');
 
 const TrackShow = React.createClass ({
+
+  getInitialState () {
+    return this.getStateFromStore();
+  },
+
   getStateFromStore () {
     if (!TrackStore.all()[0]) {
       TrackActions.fetchAllTracks(this.props.params.trackId);
@@ -17,112 +22,6 @@ const TrackShow = React.createClass ({
       selected: null,
       focused: null,
     };
-  },
-
-  getInitialState () {
-    return this.getStateFromStore();
-  },
-
-  componentWillMount () {
-    document.body.style.backgroundColor = "#fafafa";
-  },
-
-  componentDidMount () {
-    this.trackListener = TrackStore.addListener(this._onChange);
-    TrackActions.fetchSingleTrack(parseInt(this.props.params.trackId));
-  },
-
-  componentWillUnmount () {
-    this.trackListener.remove();
-    document.body.style.backgroundColor = null;
-    TrackStore.removeRevealedAnnotation();
-  },
-
-  componentWillReceiveProps (newProps) {
-    TrackActions.fetchSingleTrack(parseInt(newProps.params.trackId));
-  },
-
-  _onChange () {
-    this.setState(this.getStateFromStore());
-  },
-
-  findAnnotationById (id) {
-    let annotations = this.state.track.annotations;
-
-    for (var i = 0; i < annotations.length; i++) {
-      if (annotations[i].id === id) { return annotations[i]; }
-    }
-  },
-
-  revealAnnotationShow (e) {
-    e.preventDefault();
-    let annotationId = parseInt(e.currentTarget.id);
-    let annotation = this.findAnnotationById(annotationId);
-    annotation.yPosition = e.pageY;
-
-    AnnotationActions.setRevealedAnnotation(annotationId);
-
-    this.setState({
-      annotation: annotation,
-      focused: parseInt(e.currentTarget.id),
-    });
-  },
-
-  sendSelection (e) {
-    const docSelection = document.getSelection();
-
-    // If there's no selection object, do nothing.
-    if (docSelection.toString().length === 0 ||
-        docSelection.anchorNode !== docSelection.focusNode ||
-        docSelection.anchorNode.parentElement.className !== "nonreferent") {
-      this.setState({
-        annotation: {},
-        focused: null
-      });
-      return;
-    }
-
-    // Grab indices from the selection object.
-    let startIndex = document.getSelection().anchorOffset;
-    let endIndex = document.getSelection().focusOffset;
-    let element = document.getSelection().anchorNode.parentElement;
-
-    // Swap values if necessary.
-    if (startIndex > endIndex) {
-      [startIndex, endIndex] = [endIndex, startIndex];
-    }
-
-    const selection = this.state.track.lyrics.slice(startIndex, endIndex);
-
-    // Account for any previous annotated lyrics - our parent element
-    // doesn't include those.
-    while (element.previousSibling) {
-      startIndex += element.previousSibling.innerText.length;
-      endIndex += element.previousSibling.innerText.length;
-      element = element.previousSibling;
-    }
-
-    // Package up the data to be send.
-    const annotation = {
-      startIndex: startIndex,
-      endIndex: endIndex,
-      selection: selection,
-      yPosition: e.pageY
-    };
-
-    this.setState({
-      annotation: annotation,
-      focused: null,
-    });
-  },
-
-  resetState () {
-    this.setState({
-      annotation: {},
-      focused: null
-    });
-
-    AnnotationActions.removeRevealedAnnotation();
   },
 
   annotationContainer () {
@@ -198,6 +97,131 @@ const TrackShow = React.createClass ({
     return (<div className="track-lyrics">{sections}</div>);
   },
 
+  componentDidMount () {
+    this.trackListener = TrackStore.addListener(this._onChange);
+    TrackActions.fetchSingleTrack(parseInt(this.props.params.trackId));
+  },
+
+  componentWillMount () {
+    document.body.style.backgroundColor = "#fafafa";
+  },
+
+  componentWillReceiveProps (newProps) {
+    TrackActions.fetchSingleTrack(parseInt(newProps.params.trackId));
+  },
+
+  componentWillUnmount () {
+    this.trackListener.remove();
+    document.body.style.backgroundColor = null;
+    TrackStore.removeRevealedAnnotation();
+  },
+
+  findAnnotationById (id) {
+    let annotations = this.state.track.annotations;
+
+    for (var i = 0; i < annotations.length; i++) {
+      if (annotations[i].id === id) { return annotations[i]; }
+    }
+  },
+
+  getSelectionAndIndices (docSelection) {
+    // Grab indices from the selection object.
+    let startIndex = docSelection.anchorOffset;
+    let endIndex = docSelection.focusOffset;
+    let element = docSelection.anchorNode.parentElement;
+
+    // Swap values if necessary.
+    if (startIndex > endIndex) {
+      [startIndex, endIndex] = [endIndex, startIndex];
+    }
+
+    const selection = this.state.track.lyrics.slice(startIndex, endIndex);
+
+    // Account for any previous annotated lyrics - our parent element
+    // doesn't include those.
+    while (element.previousSibling) {
+      startIndex += element.previousSibling.innerText.length;
+      endIndex += element.previousSibling.innerText.length;
+      element = element.previousSibling;
+    }
+
+    return ({
+      selection: selection,
+      startIndex: startIndex,
+      endIndex: endIndex
+    });
+  },
+
+  handleSelection (e) {
+    const docSelection = document.getSelection();
+
+    // If there's no selection object, do nothing.
+    if (!this.lyricsSelected(docSelection)) {
+      this.resetState();
+      return;
+    }
+
+    const selectionAndIndices = this.getSelectionAndIndices(docSelection);
+
+    // Package up the data to be sent.
+    this.sendAnnotation(
+      selectionAndIndices["startIndex"],
+      selectionAndIndices["endIndex"],
+      selectionAndIndices["selection"],
+      e.pageY
+    );
+  },
+
+  lyricsSelected (docSelection) {
+    if (docSelection.toString().length === 0 ||
+        docSelection.anchorNode !== docSelection.focusNode ||
+        docSelection.anchorNode.parentElement.className !== "nonreferent") {
+          return false;
+        }
+    return true;
+  },
+
+  _onChange () {
+    this.setState(this.getStateFromStore());
+  },
+
+  resetState () {
+    this.setState({
+      annotation: {},
+      focused: null
+    });
+
+    AnnotationActions.removeRevealedAnnotation();
+  },
+
+  revealAnnotationShow (e) {
+    e.preventDefault();
+    let annotationId = parseInt(e.currentTarget.id);
+    let annotation = this.findAnnotationById(annotationId);
+    annotation.yPosition = e.pageY;
+
+    AnnotationActions.setRevealedAnnotation(annotationId);
+
+    this.setState({
+      annotation: annotation,
+      focused: parseInt(e.currentTarget.id),
+    });
+  },
+
+  sendAnnotation(startIndex, endIndex, selection, yPosition) {
+    const annotation = {
+      startIndex: startIndex,
+      endIndex: endIndex,
+      selection: selection,
+      yPosition: yPosition
+    };
+
+    this.setState({
+      annotation: annotation,
+      focused: null,
+    });
+  },
+
   render () {
     if (!this.state.track || !this.state.track.annotations) {
       return (
@@ -223,7 +247,7 @@ const TrackShow = React.createClass ({
                     {trackAlbum}
                   </hgroup>;
       trackLyrics = <div  className="track-lyrics-container"
-                          onMouseUp={this.sendSelection}>
+                          onMouseUp={this.handleSelection}>
                       {this.buildLyricsWithReferents()}
                     </div>;
       trackImg = <img src={this.state.track.image_url}></img>;
