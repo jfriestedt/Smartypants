@@ -75,14 +75,20 @@ const AnnotationContainer = React.createClass ({
 
   updateAnnotation () {
     const annotation = this.state.annotation;
-    AnnotationActions.updateAnnotation(annotation, annotation.track.id, annotation.yPosition);
+    AnnotationActions.updateAnnotation(
+      annotation,
+      annotation.track.id,
+      annotation.yPosition
+    );
   },
 
   destroyAnnotation (e) {
     e.preventDefault();
     const annotation = this.state.annotation;
     const annotationId = annotation.id;
-    AnnotationActions.destroyAnnotation(annotationId, annotation.track.id);
+    AnnotationActions.destroyAnnotation(
+      annotationId, annotation.track.id
+    );
   },
 
   createAnnotation () {
